@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-gm-2020/static/css/main.5471afbd.chunk.css",
+    "main.js": "/react-gm-2020/static/js/main.fee48666.chunk.js",
+    "main.js.map": "/react-gm-2020/static/js/main.fee48666.chunk.js.map",
+    "runtime-main.js": "/react-gm-2020/static/js/runtime-main.457af1df.js",
+    "runtime-main.js.map": "/react-gm-2020/static/js/runtime-main.457af1df.js.map",
+    "static/js/2.62e903d6.chunk.js": "/react-gm-2020/static/js/2.62e903d6.chunk.js",
+    "static/js/2.62e903d6.chunk.js.map": "/react-gm-2020/static/js/2.62e903d6.chunk.js.map",
+    "index.html": "/react-gm-2020/index.html",
+    "precache-manifest.64e79e3539a3d7e11c8eb6bbf4ded71b.js": "/react-gm-2020/precache-manifest.64e79e3539a3d7e11c8eb6bbf4ded71b.js",
+    "service-worker.js": "/react-gm-2020/service-worker.js",
+    "static/css/main.5471afbd.chunk.css.map": "/react-gm-2020/static/css/main.5471afbd.chunk.css.map",
+    "static/js/2.62e903d6.chunk.js.LICENSE.txt": "/react-gm-2020/static/js/2.62e903d6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.457af1df.js",
+    "static/js/2.62e903d6.chunk.js",
+    "static/css/main.5471afbd.chunk.css",
+    "static/js/main.fee48666.chunk.js"
+  ]
+}
