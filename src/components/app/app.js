@@ -1,12 +1,11 @@
 import React from 'react';
 import './app.css';
+import ComponentsList from '../ComponentsList/componentsList';
 
 function App() {
   return (
     <div className="app">
-      <header></header>
-      <main></main>
-      <footer></footer>
+      <ComponentsList />
     </div>
   );
 }
