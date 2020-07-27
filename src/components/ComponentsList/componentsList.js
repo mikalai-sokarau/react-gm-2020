@@ -14,14 +14,9 @@ class ComponentsList extends React.Component {
                 <li><ReactComponent /></li>
                 <li><ReactPureComponent /></li>
                 <li><FunctionalComponent /></li>
-                <li></li>
+                <li><CreateElementComponent /></li>
             </ul>
         )
-    }
-
-    componentDidMount() {
-        const targetElement = document.querySelector('.app li:last-child');
-        ReactDOM.render(CreateElementComponent, targetElement);
     }
 };
 
