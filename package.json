@@ -1,0 +1,33 @@
+{
+  "name": "react-gm-2020",
+  "version": "1.0.0",
+  "description": "React global mentoring program",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "jest": "^26.1.0",
+    "webpack": "^4.44.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikalai-sokarau/react-gm-2020.git"
+  },
+  "author": "Mikalai Sokarau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikalai-sokarau/react-gm-2020/issues"
+  },
+  "homepage": "https://github.com/mikalai-sokarau/react-gm-2020#readme"
+}
