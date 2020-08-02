@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import s from './app.component.css';
+import './app.component.scss';
 
 export default class MyComponent extends Component {
   render() {
-    return <div className={s.core}>Hello World</div>;
+    return <div className="core">Hello World!</div>;
   }
 }
