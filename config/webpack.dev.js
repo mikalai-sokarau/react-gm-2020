@@ -14,6 +14,7 @@ module.exports = {
   resolve: {
     extensions: [
       '.js',
+      '.jsx',
       '.json'
     ]
   },
@@ -21,8 +22,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 4200,
-    hot: true,
-    open: true
+    hot: true
   },
   devtool: 'source-map',
   plugins: [
@@ -40,7 +40,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
