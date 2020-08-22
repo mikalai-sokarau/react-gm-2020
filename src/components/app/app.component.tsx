@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './app.component.scss';
+import React from 'react';
+import { styles } from './app.component.styles';
 
-export default class MyComponent extends Component {
-  render() {
-    return <div className="core">Hello World!</div>;
-  }
+export const App = () => {
+    const classes = styles();
+
+    return <div className={classes.core}>Hello World!</div>;
 }
