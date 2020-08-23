@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -18,6 +19,9 @@ module.exports = {
       '.json',
       '.ts',
       '.tsx'
+    ],
+    plugins: [
+      new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })
     ]
   },
   devServer: {

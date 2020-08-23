@@ -1,8 +1,10 @@
 import React from 'react';
-import { styles } from './app.component.styles';
+import styles from '@app/components/app/app.component.styles';
 
-export const App = () => {
-    const classes = styles();
+const App = (): JSX.Element => {
+  const classes = styles();
 
-    return <div className={classes.core}>Hello World!</div>;
-}
+  return <div className={classes.core}>Hello World!</div>;
+};
+
+export default App;
