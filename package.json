@@ -8,9 +8,10 @@
     "test": "jest --passWithNoTests",
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.dev.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "lint": "eslint --ext .ts,.tsx src"
+    "lint": "eslint --ext .ts,.tsx --fix src"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-jss": "^10.4.0",
