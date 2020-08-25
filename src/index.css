@@ -7,3 +7,10 @@ body,
 #root {
     height: 100%;
 }
+
+@font-face {
+    font-family: 'Netflix sans';
+    src: local('./assets/fonts/netflix-sans-light');
+    src: local('./assets/fonts/netflix-sans-medium');
+    src: local('./assets/fonts/netflix-sans-bold');
+}

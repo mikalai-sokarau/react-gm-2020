@@ -67,7 +67,7 @@ module.exports = {
         use: [ 'style-loader', 'css-loader' ]
       },
       {
-        test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3|ico)$/,
+        test: /\.(jpe?g|gif|png|svg|woff2?|ttf|wav|mp3|ico)$/,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]?[hash]'
