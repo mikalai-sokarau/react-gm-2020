@@ -1,11 +1,13 @@
 import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
-  core: {
-    backgroundColor: 'yellow',
-    border: '1px solid yellow',
-    height: '50px',
+  footer: {
+    backgroundColor: '#424242',
+    height: '60px',
     marginTop: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
