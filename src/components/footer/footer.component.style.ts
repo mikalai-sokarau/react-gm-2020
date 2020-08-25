@@ -2,9 +2,10 @@ import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   core: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
+    backgroundColor: 'yellow',
+    border: '1px solid yellow',
+    height: '50px',
+    marginTop: 'auto',
   },
 });
 
