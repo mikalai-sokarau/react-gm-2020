@@ -3,3 +3,7 @@ body,
 #root {
     height: 100%;
 }
+
+body {
+    font: 16px 'Netflix sans', Arial, sans-serif;
+}

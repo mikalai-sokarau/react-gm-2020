@@ -1,10 +1,10 @@
 import { createUseStyles } from 'react-jss';
+import { pearch } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   common: {
-    fontFamily: "'Netflix sans', Arial, sans-serif",
     fontSize: '1.1rem',
-    color: '#f65261',
+    color: pearch,
     userSelect: 'none',
   },
   firstPart: {
