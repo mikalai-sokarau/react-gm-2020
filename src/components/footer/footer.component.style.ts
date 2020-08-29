@@ -1,9 +1,10 @@
 import { createUseStyles } from 'react-jss';
+import { gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   footer: {
-    backgroundColor: '#424242',
-    height: '60px',
+    backgroundColor: gray.tint2,
+    height: '80px',
     marginTop: 'auto',
     display: 'flex',
     alignItems: 'center',

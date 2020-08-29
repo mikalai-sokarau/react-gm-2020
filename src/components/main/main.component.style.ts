@@ -1,9 +1,10 @@
 import { createUseStyles } from 'react-jss';
+import { gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   core: {
-    backgroundColor: 'green',
-    border: '1px solid green',
+    backgroundColor: gray.tint3,
+    height: '100%',
   },
 });
 

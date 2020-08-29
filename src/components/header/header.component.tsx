@@ -4,15 +4,16 @@ import style from '@app/components/header/header.component.style';
 import commonStyle from '@app/style/variables/sizes';
 import Button from '@app/components/button/button.component';
 import { ButtonMode, ButtonText } from '@app/components/button/button.interface';
+import cN from '@app/utils/utils';
 
 const Header = (): JSX.Element => {
-  const { header } = style();
+  const { header, headerContainer } = style();
   const { appContainer } = commonStyle();
 
   /* eslint-disable no-console */
   return (
     <header className={header}>
-      <div className={appContainer}>
+      <div className={cN(appContainer, headerContainer)}>
         <Logo />
         <Button
           mode={ButtonMode.transparent}
