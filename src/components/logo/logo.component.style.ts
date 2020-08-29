@@ -1,10 +1,10 @@
 import { createUseStyles } from 'react-jss';
-import { pearch } from '@app/style/variables/colors';
+import { peachy } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   common: {
     fontSize: '1.1rem',
-    color: pearch,
+    color: peachy,
     userSelect: 'none',
   },
   firstPart: {
