@@ -9,7 +9,7 @@ const style = createUseStyles({
   },
   headerContainer: {
     height: HEADER_HEIGHT,
-  }
+  },
 });
 
 export default style;
