@@ -10,7 +10,7 @@ export const BUTTON_TEXT = {
   reset: ButtonType.reset,
   search: ButtonType.search,
   submit: ButtonType.submit,
-}
+};
 
 export interface IButton {
   type: ButtonType,
