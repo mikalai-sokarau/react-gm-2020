@@ -43,7 +43,17 @@ const style = createUseStyles({
     },
   },
   submit: {
+    backgroundColor: peachy,
+    borderColor: peachy,
+    color: white,
+    height: sizes.mediumHeight,
+    width: sizes.mediumWidth,
+    fontSize: '1.4rem',
 
+    '&:hover': {
+      backgroundColor: white,
+      color: peachy,
+    },
   },
 });
 
