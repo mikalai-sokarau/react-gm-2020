@@ -2,16 +2,16 @@ import { createUseStyles } from 'react-jss';
 import { peachy, gray, white } from '@app/style/variables/colors';
 
 const sizes = {
-  mediumHeight: '60px',
+  height: '60px',
   mediumWidth: '180px',
-
-  largeHeight: '3rem',
+  largeWidth: '240px',
 };
 
 const style = createUseStyles({
   button: {
     border: '1px solid',
     borderRadius: '5px',
+    fontSize: '1.4rem',
     textTransform: 'uppercase',
 
     '&:hover': {
@@ -22,15 +22,23 @@ const style = createUseStyles({
     border: '1px solid transparent',
   },
   search: {
+    backgroundColor: peachy,
+    borderColor: peachy,
+    color: white,
+    height: sizes.height,
+    width: sizes.largeWidth,
 
+    '&:hover': {
+      backgroundColor: white,
+      color: peachy,
+    },
   },
   reset: {
     backgroundColor: gray.tint3,
     borderColor: peachy,
     color: peachy,
-    height: sizes.mediumHeight,
+    height: sizes.height,
     width: sizes.mediumWidth,
-    fontSize: '1.4rem',
 
     '&:focus': {
       borderColor: white,
@@ -46,9 +54,8 @@ const style = createUseStyles({
     backgroundColor: peachy,
     borderColor: peachy,
     color: white,
-    height: sizes.mediumHeight,
+    height: sizes.height,
     width: sizes.mediumWidth,
-    fontSize: '1.4rem',
 
     '&:hover': {
       backgroundColor: white,
