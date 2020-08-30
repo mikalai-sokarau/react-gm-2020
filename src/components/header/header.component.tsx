@@ -3,7 +3,7 @@ import Logo from '@app/components/logo/logo.component';
 import style from '@app/components/header/header.component.style';
 import commonStyle from '@app/style/variables/sizes';
 import Button from '@app/components/button/button.component';
-import { ButtonMode, ButtonText } from '@app/components/button/button.interface';
+import { ButtonType } from '@app/components/button/button.interface';
 import cN from '@app/utils/utils';
 
 const Header = (): JSX.Element => {
@@ -16,8 +16,7 @@ const Header = (): JSX.Element => {
       <div className={cN(appContainer, headerContainer)}>
         <Logo />
         <Button
-          mode={ButtonMode.transparent}
-          text={ButtonText.add}
+          type={ButtonType.add}
           callback={() => { console.log('hello'); }}
         />
       </div>
