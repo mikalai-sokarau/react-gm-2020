@@ -32,11 +32,13 @@ const style = createUseStyles({
     backgroundColor: transparent.gray,
     borderColor: 'transparent',
     color: peachy,
-    width: '190px',
+    height: '50px',
+    width: '175px',
+    fontSize: '1.25rem',
 
     '&:focus': focus,
     '&:hover': {
-      backgroundColor: transparent.peachy,
+      borderColor: white,
       color: white,
     },
   },

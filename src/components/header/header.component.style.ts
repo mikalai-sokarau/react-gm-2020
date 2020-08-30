@@ -9,7 +9,17 @@ const style = createUseStyles({
   },
   headerContainer: {
     height: HEADER_HEIGHT,
+    padding: '20px',
   },
+  logoContainer: {
+    position: 'absolute',
+    top: '20px',
+  },
+  addMovieButtonContainer: {
+    position: 'absolute',
+    top: '20px',
+    right: '20px',
+  }
 });
 
 export default style;
