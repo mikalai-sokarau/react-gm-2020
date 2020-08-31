@@ -1,6 +1,11 @@
 @font-face {
     font-family: 'Netflix sans';
-    src: local('./assets/fonts/netflix-sans-light');
-    src: local('./assets/fonts/netflix-sans-medium');
-    src: local('./assets/fonts/netflix-sans-bold');
+    src: url('/src/assets/fonts/netflix/netflix-sans-light.woff2') format('woff2');
+    src: url('/src/assets/fonts/netflix/netflix-sans-medium.woff2') format('woff2');
+    src: url('/src/assets/fonts/netflix/netflix-sans-bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/src/assets/fonts/montserrat/montserrat.woff2') format('woff2');
 }
