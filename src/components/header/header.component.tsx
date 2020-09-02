@@ -7,21 +7,31 @@ import { ButtonType } from '@app/components/button/button.interface';
 import cN from '@app/utils/utils';
 
 const Header = (): JSX.Element => {
-  const { header, headerContainer, logoContainer, addMovieButtonContainer } = style();
+  const c = style(); // c: "classes"
   const { appContainer } = commonStyle();
 
   /* eslint-disable no-console */
   return (
-    <header className={header}>
-      <div className={cN(appContainer, headerContainer)}>
-        <div className={logoContainer}>
+    <header className={c.header}>
+      <div className={cN(appContainer, c.headerContainer)}>
+        <div className={c.logoContainer}>
           <Logo />
         </div>
-        <div className={addMovieButtonContainer}>
+        <div className={c.addMovieButtonContainer}>
           <Button
             type={ButtonType.add}
-            callback={() => { console.log('hello'); }}
+            callback={() => console.log('hello')}
           />
+        </div>
+        <div className={c.searchContainer}>
+          <h2 className={c.searchTitle}>find your movie</h2>
+          <div className={c.inputContainer}>
+            <input type="text" placeholder="What do you want to watch?" className={c.searchInput} />
+            <Button
+              type={ButtonType.search}
+              callback={() => console.log('hello')}
+            />
+          </div>
         </div>
       </div>
     </header>

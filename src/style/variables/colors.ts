@@ -5,7 +5,12 @@ export const gray = {
   tint2: '#424242',
   tint3: '#232323',
 };
+
+// https://stackoverflow.com/questions/15852122/hex-transparency-in-colors
 export const transparent = {
-  gray: 'rgba(130, 130, 130, 0.5)',
-  peachy: 'rgba(246, 82, 97, 0.5)',
+  gray: {
+    tint1: '#55555580',
+    tint3: '#232323CC',
+  },
+  peachy: '#f6526180',
 };
