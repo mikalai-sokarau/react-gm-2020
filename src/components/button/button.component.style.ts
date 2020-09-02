@@ -21,6 +21,7 @@ const style = createUseStyles({
     border: '1px solid',
     borderRadius: '5px',
     fontSize: '1.4rem',
+    fontWeight: '100',
     height: '60px',
     textTransform: 'uppercase',
 
@@ -29,7 +30,7 @@ const style = createUseStyles({
     },
   },
   add: {
-    backgroundColor: transparent.gray,
+    backgroundColor: transparent.gray.tint1,
     borderColor: 'transparent',
     color: peachy,
     height: '50px',

@@ -13,7 +13,7 @@ const style = createUseStyles({
     marginRight: '1px',
   },
   lastPart: {
-    fontWeight: 500,
+    fontWeight: 100,
     letterSpacing: '0.8px',
   },
 });
