@@ -12,6 +12,7 @@ module.exports = {
     rules: {
         'no-restricted-imports': ['error', {
             patterns: [ './*', '../*' ]
-        }]
+        }],
+        'react/prop-types': 0,
     }
 };
