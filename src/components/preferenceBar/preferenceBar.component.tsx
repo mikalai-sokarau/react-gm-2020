@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '@app/components/preferenceBar/preferenceBar.component.style';
-import { preferenceList, sortList } from '@app/components/preferenceBar/preferenceBar.model';
-
-const getListWithItems = (
-  items: Array<string>,
-  listClass: string,
-  listItemClass?: string,
-): JSX.Element => (
-  <div className={listClass}>
-    {items.map((i) => (
-      <button type="button" className={listItemClass} key={i}>
-        {i}
-      </button>
-    ))}
-  </div>
-);
+import { preferenceList, sortValues } from '@app/components/preferenceBar/preferenceBar.model';
+import Dropdown from '@app/components/dropdown/dropdown.component';
 
 const PreferenceBar = (): JSX.Element => {
   const c = style();
+  const [chosenDropdownItem, setChosenDropdownItem] = useState(sortValues[0]);
 
   return (
     <div className={c.preferenceBarContainer}>
-      {getListWithItems(preferenceList, c.preferenceContainer, c.preferenceButton)}
-      {getListWithItems(sortList, c.sortList)}
+      <div className={c.preferenceContainer}>
+        {preferenceList.map((b) => (
+          <button type="button" className={c.preferenceButton} key={b}>
+            {b}
+          </button>
+        ))}
+      </div>
+      <Dropdown
+        title={chosenDropdownItem.value}
+        options={sortValues}
+        callback={setChosenDropdownItem}
+      />
     </div>
   );
 };

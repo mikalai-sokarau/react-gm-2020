@@ -32,10 +32,6 @@ const style = createUseStyles({
       outline: 'none',
     },
   },
-  sortList: {
-    color: white,
-    display: 'flex',
-  },
 });
 
 export default style;
