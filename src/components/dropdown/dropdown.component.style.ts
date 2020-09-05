@@ -11,6 +11,10 @@ const style = createUseStyles({
       color: peachy,
       cursor: 'pointer',
     },
+
+    '&:focus': {
+      outline: 'none',
+    },
   },
   dropdownContainer: {
     display: 'inline-block',
@@ -47,6 +51,7 @@ const style = createUseStyles({
     '&:focus': {
       border: '1px solid transparent',
       color: peachy,
+      outline: 'none',
 
       '& +ul': {
         display: 'block',
@@ -65,8 +70,10 @@ const style = createUseStyles({
     margin: 0,
     position: 'absolute',
     width: '160px',
+    zIndex: 2,
 
     '& >li': {
+      backgroundColor: gray.tint3,
       color: 'white',
     },
   },

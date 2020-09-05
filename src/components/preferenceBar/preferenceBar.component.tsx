@@ -4,14 +4,14 @@ import { preferenceList, sortValues } from '@app/components/preferenceBar/prefer
 import Dropdown from '@app/components/dropdown/dropdown.component';
 
 const PreferenceBar = (): JSX.Element => {
-  const c = style();
+  const s = style();
   const [chosenDropdownItem, setChosenDropdownItem] = useState(sortValues[0]);
 
   return (
-    <div className={c.preferenceBarContainer}>
-      <div className={c.preferenceContainer}>
+    <div className={s.preferenceBarContainer}>
+      <div className={s.preferenceContainer}>
         {preferenceList.map((b) => (
-          <button type="button" className={c.preferenceButton} key={b}>
+          <button type="button" className={s.preferenceButton} key={b}>
             {b}
           </button>
         ))}
@@ -21,6 +21,7 @@ const PreferenceBar = (): JSX.Element => {
         options={sortValues}
         callback={setChosenDropdownItem}
       />
+      <div className={s.borderLine} />
     </div>
   );
 };

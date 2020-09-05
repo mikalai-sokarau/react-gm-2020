@@ -1,5 +1,5 @@
 import { createUseStyles } from 'react-jss';
-import { white, peachy } from '@app/style/variables/colors';
+import { white, peachy, gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   preferenceBarContainer: {
@@ -9,8 +9,9 @@ const style = createUseStyles({
   },
   preferenceContainer: {
     color: white,
-    display: 'flex',
     cursor: 'default',
+    display: 'flex',
+    zIndex: 1,
   },
   preferenceButton: {
     backgroundColor: 'transparent',
@@ -31,6 +32,12 @@ const style = createUseStyles({
       borderBottomColor: peachy,
       outline: 'none',
     },
+  },
+  borderLine: {
+    borderBottom: `2px solid ${gray.tint1}`,
+    bottom: 0,
+    position: 'absolute',
+    width: '100%',
   },
 });
 
