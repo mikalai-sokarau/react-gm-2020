@@ -24,7 +24,7 @@ export enum Genres {
 
 export interface IMovie {
   title: string;
-  genre: Array<genres>;
+  genre: Array<Genres>;
   year: number;
   imagePath: string;
   id: number;
