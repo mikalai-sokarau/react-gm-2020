@@ -6,6 +6,7 @@ const style = createUseStyles({
     display: 'flex',
     justifyContent: 'space-between',
     margin: '1rem 0',
+    position: 'relative',
   },
   preferenceContainer: {
     color: white,
