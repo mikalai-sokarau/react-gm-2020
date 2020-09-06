@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import style from '@app/components/preferenceBar/preferenceBar.component.style';
-import { preferenceList, sortValues } from '@app/components/preferenceBar/preferenceBar.model';
+import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
+import style from '@app/components/preferenceBar/preferenceBar.component.style';
+import { sortValues } from '@app/components/preferenceBar/preferenceBar.model';
 
-const PreferenceBar = (): JSX.Element => {
+const PreferenceBar = ({ callback }: { callback: (genre: Genres) => void}): JSX.Element => {
   const s = style();
   const [chosenDropdownItem, setChosenDropdownItem] = useState(sortValues[0]);
 
   return (
     <div className={s.preferenceBarContainer}>
       <div className={s.preferenceContainer}>
-        {preferenceList.map((b) => (
-          <button type="button" className={s.preferenceButton} key={b}>
-            {b}
+        {Object.keys(Genres).map((g) => (
+          <button
+            type="button"
+            onClick={() => callback(g.toLocaleLowerCase() as Genres)}
+            className={s.preferenceButton}
+            key={g}
+          >
+            {g}
           </button>
         ))}
       </div>

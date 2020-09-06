@@ -1,14 +1,23 @@
-import React from 'react';
-import Logo from '@app/components/logo/logo.component';
-import style from '@app/components/header/header.component.style';
-import commonStyle from '@app/style/variables/sizes';
-import Button from '@app/components/button/button.component';
-import { ButtonType } from '@app/components/button/button.interface';
 import cN from '@app/utils/utils';
+import React, { useState } from 'react';
+import commonStyle from '@app/style/variables/sizes';
+import Logo from '@app/components/logo/logo.component';
+import Button from '@app/components/button/button.component';
+import style from '@app/components/header/header.component.style';
+import { ButtonType } from '@app/components/button/button.interface';
 
-const Header = (): JSX.Element => {
+const Header = ({ callback }: { callback: (value: string) => void }): JSX.Element => {
   const s = style();
   const { appContainer } = commonStyle();
+  const [inputText, setInputText] = useState('');
+
+  const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setInputText((e.target as HTMLInputElement).value);
+
+    if (e.key === 'Enter') {
+      callback(inputText);
+    }
+  };
 
   return (
     <header className={s.header}>
@@ -25,10 +34,15 @@ const Header = (): JSX.Element => {
         <div className={s.searchContainer}>
           <h2 className={s.searchTitle}>find your movie</h2>
           <div className={s.inputContainer}>
-            <input type="text" placeholder="What do you want to watch?" className={s.searchInput} />
+            <input
+              type="text"
+              placeholder="What do you want to watch?"
+              className={s.searchInput}
+              onKeyUp={inputKeyPressHandler}
+            />
             <Button
               type={ButtonType.search}
-              callback={() => console.log('hello')}
+              callback={() => callback(inputText)}
             />
           </div>
         </div>
