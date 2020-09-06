@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import style from '@app/components/preferenceBar/preferenceBar.component.style';
-import { sortValues } from '@app/components/preferenceBar/preferenceBar.model';
+import sortValues from '@app/components/preferenceBar/preferenceBar.model';
 
 const PreferenceBar = ({ callback }: { callback: (genre: Genres) => void}): JSX.Element => {
   const s = style();
