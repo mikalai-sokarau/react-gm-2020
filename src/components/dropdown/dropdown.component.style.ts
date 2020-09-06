@@ -19,8 +19,8 @@ const style = createUseStyles({
   dropdownContainer: {
     display: 'inline-block',
 
-    '&:hover ul': {
-      display: 'block',
+    '&:not(.open) > ul': {
+      display: 'none',
     },
   },
   dropdownTitle: {
@@ -50,12 +50,7 @@ const style = createUseStyles({
 
     '&:focus': {
       border: '1px solid transparent',
-      color: peachy,
       outline: 'none',
-
-      '& +ul': {
-        display: 'block',
-      },
     },
   },
   sortTitle: {
@@ -66,13 +61,12 @@ const style = createUseStyles({
     textTransform: 'uppercase',
   },
   optionsList: {
-    display: 'none',
     margin: 0,
     position: 'absolute',
     width: '160px',
     zIndex: 2,
 
-    '& >li': {
+    '& > li': {
       backgroundColor: gray.tint4,
       color: 'white',
     },
