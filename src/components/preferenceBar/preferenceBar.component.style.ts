@@ -30,9 +30,11 @@ const style = createUseStyles({
     },
 
     '&:focus': {
-      borderBottomColor: peachy,
       outline: 'none',
     },
+  },
+  chosen: {
+    borderBottomColor: peachy,
   },
   borderLine: {
     borderBottom: `2px solid ${gray.tint2}`,
