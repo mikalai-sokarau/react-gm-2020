@@ -3,8 +3,7 @@ import { gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   core: {
-    backgroundColor: gray.tint3,
-    height: '100%',
+    backgroundColor: gray.tint4,
   },
 });
 

@@ -55,7 +55,7 @@ const style = createUseStyles({
     },
   },
   reset: {
-    backgroundColor: gray.tint3,
+    backgroundColor: gray.tint4,
     borderColor: peachy,
     color: peachy,
     width: sizes.mediumWidth,

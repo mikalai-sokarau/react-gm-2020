@@ -1,9 +1,10 @@
 export const peachy = '#f65261';
 export const white = '#ffffff';
 export const gray = {
-  tint1: '#555555',
-  tint2: '#424242',
-  tint3: '#232323',
+  tint1: '#a6a6a6',
+  tint2: '#555555',
+  tint3: '#424242',
+  tint4: '#232323',
 };
 
 // https://stackoverflow.com/questions/15852122/hex-transparency-in-colors

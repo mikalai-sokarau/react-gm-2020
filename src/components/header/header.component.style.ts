@@ -38,7 +38,7 @@ const style = createUseStyles({
   },
   searchInput: {
     backgroundColor: transparent.gray.tint3,
-    border: `1px solid ${gray.tint3}`,
+    border: `1px solid ${gray.tint4}`,
     borderRadius: '5px',
     fontSize: '1.4rem',
     fontWeight: 100,

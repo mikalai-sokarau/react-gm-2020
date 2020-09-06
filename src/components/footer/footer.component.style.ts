@@ -3,7 +3,7 @@ import { gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   footer: {
-    backgroundColor: gray.tint2,
+    backgroundColor: gray.tint3,
     height: '80px',
     marginTop: 'auto',
     display: 'flex',

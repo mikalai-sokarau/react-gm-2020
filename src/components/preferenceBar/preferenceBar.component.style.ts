@@ -35,7 +35,7 @@ const style = createUseStyles({
     },
   },
   borderLine: {
-    borderBottom: `2px solid ${gray.tint1}`,
+    borderBottom: `2px solid ${gray.tint2}`,
     bottom: 0,
     position: 'absolute',
     width: '100%',

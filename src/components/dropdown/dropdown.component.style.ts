@@ -24,7 +24,7 @@ const style = createUseStyles({
     },
   },
   dropdownTitle: {
-    backgroundColor: gray.tint3,
+    backgroundColor: gray.tint4,
     border: '1px solid transparent',
     width: '150px',
     height: '25px',
@@ -73,7 +73,7 @@ const style = createUseStyles({
     zIndex: 2,
 
     '& >li': {
-      backgroundColor: gray.tint3,
+      backgroundColor: gray.tint4,
       color: 'white',
     },
   },
