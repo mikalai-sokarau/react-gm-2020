@@ -8,7 +8,7 @@ const closeButtonIcon = {
   content: '" "',
   height: '12px',
   width: '2px',
-  backgroundColor: white,
+  backgroundColor: gray.tint1,
 };
 
 const style = createUseStyles({
@@ -20,7 +20,6 @@ const style = createUseStyles({
     height: '20px',
     backgroundColor: 'transparent',
     border: 'none',
-    color: white,
 
     '&:before': {
       ...closeButtonIcon,
@@ -127,6 +126,7 @@ const style = createUseStyles({
   tools: {
     backgroundColor: gray.tint4,
     borderRadius: '50%',
+    color: gray.tint1,
     cursor: 'pointer',
     display: 'none',
     height: '40px',

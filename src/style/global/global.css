@@ -13,10 +13,6 @@ ul {
     padding: 0;
 }
 
-* {
-    color: #FFF;
-}
-
 *::selection {
     background: #f6526180;
 }

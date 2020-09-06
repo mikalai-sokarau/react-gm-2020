@@ -1,7 +1,9 @@
 import { createUseStyles } from 'react-jss';
+import { white } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   moviesAmount: {
+    color: white,
     fontSize: '1.25rem',
     margin: '20px 0',
   },
