@@ -28,7 +28,7 @@ const Header = ({ callback }: { callback: (value: string) => void }): JSX.Elemen
         <div className={s.addMovieButtonContainer}>
           <Button
             type={ButtonType.add}
-            callback={() => console.log('hello')}
+            callback={() => alert('Not implemented yet.')}
           />
         </div>
         <div className={s.searchContainer}>
