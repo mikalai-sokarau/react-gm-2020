@@ -3,9 +3,11 @@ import { peachy } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   common: {
-    fontSize: '1.1rem',
-    color: peachy,
-    userSelect: 'none',
+    '& span': {
+      fontSize: '1.1rem',
+      color: peachy,
+      userSelect: 'none',
+    },
   },
   firstPart: {
     fontWeight: 900,

@@ -12,9 +12,15 @@ const MoviesList = ({ movies }: { movies : Array<IMovie> }): JSX.Element => {
         20
         <span className={s.moviesAmountText}>movies found</span>
       </div>
-      <ul>
-        {movies.map((m) => <MovieItem movie={m} key={m.id} />)}
-      </ul>
+      <div className={s.moviesContainer}>
+        {movies.map((m) => (
+          <MovieItem
+            movie={m}
+            key={m.id}
+            callback={console.log}
+          />
+        ))}
+      </div>
     </section>
   );
 };
