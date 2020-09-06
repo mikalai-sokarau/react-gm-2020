@@ -10,7 +10,6 @@ const Header = (): JSX.Element => {
   const c = style(); // c: "classes"
   const { appContainer } = commonStyle();
 
-  /* eslint-disable no-console */
   return (
     <header className={c.header}>
       <div className={cN(appContainer, c.headerContainer)}>

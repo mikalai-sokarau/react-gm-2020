@@ -12,7 +12,6 @@ const Dropdown = ({ title, options, callback }: IDropdown): JSX.Element => {
         <div role="menu" tabIndex={0} className={classes.dropdownTitle}>{title}</div>
         <ul className={classes.optionsList}>
           {options.map((o) => (
-            /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
             <li
               className={classes.option}
               key={o.value}
