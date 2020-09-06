@@ -4,7 +4,7 @@ import { gray } from '@app/style/variables/colors';
 const style = createUseStyles({
   footer: {
     backgroundColor: gray.tint3,
-    height: '80px',
+    minHeight: '50px',
     marginTop: 'auto',
     display: 'flex',
     alignItems: 'center',

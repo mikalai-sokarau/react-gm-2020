@@ -18,6 +18,16 @@ const style = createUseStyles({
     gridRowGap: '1.5rem',
     justifyContent: 'space-between',
   },
+  noItemsFound: {
+    color: white,
+    left: '50%',
+    position: 'absolute',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    textTransform: 'uppercase',
+    fontWeight: 100,
+    fontSize: '1.4em',
+  },
 });
 
 export default style;
