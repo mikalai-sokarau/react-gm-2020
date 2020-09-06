@@ -9,7 +9,7 @@ const MoviesList = ({ movies }: { movies : Array<IMovie> }): JSX.Element => {
   return (
     <section>
       <div className={s.moviesAmount}>
-        20
+        {movies.length}
         <span className={s.moviesAmountText}>movies found</span>
       </div>
       <div className={s.moviesContainer}>
