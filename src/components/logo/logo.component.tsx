@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import style from '@app/components/logo/logo.component.style';
 
-const Logo = (): JSX.Element => {
+const Logo: FC<Record<string, unknown>> = () => {
   const { common, firstPart, lastPart } = style();
 
   return (

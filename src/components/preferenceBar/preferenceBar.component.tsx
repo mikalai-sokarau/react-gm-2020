@@ -1,12 +1,12 @@
 import cN from '@app/utils/utils';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortValues from '@app/components/preferenceBar/preferenceBar.model';
 import style from '@app/components/preferenceBar/preferenceBar.component.style';
 import { IPreferenceBar } from '@app/components/preferenceBar/preferenceBar.interface';
 
-const PreferenceBar = ({ onGenreClick }: IPreferenceBar): JSX.Element => {
+const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
   const s = style();
   const [chosenDropdownItem, setDropdownItem] = useState(sortValues[0]);
   const [chosenGenre, setGenre] = useState(Genres.All);

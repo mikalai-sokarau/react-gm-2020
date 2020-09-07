@@ -1,9 +1,9 @@
 import cN from '@app/utils/utils';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import style from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
 
-const MovieItem = ({ movie, onMovieActionClick }: IMovieItem): JSX.Element => {
+const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
   const s = style();
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
 

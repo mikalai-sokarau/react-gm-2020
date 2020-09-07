@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { IMovie } from '@app/mockData/movies.model';
 import style from '@app/components/moviesList/moviesList.component.style';
 import MovieItem from '@app/components/movieItem/movieItem.component';
 
-const MoviesList = ({ movies }: { movies: Array<IMovie> }): JSX.Element => {
+const MoviesList: FC<{movies: Array<IMovie>}> = ({ movies }) => {
   const s = style();
 
   return (

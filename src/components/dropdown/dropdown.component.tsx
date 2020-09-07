@@ -1,9 +1,9 @@
 import cN from '@app/utils/utils';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import style from '@app/components/dropdown/dropdown.component.style';
 import { IDropdown } from '@app/components/dropdown/dropdown.interface';
 
-const Dropdown = ({ title, options, onSortOptionClick }: IDropdown): JSX.Element => {
+const Dropdown: FC<IDropdown> = ({ title, options, onSortOptionClick }) => {
   const classes = style();
   const [isDropdownOpen, toggleDropdown] = useState(false);
 

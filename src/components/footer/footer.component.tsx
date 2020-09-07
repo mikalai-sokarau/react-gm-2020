@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import style from '@app/components/footer/footer.component.style';
 import Logo from '@app/components/logo/logo.component';
 
-const Footer = (): JSX.Element => {
+const Footer: FC<Record<string, unknown>> = () => {
   const { footer } = style();
 
   return (
