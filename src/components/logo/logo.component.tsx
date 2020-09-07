@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import style from '@app/components/logo/logo.component.style';
+import useStyle from '@app/components/logo/logo.component.style';
 
 const Logo: FC<Record<string, unknown>> = () => {
-  const { common, firstPart, lastPart } = style();
+  const { common, firstPart, lastPart } = useStyle();
 
   return (
     <div className={common}>

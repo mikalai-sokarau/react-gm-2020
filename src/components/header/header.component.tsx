@@ -1,15 +1,15 @@
 import cN from '@app/utils/utils';
 import React, { useState, FC } from 'react';
-import commonStyle from '@app/style/variables/sizes';
+import useCommonStyle from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';
 import Button from '@app/components/button/button.component';
 import IHeader from '@app/components/header/header.interface';
-import style from '@app/components/header/header.component.style';
+import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
 
 const Header: FC<IHeader> = ({ onSearchMovieSubmit }) => {
-  const s = style();
-  const { appContainer } = commonStyle();
+  const s = useStyle();
+  const { appContainer } = useCommonStyle();
   const [inputText, setInputText] = useState('');
 
   const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {

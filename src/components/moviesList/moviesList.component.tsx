@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { IMovie } from '@app/mockData/movies.model';
-import style from '@app/components/moviesList/moviesList.component.style';
+import useStyle from '@app/components/moviesList/moviesList.component.style';
 import MovieItem from '@app/components/movieItem/movieItem.component';
 
 const MoviesList: FC<{movies: Array<IMovie>}> = ({ movies }) => {
-  const s = style();
+  const s = useStyle();
 
   return (
     <section>

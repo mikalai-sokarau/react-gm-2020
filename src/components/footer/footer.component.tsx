@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import style from '@app/components/footer/footer.component.style';
+import useStyle from '@app/components/footer/footer.component.style';
 import Logo from '@app/components/logo/logo.component';
 
 const Footer: FC<Record<string, unknown>> = () => {
-  const { footer } = style();
+  const { footer } = useStyle();
 
   return (
     <footer className={footer}>

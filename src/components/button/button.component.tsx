@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import cN from '@app/utils/utils';
-import style from '@app/components/button/button.component.style';
+import useStyle from '@app/components/button/button.component.style';
 import { IButton, ButtonType, BUTTON_TEXT } from '@app/components/button/button.interface';
 
 const Button: FC<IButton> = ({ type, onButtonClick }) => {
-  const { button, ...classes } = style();
+  const { button, ...classes } = useStyle();
   const buttonClassName = ButtonType[type];
 
   return (
