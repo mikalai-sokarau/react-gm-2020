@@ -35,7 +35,7 @@ const PreferenceBar = ({ onGenreClick }: IPreferenceBar): JSX.Element => {
       <Dropdown
         title={chosenDropdownItem.value}
         options={sortValues}
-        callback={setDropdownItem}
+        onSortOptionClick={setDropdownItem}
       />
       <div className={s.borderLine} />
     </div>

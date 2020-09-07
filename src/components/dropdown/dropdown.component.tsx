@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import style from '@app/components/dropdown/dropdown.component.style';
 import { IDropdown } from '@app/components/dropdown/dropdown.interface';
 
-const Dropdown = ({ title, options, callback }: IDropdown): JSX.Element => {
+const Dropdown = ({ title, options, onSortOptionClick }: IDropdown): JSX.Element => {
   const classes = style();
   const [isDropdownOpen, toggleDropdown] = useState(false);
 
@@ -20,7 +20,7 @@ const Dropdown = ({ title, options, callback }: IDropdown): JSX.Element => {
             <li
               className={classes.option}
               key={o.value}
-              onClick={() => callback(o)}
+              onClick={() => onSortOptionClick(o)}
               tabIndex={0}
               role="menuitem"
             >
