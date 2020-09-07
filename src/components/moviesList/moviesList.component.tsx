@@ -19,7 +19,7 @@ const MoviesList = ({ movies }: { movies: Array<IMovie> }): JSX.Element => {
               <MovieItem
                 movie={m}
                 key={m.id}
-                callback={() => alert('Not implemented yet.')}
+                onMovieActionClick={() => alert('Not implemented yet.')}
               />
             ))}
           </div>

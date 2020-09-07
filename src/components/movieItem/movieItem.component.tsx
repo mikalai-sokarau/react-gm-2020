@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import style from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
 
-const MovieItem = ({ movie, callback }: IMovieItem): JSX.Element => {
+const MovieItem = ({ movie, onMovieActionClick }: IMovieItem): JSX.Element => {
   const s = style();
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
 
@@ -41,8 +41,8 @@ const MovieItem = ({ movie, callback }: IMovieItem): JSX.Element => {
         <div className={cN(s.movieMenu, isMovieMenuOpened ? 'open' : '')}>
           <div className={s.movieMenuContainer}>
             <ul className={s.movieMenuList}>
-              <li onClick={() => callback(MovieAction.Edit)}>edit</li>
-              <li onClick={() => callback(MovieAction.Delete)}>delete</li>
+              <li onClick={() => onMovieActionClick(MovieAction.Edit)}>edit</li>
+              <li onClick={() => onMovieActionClick(MovieAction.Delete)}>delete</li>
             </ul>
             <button
               type="button"

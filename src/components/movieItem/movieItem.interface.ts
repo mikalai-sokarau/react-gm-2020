@@ -12,5 +12,5 @@ export enum MovieSortCriteria {
 
 export interface IMovieItem {
   movie: IMovie,
-  callback: (action: MovieAction) => void
+  onMovieActionClick: (action: MovieAction) => void
 }
