@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import cN from '@app/utils/utils';
+import cN from 'classnames';
 import useStyle from '@app/components/button/button.component.style';
 import { IButton, ButtonType, BUTTON_TEXT } from '@app/components/button/button.interface';
 

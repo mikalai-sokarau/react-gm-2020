@@ -1,4 +1,4 @@
-import cN from '@app/utils/utils';
+import cN from 'classnames';
 import React, { useState, FC } from 'react';
 import useCommonStyle from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';

@@ -1,4 +1,4 @@
-import cN from '@app/utils/utils';
+import cN from 'classnames';
 import React, { useState, FC } from 'react';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
@@ -38,7 +38,7 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
         className={s.tools}
         onClick={() => setMovieMenuState(!isMovieMenuOpened)}
       >
-        <div className={cN(s.movieMenu, isMovieMenuOpened ? 'open' : '')}>
+        <div className={cN(s.movieMenu, { open: isMovieMenuOpened })}>
           <div className={s.movieMenuContainer}>
             <ul className={s.movieMenuList}>
               <li onClick={() => onMovieActionClick(MovieAction.Edit)}>edit</li>

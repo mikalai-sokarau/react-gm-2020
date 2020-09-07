@@ -1,4 +1,4 @@
-import cN from '@app/utils/utils';
+import cN from 'classnames';
 import React, { useState, FC } from 'react';
 import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
@@ -25,7 +25,7 @@ const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
           <button
             type="button"
             onClick={() => genreClick(g)}
-            className={cN(s.preferenceButton, chosenGenre === g.toLowerCase() ? s.chosen : '')}
+            className={cN(s.preferenceButton, { [s.chosen]: chosenGenre === g.toLowerCase() })}
             key={g}
           >
             {g}

@@ -1,4 +1,4 @@
-import React, { useState, Props, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { Genres } from '@app/mockData/movies.model';
 import Main from '@app/components/main/main.component';
 import MoviesService from '@app/services/movies.service';
