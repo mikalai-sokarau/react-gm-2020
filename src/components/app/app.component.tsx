@@ -13,7 +13,7 @@ const App = (): JSX.Element => {
   const [searchText, setSearchText] = useState('');
   const [chosenGenre, setChosenGenre] = useState(Genres.All);
 
-  const headerCallback = (text: string) => {
+  const handleSearchMovieSubmit = (text: string) => {
     setSearchText(text);
     setMovies(MoviesService.filterMovies(text, chosenGenre));
   };
@@ -25,7 +25,7 @@ const App = (): JSX.Element => {
   return (
     <div className={classes.core}>
       <ErrorBoundary>
-        <Header callback={headerCallback} />
+        <Header onSearchMovieSubmit={handleSearchMovieSubmit} />
         <Main
           movies={movies}
           callback={mainCallback}

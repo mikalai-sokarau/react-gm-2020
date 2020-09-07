@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import commonStyle from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';
 import Button from '@app/components/button/button.component';
+import IHeader from '@app/components/header/header.interface';
 import style from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
 
-const Header = ({ callback }: { callback: (value: string) => void }): JSX.Element => {
+const Header = ({ onSearchMovieSubmit }: IHeader): JSX.Element => {
   const s = style();
   const { appContainer } = commonStyle();
   const [inputText, setInputText] = useState('');
@@ -15,7 +16,7 @@ const Header = ({ callback }: { callback: (value: string) => void }): JSX.Elemen
     setInputText((e.target as HTMLInputElement).value);
 
     if (e.key === 'Enter') {
-      callback(inputText);
+      onSearchMovieSubmit(inputText);
     }
   };
 
@@ -28,7 +29,7 @@ const Header = ({ callback }: { callback: (value: string) => void }): JSX.Elemen
         <div className={s.addMovieButtonContainer}>
           <Button
             type={ButtonType.add}
-            callback={() => alert('Not implemented yet.')}
+            onButtonClick={() => alert('Not implemented yet.')}
           />
         </div>
         <div className={s.searchContainer}>
@@ -42,7 +43,7 @@ const Header = ({ callback }: { callback: (value: string) => void }): JSX.Elemen
             />
             <Button
               type={ButtonType.search}
-              callback={() => callback(inputText)}
+              onButtonClick={() => onSearchMovieSubmit(inputText)}
             />
           </div>
         </div>
