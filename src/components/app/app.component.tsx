@@ -17,7 +17,7 @@ const App = (): JSX.Element => {
     setSearchText(text);
     setMovies(MoviesService.filterMovies(text, chosenGenre));
   };
-  const mainCallback = (genre: Genres) => {
+  const handleGenreClick = (genre: Genres) => {
     setChosenGenre(genre);
     setMovies(MoviesService.filterMovies(searchText, genre));
   };
@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
         <Header onSearchMovieSubmit={handleSearchMovieSubmit} />
         <Main
           movies={movies}
-          callback={mainCallback}
+          onGenreClick={handleGenreClick}
         />
         <Footer />
       </ErrorBoundary>

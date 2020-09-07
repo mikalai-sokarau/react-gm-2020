@@ -4,16 +4,17 @@ import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortValues from '@app/components/preferenceBar/preferenceBar.model';
 import style from '@app/components/preferenceBar/preferenceBar.component.style';
+import { IPreferenceBar } from '@app/components/preferenceBar/preferenceBar.interface';
 
-const PreferenceBar = ({ callback }: { callback: (genre: Genres) => void}): JSX.Element => {
+const PreferenceBar = ({ onGenreClick }: IPreferenceBar): JSX.Element => {
   const s = style();
   const [chosenDropdownItem, setDropdownItem] = useState(sortValues[0]);
   const [chosenGenre, setGenre] = useState(Genres.All);
 
-  const choseGenreCallback = (genre: string) => {
+  const genreClick = (genre: string) => {
     const g = genre.toLowerCase() as Genres;
 
-    callback(g);
+    onGenreClick(g);
     setGenre(g);
   };
 
@@ -23,7 +24,7 @@ const PreferenceBar = ({ callback }: { callback: (genre: Genres) => void}): JSX.
         {Object.keys(Genres).map((g) => (
           <button
             type="button"
-            onClick={() => choseGenreCallback(g)}
+            onClick={() => genreClick(g)}
             className={cN(s.preferenceButton, chosenGenre === g.toLowerCase() ? s.chosen : '')}
             key={g}
           >

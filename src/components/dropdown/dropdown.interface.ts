@@ -1,4 +1,4 @@
-import ISortValue from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortValue } from '@app/components/preferenceBar/preferenceBar.interface';
 
 export interface IDropdown {
   title: string;
