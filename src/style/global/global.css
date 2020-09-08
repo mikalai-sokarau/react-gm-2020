@@ -1,0 +1,19 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    font: 16px Netflix, Arial, sans-serif;
+    overflow-y: scroll;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+*::selection {
+    background: #f6526180;
+}

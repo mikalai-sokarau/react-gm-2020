@@ -1,0 +1,156 @@
+import { Genres, IMovie } from '@app/mockData/movies.model';
+
+const movies: Array<IMovie> = [
+  {
+    title: 'alice in wonderland',
+    genre: [Genres.Drama],
+    year: 2010,
+    imagePath: '../assets/images/alice in wonderland.jpg',
+    id: 1,
+  },
+  {
+    title: 'back to the future',
+    genre: [Genres.Comedy],
+    year: 1985,
+    imagePath: '../assets/images/back to the future.jpg',
+    id: 2,
+  },
+  {
+    title: 'django unchained',
+    genre: [Genres.Action, Genres.Comedy],
+    year: 2012,
+    imagePath: '../assets/images/django.jpg',
+    id: 3,
+  },
+  {
+    title: 'fight club',
+    genre: [Genres.Action, Genres.Drama],
+    year: 1999,
+    imagePath: '../assets/images/fight club.jpg',
+    id: 4,
+  },
+  {
+    title: 'first blood',
+    genre: [Genres.Action],
+    year: 1982,
+    imagePath: '../assets/images/first blood.jpg',
+    id: 5,
+  },
+  {
+    title: 'harry potter',
+    genre: [Genres.Action],
+    year: 2001,
+    imagePath: '../assets/images/harry potter.jpg',
+    id: 6,
+  },
+  {
+    title: 'home alone',
+    genre: [Genres.Comedy],
+    year: 1990,
+    imagePath: '../assets/images/home alone.jpg',
+    id: 7,
+  },
+  {
+    title: 'jurassic park',
+    genre: [Genres.Action],
+    year: 1993,
+    imagePath: '../assets/images/jurassic park.jpg',
+    id: 8,
+  },
+  {
+    title: 'legally blonde',
+    genre: [Genres.Comedy],
+    year: 2001,
+    imagePath: '../assets/images/legally blonde.jpg',
+    id: 9,
+  },
+  {
+    title: 'leon',
+    genre: [Genres.Action, Genres.Drama],
+    year: 1994,
+    imagePath: '../assets/images/leon.jpg',
+    id: 10,
+  },
+  {
+    title: 'little women',
+    genre: [Genres.Drama],
+    year: 2019,
+    imagePath: '../assets/images/little women.jpg',
+    id: 11,
+  },
+  {
+    title: 'once upon a time in hollywood',
+    genre: [Genres.Comedy, Genres.Drama],
+    year: 2019,
+    imagePath: '../assets/images/once upon a time in hollywood.jpg',
+    id: 12,
+  },
+  {
+    title: 'parasite',
+    genre: [Genres.Comedy, Genres.Drama],
+    year: 2019,
+    imagePath: '../assets/images/parasite.jpg',
+    id: 13,
+  },
+  {
+    title: 'pennywise the dancing clown',
+    genre: [Genres.Horror],
+    year: 2017,
+    imagePath: '../assets/images/pennywise the dancing clown.jpg',
+    id: 14,
+  },
+  {
+    title: 'ratatouille',
+    genre: [Genres.Comedy, Genres.Drama],
+    year: 2007,
+    imagePath: '../assets/images/ratatouille.jpg',
+    id: 15,
+  },
+  {
+    title: 'shining',
+    genre: [Genres.Horror],
+    year: 1980,
+    imagePath: '../assets/images/shining.jpg',
+    id: 16,
+  },
+  {
+    title: 'star wars',
+    genre: [Genres.Action],
+    year: 1977,
+    imagePath: '../assets/images/star wars.jpg',
+    id: 17,
+  },
+  {
+    title: 'the invisible man',
+    genre: [Genres.Horror],
+    year: 2020,
+    imagePath: '../assets/images/the invisible man.jpg',
+    id: 18,
+  },
+  {
+    title: 'the matrix',
+    genre: [Genres.Action],
+    year: 1999,
+    imagePath: '../assets/images/the matrix.jpg',
+    id: 19,
+  },
+  {
+    title: 'willy wonka and the chocolate factory',
+    genre: [Genres.Comedy],
+    year: 1971,
+    imagePath: '../assets/images/willy wonka and the chocolate factory.jpg',
+    id: 20,
+  },
+];
+
+/*
+  {
+    title: '',
+    genre: [],
+    year: '',
+    imagePath: '../assets/images/.jpg',
+    id: ,
+  },
+*/
+
+export default movies;
