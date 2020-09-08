@@ -71,6 +71,10 @@ const style = createUseStyles({
     position: 'relative',
     margin: 0,
 
+    '& > img': {
+      cursor: 'pointer',
+    },
+
     '&:hover': {
       transform: 'scale(1.015)',
 
