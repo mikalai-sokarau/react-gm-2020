@@ -7,6 +7,9 @@ const movies: Array<IMovie> = [
     year: 2010,
     imagePath: '../assets/images/alice in wonderland.jpg',
     id: 1,
+    duration: 108,
+    rating: 6.4,
+    description: 'Alice, now 19 years old, follows a rabbit in a blue coat to a magical wonderland from her dreams where she is reunited with her friends who make her realise her true destiny.',
   },
   {
     title: 'back to the future',
@@ -14,6 +17,9 @@ const movies: Array<IMovie> = [
     year: 1985,
     imagePath: '../assets/images/back to the future.jpg',
     id: 2,
+    duration: 116,
+    rating: 8.5,
+    description: 'Marty travels back in time using an eccentric scientist\'s time machine. However, he must make his high-school-aged parents fall in love in order to return to the present.',
   },
   {
     title: 'django unchained',
@@ -21,6 +27,9 @@ const movies: Array<IMovie> = [
     year: 2012,
     imagePath: '../assets/images/django.jpg',
     id: 3,
+    duration: 165,
+    rating: 8.4,
+    description: 'When Django, a slave, is freed, he joins forces with a bounty hunter to rescue his wife, who has been captured by a hard-hearted plantation owner.',
   },
   {
     title: 'fight club',
@@ -28,6 +37,9 @@ const movies: Array<IMovie> = [
     year: 1999,
     imagePath: '../assets/images/fight club.jpg',
     id: 4,
+    duration: 151,
+    rating: 8.8,
+    description: 'Discontented with his capitalistic lifestyle, a white-collared insomniac forms an underground fight club with Tyler, a careless soap salesman. The project soon spirals down into something sinister.',
   },
   {
     title: 'first blood',
@@ -35,6 +47,9 @@ const movies: Array<IMovie> = [
     year: 1982,
     imagePath: '../assets/images/first blood.jpg',
     id: 5,
+    duration: 93,
+    rating: 7.7,
+    description: 'John Rambo, a former US soldier traumatised by memories of the Vietnam War, gets into trouble when an incident with a small-town sheriff triggers his violent side.',
   },
   {
     title: 'harry potter',
@@ -42,6 +57,9 @@ const movies: Array<IMovie> = [
     year: 2001,
     imagePath: '../assets/images/harry potter.jpg',
     id: 6,
+    duration: 159,
+    rating: 7.6,
+    description: 'Harry Potter, an eleven-year-old orphan, discovers that he is a wizard and is invited to study at Hogwarts. Even as he escapes a dreary life and enters a world of magic, he finds trouble awaiting him.',
   },
   {
     title: 'home alone',
@@ -49,6 +67,9 @@ const movies: Array<IMovie> = [
     year: 1990,
     imagePath: '../assets/images/home alone.jpg',
     id: 7,
+    duration: 103,
+    rating: 7.6,
+    description: 'Eight-year-old Kevin is accidentally left behind when his family leaves for France. At first, he is happy to be in charge, but when thieves try to break into his home, he tries to put up a fight.',
   },
   {
     title: 'jurassic park',
@@ -56,6 +77,9 @@ const movies: Array<IMovie> = [
     year: 1993,
     imagePath: '../assets/images/jurassic park.jpg',
     id: 8,
+    duration: 127,
+    rating: 8.1,
+    description: 'John Hammond, an entrepreneur, opens a wildlife park containing cloned dinosaurs. However, a breakdown of the island\'s security system causes the creatures to escape and bring about chaos.',
   },
   {
     title: 'legally blonde',
@@ -63,6 +87,9 @@ const movies: Array<IMovie> = [
     year: 2001,
     imagePath: '../assets/images/legally blonde.jpg',
     id: 9,
+    duration: 97,
+    rating: 6.3,
+    description: 'Elle\'s boyfriend breaks up with her for a smarter girl as he plans to become a politician and joins Harward law school. Elle gets enrolled in the same school in an effort to teach him a lesson.',
   },
   {
     title: 'leon',
@@ -70,6 +97,9 @@ const movies: Array<IMovie> = [
     year: 1994,
     imagePath: '../assets/images/leon.jpg',
     id: 10,
+    duration: 110,
+    rating: 8.5,
+    description: 'When 12-year-old Mathilda\'s family is killed, her neighbour Leon, who is a professional assassin, reluctantly takes her under his wing and teaches her the secrets of his trade.',
   },
   {
     title: 'little women',
@@ -77,6 +107,9 @@ const movies: Array<IMovie> = [
     year: 2019,
     imagePath: '../assets/images/little women.jpg',
     id: 11,
+    duration: 135,
+    rating: 7.8,
+    description: 'In the years after the Civil War, Jo March lives in New York and makes her living as a writer, while her sister Amy studies painting in Paris. Amy has a chance encounter with Theodore, a childhood crush who proposed to Jo but was ultimately rejected. Their oldest sibling, Meg, is married to a schoolteacher, while shy sister Beth develops a devastating illness that brings the family back together.',
   },
   {
     title: 'once upon a time in hollywood',
@@ -84,6 +117,9 @@ const movies: Array<IMovie> = [
     year: 2019,
     imagePath: '../assets/images/once upon a time in hollywood.jpg',
     id: 12,
+    duration: 160,
+    rating: 7.6,
+    description: 'Rick, a washed-out actor, and Cliff, his stunt double, struggle to recapture fame and success in 1960s Los Angeles. Meanwhile, living next door to Rick is Sharon Tate and her husband Roman Polanski.',
   },
   {
     title: 'parasite',
@@ -91,6 +127,9 @@ const movies: Array<IMovie> = [
     year: 2019,
     imagePath: '../assets/images/parasite.jpg',
     id: 13,
+    duration: 132,
+    rating: 8.6,
+    description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
   },
   {
     title: 'pennywise the dancing clown',
@@ -98,6 +137,9 @@ const movies: Array<IMovie> = [
     year: 2017,
     imagePath: '../assets/images/pennywise the dancing clown.jpg',
     id: 14,
+    duration: 135,
+    rating: 7.3,
+    description: 'Seven helpless and bullied children are forced to face their worst nightmares when Pennywise, a shape-shifting clown, reappears. The clown, an ancient evil torments children before feeding on them.',
   },
   {
     title: 'ratatouille',
@@ -105,6 +147,9 @@ const movies: Array<IMovie> = [
     year: 2007,
     imagePath: '../assets/images/ratatouille.jpg',
     id: 15,
+    duration: 111,
+    rating: 8,
+    description: 'Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.',
   },
   {
     title: 'shining',
@@ -112,6 +157,9 @@ const movies: Array<IMovie> = [
     year: 1980,
     imagePath: '../assets/images/shining.jpg',
     id: 16,
+    duration: 146,
+    rating: 8.4,
+    description: 'Jack and his family move into an isolated hotel with a violent past. Living in isolation, Jack begins to lose his sanity, which affects his family members.',
   },
   {
     title: 'star wars',
@@ -119,6 +167,9 @@ const movies: Array<IMovie> = [
     year: 1977,
     imagePath: '../assets/images/star wars.jpg',
     id: 17,
+    duration: 125,
+    rating: 8.6,
+    description: 'After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.',
   },
   {
     title: 'the invisible man',
@@ -126,6 +177,9 @@ const movies: Array<IMovie> = [
     year: 2020,
     imagePath: '../assets/images/the invisible man.jpg',
     id: 18,
+    duration: 125,
+    rating: 7.1,
+    description: 'After staging his own suicide, a crazed scientist uses his power to become invisible to stalk and terrorize his ex-girlfriend. When the police refuse to believe her story, she decides to take matters into her own hands and fight back.',
   },
   {
     title: 'the matrix',
@@ -133,6 +187,9 @@ const movies: Array<IMovie> = [
     year: 1999,
     imagePath: '../assets/images/the matrix.jpg',
     id: 19,
+    duration: 150,
+    rating: 8.7,
+    description: 'Thomas Anderson, a computer programmer, is led to fight an underground war against powerful computers who have constructed his entire reality with a system called the Matrix.',
   },
   {
     title: 'willy wonka and the chocolate factory',
@@ -140,6 +197,9 @@ const movies: Array<IMovie> = [
     year: 1971,
     imagePath: '../assets/images/willy wonka and the chocolate factory.jpg',
     id: 20,
+    duration: 89,
+    rating: 7.8,
+    description: 'A factory owner gives 5 children a chance to win a lifetime supply of sweets. Charlie, along with four odious children enter the factory. Disasters befall each of the children. Will Charlie survive?',
   },
 ];
 
@@ -150,6 +210,9 @@ const movies: Array<IMovie> = [
     year: '',
     imagePath: '../assets/images/.jpg',
     id: ,
+    duration: ,
+    rating: ,
+    description: '',
   },
 */
 

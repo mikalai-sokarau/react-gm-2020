@@ -12,4 +12,7 @@ export interface IMovie {
   year: number;
   imagePath: string;
   id: number;
+  duration: number;
+  rating: number;
+  description: string;
 }
