@@ -3,9 +3,14 @@ import React, { useState, FC } from 'react';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
 
-const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
+const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick, onMovieImageClick }) => {
   const s = useStyle();
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
+
+  const onImageClick = () => {
+    onMovieImageClick();
+    setMovieMenuState(false);
+  };
 
   return (
     <figure
@@ -17,7 +22,7 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
         alt={movie.title}
         height="490px"
         width="320px"
-        onClick={() => setMovieMenuState(false)}
+        onClick={onImageClick}
       />
       <figcaption className={s.movieInfoContainer}>
         <div>

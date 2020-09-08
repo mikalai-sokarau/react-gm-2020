@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { IMovie } from '@app/mockData/movies.model';
-import useStyle from '@app/components/moviesList/moviesList.component.style';
 import MovieItem from '@app/components/movieItem/movieItem.component';
+import IMoviesList from '@app/components/moviesList/moviesList.interface';
+import useStyle from '@app/components/moviesList/moviesList.component.style';
 
-const MoviesList: FC<{movies: Array<IMovie>}> = ({ movies }) => {
+const MoviesList: FC<IMoviesList> = ({ movies, onMovieImageClick }) => {
   const s = useStyle();
 
   return (
@@ -20,6 +20,7 @@ const MoviesList: FC<{movies: Array<IMovie>}> = ({ movies }) => {
                 movie={m}
                 key={m.id}
                 onMovieActionClick={() => alert('Not implemented yet.')}
+                onMovieImageClick={() => onMovieImageClick(m)}
               />
             ))}
           </div>
