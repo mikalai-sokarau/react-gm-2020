@@ -1,17 +1,18 @@
 import mockMovies from '@app/mockData/movies';
-import { IMovie, Genres } from '@app/mockData/movies.model';
-import { MovieSortCriteria } from '@app/components/movieItem/movieItem.interface';
+import { IMovie, Genres, IMovieSortOptions } from '@app/mockData/movies.model';
 
 class MovieService {
   readonly movies: Array<IMovie>;
 
   constructor(movies: Array<IMovie>) {
-    this.movies = movies;
+    this.movies = this.sortMovies(IMovieSortOptions.title, movies);
   }
 
-  /* to implement:
-  sort(criteria: MovieSortCriteria) {}
-  */
+  sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {
+    movies.sort((a, b) => (a[option] > b[option] ? 1 : -1));
+
+    return [...movies];
+  }
 
   filterMovies(text: string, genre: Genres): Array<IMovie> {
     const moviesToSearch = genre === Genres.All

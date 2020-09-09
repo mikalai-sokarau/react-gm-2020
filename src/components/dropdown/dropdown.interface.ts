@@ -1,7 +1,7 @@
-import { ISortValue } from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 
 export interface IDropdown {
   title: string;
-  options: Array<ISortValue>;
-  onSortOptionClick: (chosenOption: ISortValue) => void;
+  options: Array<ISortOption>;
+  onSortOptionClick: (chosenOption: ISortOption) => void;
 }

@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import { Genres, IMovie } from '@app/mockData/movies.model';
+import { Genres, IMovie, IMovieSortOptions } from '@app/mockData/movies.model';
 import Main from '@app/components/main/main.component';
 import MoviesService from '@app/services/movies.service';
 import Header from '@app/components/header/header.component';
@@ -8,6 +8,7 @@ import useStyle from '@app/components/app/app.component.styles';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 import HeaderActiveComponent from '@app/components/app/app.component.interface';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
+import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const App: FC<Record<string, unknown>> = () => {
   const classes = useStyle();
@@ -15,6 +16,7 @@ const App: FC<Record<string, unknown>> = () => {
   const [searchText, setSearchText] = useState('');
   const [chosenGenre, setChosenGenre] = useState(Genres.All);
   const [chosenMovie, setChosenMovie] = useState(null);
+  const [chosenSortOption, setChosenSortOption] = useState(IMovieSortOptions.title);
   const [headerComponent, toggleHeaderComponent] = useState(HeaderActiveComponent.Header);
 
   const handleSearchMovieSubmit = (text: string) => {
@@ -23,11 +25,18 @@ const App: FC<Record<string, unknown>> = () => {
   };
   const handleGenreClick = (genre: Genres) => {
     setChosenGenre(genre);
-    setMovies(MoviesService.filterMovies(searchText, genre));
+    const filteredMovies = MoviesService.filterMovies(searchText, genre);
+    const sortedMovies = MoviesService.sortMovies(chosenSortOption, filteredMovies);
+    setMovies(sortedMovies);
   };
   const handleMovieClick = (movie: IMovie) => {
     setChosenMovie(movie);
     toggleHeaderComponent(HeaderActiveComponent.MovieDetails);
+  };
+  const handleSortingSelect = ({ value }: ISortOption) => {
+    const sortedMovies = MoviesService.sortMovies(value, movies);
+    setChosenSortOption(value);
+    setMovies(sortedMovies);
   };
 
   return (
@@ -45,6 +54,7 @@ const App: FC<Record<string, unknown>> = () => {
           movies={movies}
           onGenreClick={handleGenreClick}
           onMovieImageClick={handleMovieClick}
+          onSortingSelect={handleSortingSelect}
         />
         <Footer />
       </ErrorBoundary>

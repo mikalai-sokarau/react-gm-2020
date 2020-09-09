@@ -5,11 +5,6 @@ export enum MovieAction {
   Delete,
 }
 
-export enum MovieSortCriteria {
-  Name,
-  ReleaseDate,
-}
-
 export interface IMovieItem {
   movie: IMovie;
   onMovieActionClick: (action: MovieAction) => void;

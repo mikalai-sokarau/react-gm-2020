@@ -6,6 +6,11 @@ export enum Genres {
   Horror = 'horror',
 }
 
+export enum IMovieSortOptions {
+  title = 'title',
+  year = 'year',
+}
+
 export interface IMovie {
   title: string;
   genre: Array<Genres>;

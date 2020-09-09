@@ -1,10 +1,11 @@
-import { Genres } from '@app/mockData/movies.model';
+import { Genres, IMovieSortOptions } from '@app/mockData/movies.model';
 
-export interface ISortValue {
-  value: string;
-  label: string;
+export interface ISortOption {
+  title: string;
+  value: IMovieSortOptions;
 }
 
 export interface IPreferenceBar {
   onGenreClick: (genre: Genres) => void;
+  onSortingSelect: (option: ISortOption) => void;
 }
