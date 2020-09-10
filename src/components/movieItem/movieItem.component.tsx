@@ -1,11 +1,14 @@
 import cN from 'classnames';
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useContext } from 'react';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
-import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
+import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
+import ModalType from '@app/components/modals/coreModal/coreModal.interface';
+import ModalContext from '@app/components/modals/coreModal/coreModal.context';
 
-const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick, onMovieImageClick }) => {
+const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
   const s = useStyle();
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
+  const { setChosenModal } = useContext(ModalContext);
 
   const onImageClick = () => {
     onMovieImageClick();
@@ -46,8 +49,12 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick, onMovieImageClic
         <div className={cN(s.movieMenu, { open: isMovieMenuOpened })}>
           <div className={s.movieMenuContainer}>
             <ul className={s.movieMenuList}>
-              <li onClick={() => onMovieActionClick(MovieAction.Edit)}>edit</li>
-              <li onClick={() => onMovieActionClick(MovieAction.Delete)}>delete</li>
+              <li onClick={() => setChosenModal({ type: ModalType.Edit, movieId: movie.id })}>
+                edit
+              </li>
+              <li onClick={() => setChosenModal({ type: ModalType.Delete, movieId: movie.id })}>
+                delete
+              </li>
             </ul>
             <button
               type="button"

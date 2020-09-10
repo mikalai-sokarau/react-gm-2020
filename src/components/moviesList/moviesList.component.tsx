@@ -19,7 +19,6 @@ const MoviesList: FC<IMoviesList> = ({ movies, onMovieImageClick }) => {
               <MovieItem
                 movie={m}
                 key={m.id}
-                onMovieActionClick={() => alert('Not implemented yet.')}
                 onMovieImageClick={() => onMovieImageClick(m)}
               />
             ))}

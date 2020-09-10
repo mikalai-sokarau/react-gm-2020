@@ -7,6 +7,5 @@ export enum MovieAction {
 
 export interface IMovieItem {
   movie: IMovie;
-  onMovieActionClick: (action: MovieAction) => void;
   onMovieImageClick: () => void;
 }
