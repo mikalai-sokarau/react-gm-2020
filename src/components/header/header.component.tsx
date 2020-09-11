@@ -6,8 +6,8 @@ import Button from '@app/components/button/button.component';
 import IHeader from '@app/components/header/header.interface';
 import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
-import ModalType from '@app/components/modals/coreModal/coreModal.interface';
 import ModalContext from '@app/components/modals/coreModal/coreModal.context';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 
 const Header: FC<IHeader> = ({ onSearchMovieSubmit }) => {
   const s = useStyle();

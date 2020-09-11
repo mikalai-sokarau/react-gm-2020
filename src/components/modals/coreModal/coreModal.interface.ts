@@ -1,7 +1,10 @@
-enum ModalType {
-  Add,
-  Delete,
-  Edit,
+export enum ModalType {
+  Add = 'add',
+  Delete = 'delete',
+  Edit = 'edit',
 }
 
-export default ModalType;
+export interface IModal {
+  onConfirmClick: () => void;
+  onCancelClick: () => void;
+}
