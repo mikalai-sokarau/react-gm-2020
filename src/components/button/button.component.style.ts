@@ -16,6 +16,18 @@ const focus = {
   color: white,
 };
 
+const peachyButtonStyles = {
+  backgroundColor: peachy,
+  borderColor: peachy,
+  color: white,
+  width: sizes.mediumWidth,
+
+  '&:hover': {
+    backgroundColor: white,
+    color: peachy,
+  },
+};
+
 const style = createUseStyles({
   button: {
     border: '1px solid',
@@ -43,6 +55,7 @@ const style = createUseStyles({
       color: white,
     },
   },
+  confirm: peachyButtonStyles,
   search: {
     backgroundColor: peachy,
     borderColor: peachy,
@@ -66,17 +79,7 @@ const style = createUseStyles({
       color: white,
     },
   },
-  submit: {
-    backgroundColor: peachy,
-    borderColor: peachy,
-    color: white,
-    width: sizes.mediumWidth,
-
-    '&:hover': {
-      backgroundColor: white,
-      color: peachy,
-    },
-  },
+  submit: peachyButtonStyles,
 });
 
 export default style;
