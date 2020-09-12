@@ -8,14 +8,15 @@ export enum Genres {
 
 export enum IMovieSortOptions {
   title = 'title',
-  year = 'year',
+  year = 'releaseDate',
 }
 
 export interface IMovie {
   title: string;
   genre: Array<Genres>;
-  year: number;
+  releaseDate: string;
   imagePath: string;
+  url: string;
   id: number;
   duration: number;
   rating: number;
