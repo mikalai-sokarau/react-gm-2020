@@ -1,14 +1,13 @@
 import React from 'react';
-import ModalType from '@app/components/modals/coreModal/coreModal.interface';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 
-interface IModalContext {
-  type: ModalType;
+export interface IModalContext {
+  actionType?: ModalType;
   movieId?: number;
+  type?: ModalType;
 }
 
-const ModalContext = React.createContext({
+export const ModalContext = React.createContext({
   chosenModal: null as IModalContext,
-  setChosenModal: (context: IModalContext) => {},
+  setChosenModal: (context: IModalContext) => { },
 });
-
-export default ModalContext;
