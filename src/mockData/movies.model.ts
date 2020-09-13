@@ -23,16 +23,16 @@ export interface IMovie {
   description: string;
 }
 
+export const NO_IMAGE_PATH = '../assets/images/no image.jpg';
+
 export const EMPTY_MOVIE: IMovie = {
   title: '',
   genre: [],
   releaseDate: '',
-  imagePath: '',
+  imagePath: NO_IMAGE_PATH,
   url: '',
   id: undefined,
   duration: '',
   rating: undefined,
   description: '',
 };
-
-export const NO_IMAGE_PATH = '../assets/images/no image.jpg';

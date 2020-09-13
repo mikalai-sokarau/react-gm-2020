@@ -16,7 +16,6 @@ class MovieService {
       ...movie,
       id: Date.now(),
       rating: Number((Math.random() * Math.floor(10)).toFixed(1)),
-      imagePath: NO_IMAGE_PATH,
     };
 
     this.movies.push(newMovie);

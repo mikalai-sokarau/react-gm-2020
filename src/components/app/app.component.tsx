@@ -21,7 +21,7 @@ const App: FC<Record<string, unknown>> = () => {
   const [movies, setMovies] = useState(MoviesService.movies);
   const [chosenSortOption, setChosenSortOption] = useState(IMovieSortOptions.title);
   const [headerComponent, toggleHeaderComponent] = useState(HeaderActiveComponent.Header);
-  const [chosenModal, setChosenModal] = useState<IModalContext>({ type: ModalType.Add });
+  const [chosenModal, setChosenModal] = useState<IModalContext>({ type: null });
 
   const handleSearchMovieSubmit = (text: string) => {
     setSearchText(text);
@@ -45,8 +45,9 @@ const App: FC<Record<string, unknown>> = () => {
 
   if (chosenModal.actionType) {
     MoviesService.reactToModalAction(chosenModal.actionType, chosenModal.movie);
-    setChosenModal({ type: null });
+    setChosenModal({ type: chosenModal.type });
     setMovies(MoviesService.movies);
+    toggleHeaderComponent(HeaderActiveComponent.Header);
   }
 
   return (

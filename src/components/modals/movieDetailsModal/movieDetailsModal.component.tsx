@@ -67,9 +67,9 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
             />
             {validationState.releaseDate
               && (
-              <p className={s.error}>
-                please choose a release date.
-              </p>
+                <p className={s.error}>
+                  please choose a release date.
+                </p>
               )}
           </label>
           <label htmlFor="movieUrl">
@@ -127,7 +127,11 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
         <Button
           type={ButtonType.reset}
           onButtonClick={() => {
-            changeMovie(EMPTY_MOVIE);
+            changeMovie({
+              ...EMPTY_MOVIE,
+              id: movie.id,
+              rating: movie.rating,
+            });
             setValidationState(VALIDATION_DEFAULT_STATE);
           }}
         />
