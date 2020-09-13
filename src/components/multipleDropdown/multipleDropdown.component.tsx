@@ -7,7 +7,6 @@ import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown
 const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
-  console.log(genres);
 
   const handleGenresClick = (genre: Genres): void => {
     const chosenGenres = genres.includes(genre)
@@ -32,15 +31,16 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
           <li
             className={s.option}
             key={g}
-            onClick={() => handleGenresClick(g)}
             tabIndex={0}
             role="menuitem"
           >
             <label htmlFor={g}>
               <input
                 id={g}
+                readOnly
                 type="checkbox"
-                defaultChecked={genres.includes(g)}
+                checked={genres.includes(g)}
+                onClick={() => handleGenresClick(g)}
               />
               <span className={s.checkmark} />
               <span>{g}</span>

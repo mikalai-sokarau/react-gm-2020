@@ -1,10 +1,11 @@
 import React, { useState, FC } from 'react';
-import { EMPTY_MOVIE, Genres, IMovie } from '@app/mockData/movies.model';
 import MovieService from '@app/services/movies.service';
-import { IModal, ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
+import { EMPTY_MOVIE } from '@app/mockData/movies.model';
 import Button from '@app/components/button/button.component';
 import { ButtonType } from '@app/components/button/button.interface';
+import { IModal } from '@app/components/modals/coreModal/coreModal.interface';
+import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
+import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
@@ -49,9 +50,10 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
           </label>
           <label htmlFor="movieGenre">
             genre
-            <select name="movieModalSelect" id="movieSelect">
-              {Object.keys(Genres).map((g) => <option key={g}>{g}</option>)}
-            </select>
+            <MultipleDropdown
+              genres={movie.genre}
+              onGenreClick={(genre) => changeMovie({ ...movie, genre })}
+            />
           </label>
           <label htmlFor="movieDescription">
             overview
