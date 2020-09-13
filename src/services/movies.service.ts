@@ -1,6 +1,8 @@
 import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 import mockMovies from '@app/mockData/movies';
-import { IMovie, Genres, IMovieSortOptions } from '@app/mockData/movies.model';
+import {
+  IMovie, Genres, IMovieSortOptions, NO_IMAGE_PATH,
+} from '@app/mockData/movies.model';
 
 class MovieService {
   movies: Array<IMovie>;
@@ -9,8 +11,15 @@ class MovieService {
     this.movies = this.sortMovies(IMovieSortOptions.title, movies);
   }
 
-  addMovie(): Array<IMovie> {
-    return [];
+  addMovie(movie: IMovie): void {
+    const newMovie = {
+      ...movie,
+      id: Date.now(),
+      rating: Number((Math.random() * Math.floor(10)).toFixed(1)),
+      imagePath: NO_IMAGE_PATH,
+    };
+
+    this.movies.push(newMovie);
   }
 
   deleteMovie(id: number): Array<IMovie> {
@@ -19,7 +28,7 @@ class MovieService {
     return this.movies;
   }
 
-  editMovie(): Array<IMovie> {
+  editMovie(movie: IMovie): Array<IMovie> {
     return [];
   }
 
@@ -38,13 +47,13 @@ class MovieService {
   reactToModalAction(actionType: ModalType, movie: IMovie): void {
     switch (actionType) {
       case ModalType.Add:
-        this.addMovie();
+        this.addMovie(movie);
         break;
       case ModalType.Delete:
         this.deleteMovie(movie.id);
         break;
       case ModalType.Edit:
-        this.editMovie();
+        this.editMovie(movie);
         break;
       default:
         break;

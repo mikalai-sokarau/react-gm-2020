@@ -34,3 +34,5 @@ export const EMPTY_MOVIE: IMovie = {
   rating: undefined,
   description: '',
 };
+
+export const NO_IMAGE_PATH = '../assets/images/no image.jpg';
