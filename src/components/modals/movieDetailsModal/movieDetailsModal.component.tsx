@@ -13,7 +13,7 @@ import {
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
-  const movieData = MovieService.getMovieById(modalDetails.movieId) || EMPTY_MOVIE;
+  const movieData = MovieService.getMovieById(modalDetails.movie) || EMPTY_MOVIE;
   const [movie, changeMovie] = useState({ ...movieData });
   const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
 
@@ -133,7 +133,7 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
         />
         <Button
           type={ButtonType.submit}
-          onButtonClick={() => isFormValid() && onConfirmClick()}
+          onButtonClick={() => isFormValid() && onConfirmClick(movie)}
         />
       </div>
       <button

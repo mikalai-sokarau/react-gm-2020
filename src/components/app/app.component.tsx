@@ -44,7 +44,7 @@ const App: FC<Record<string, unknown>> = () => {
   };
 
   if (chosenModal.actionType) {
-    MoviesService.reactToModalAction(chosenModal.actionType, chosenModal.movieId);
+    MoviesService.reactToModalAction(chosenModal.actionType, chosenModal.movie);
     setChosenModal({ type: null });
     setMovies(MoviesService.movies);
   }

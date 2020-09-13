@@ -31,17 +31,17 @@ class MovieService {
     return moviesToSearch.filter((m) => m.title.includes(text));
   }
 
-  getMovieById(id: number): IMovie {
-    return this.movies.find((m) => m.id === id);
+  getMovieById(movie = {} as IMovie): IMovie {
+    return this.movies.find((m) => m.id === movie.id);
   }
 
-  reactToModalAction(actionType: ModalType, movieId: number): void {
+  reactToModalAction(actionType: ModalType, movie: IMovie): void {
     switch (actionType) {
       case ModalType.Add:
         this.addMovie();
         break;
       case ModalType.Delete:
-        this.deleteMovie(movieId);
+        this.deleteMovie(movie.id);
         break;
       case ModalType.Edit:
         this.editMovie();

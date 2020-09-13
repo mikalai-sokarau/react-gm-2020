@@ -17,7 +17,7 @@ const CoreModal: FC<Record<string, unknown>> = () => {
           <DeleteModal
             onConfirmClick={() => setChosenModal({
               actionType: ModalType.Delete,
-              movieId: chosenModal.movieId,
+              movie: chosenModal.movie,
               type: null,
             })}
             onCancelClick={() => setChosenModal({ type: null })}
@@ -25,7 +25,7 @@ const CoreModal: FC<Record<string, unknown>> = () => {
         )
         : (
           <MovieDetailsModal
-            onConfirmClick={() => console.log('confirm')}
+            onConfirmClick={(movie) => setChosenModal({ type: ModalType.Success, movie })}
             onCancelClick={() => setChosenModal({ type: null })}
             modalDetails={chosenModal}
           />

@@ -49,10 +49,10 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
         <div className={cN(s.movieMenu, { open: isMovieMenuOpened })}>
           <div className={s.movieMenuContainer}>
             <ul className={s.movieMenuList}>
-              <li onClick={() => setChosenModal({ type: ModalType.Edit, movieId: movie.id })}>
+              <li onClick={() => setChosenModal({ type: ModalType.Edit, movie })}>
                 edit
               </li>
-              <li onClick={() => setChosenModal({ type: ModalType.Delete, movieId: movie.id })}>
+              <li onClick={() => setChosenModal({ type: ModalType.Delete, movie })}>
                 delete
               </li>
             </ul>

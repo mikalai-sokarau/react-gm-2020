@@ -1,13 +1,21 @@
 import React from 'react';
+import { IMovie } from '@app/mockData/movies.model';
 import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 
 export interface IModalContext {
   actionType?: ModalType;
-  movieId?: number;
+  movie?: IMovie;
   type?: ModalType;
 }
 
-export const ModalContext = React.createContext({
-  chosenModal: null as IModalContext,
-  setChosenModal: (context: IModalContext) => { },
+interface IModalCreateContext {
+  chosenModal: IModalContext;
+  setChosenModal: (context: IModalContext) => void,
+  movie?: IMovie;
+}
+
+export const ModalContext = React.createContext<IModalCreateContext>({
+  chosenModal: null,
+  setChosenModal: null,
+  movie: null,
 });
