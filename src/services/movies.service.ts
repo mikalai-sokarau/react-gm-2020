@@ -1,8 +1,6 @@
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 import mockMovies from '@app/mockData/movies';
-import {
-  IMovie, Genres, IMovieSortOptions, NO_IMAGE_PATH,
-} from '@app/mockData/movies.model';
+import { IMovie, Genres, IMovieSortOptions } from '@app/mockData/movies.model';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 
 class MovieService {
   movies: Array<IMovie>;

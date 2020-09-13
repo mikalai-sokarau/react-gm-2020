@@ -8,7 +8,6 @@ import CoreModal from '@app/components/modals/coreModal/coreModal.component';
 import { Genres, IMovie, IMovieSortOptions } from '@app/mockData/movies.model';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 import HeaderActiveComponent from '@app/components/app/app.component.interface';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 import { IModalContext, ModalContext } from '@app/components/modals/coreModal/coreModal.context';
