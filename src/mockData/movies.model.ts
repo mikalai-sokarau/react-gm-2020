@@ -18,7 +18,19 @@ export interface IMovie {
   imagePath: string;
   url: string;
   id: number;
-  duration: number;
+  duration: number | string;
   rating: number;
   description: string;
 }
+
+export const EMPTY_MOVIE: IMovie = {
+  title: '',
+  genre: [],
+  releaseDate: '',
+  imagePath: '',
+  url: '',
+  id: undefined,
+  duration: '',
+  rating: undefined,
+  description: '',
+};
