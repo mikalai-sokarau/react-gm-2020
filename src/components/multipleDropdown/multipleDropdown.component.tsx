@@ -27,7 +27,7 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
         select genre
       </div>
       <ul className={s.optionsList}>
-        {Object.values(Genres).map((g) => (
+        {Object.values(Genres).map((g) => g !== Genres.All && (
           <li
             className={s.option}
             key={g}
