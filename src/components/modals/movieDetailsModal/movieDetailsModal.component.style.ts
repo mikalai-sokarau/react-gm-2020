@@ -13,7 +13,6 @@ const inputStyle = {
   height: '3rem',
   padding: '0 20px',
   width: '480px',
-  marginBottom: '2rem',
 };
 
 const style = createUseStyles({
@@ -49,6 +48,7 @@ const style = createUseStyles({
     '& > label': {
       color: peachy,
       fontSize: '1rem',
+      marginBottom: '2rem',
       textTransform: 'uppercase',
     },
   },
