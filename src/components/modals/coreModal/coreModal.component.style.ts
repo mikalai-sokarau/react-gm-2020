@@ -1,7 +1,15 @@
 import { createUseStyles } from 'react-jss';
+import closeButtonStyles from '@app/style/icons/icons';
 import { darkGradient } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+export const deleteMovieCloseButtonStyles = {
+  ...closeButtonStyles,
+  right: '20px',
+  top: '15px',
+  transform: 'scale(2)',
+};
+
+export const useStyle = createUseStyles({
   modalBackground: {
     alignItems: 'center',
     background: `linear-gradient(${darkGradient}, ${darkGradient})`,
@@ -18,5 +26,3 @@ const style = createUseStyles({
     zIndex: 2,
   },
 });
-
-export default style;

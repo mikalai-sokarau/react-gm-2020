@@ -41,7 +41,7 @@ const MovieDetails: FC<IMovieDetails> = ({ movie, onBackButtonClick }) => {
               ))}
             </p>
             <div className={s.movieDetaisMetadata}>
-              <span>{movie.year}</span>
+              <span>{movie.releaseDate.slice(0, 4)}</span>
               <span>
                 {movie.duration}
                 {' '}

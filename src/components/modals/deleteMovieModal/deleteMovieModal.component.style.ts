@@ -1,13 +1,6 @@
-import closeButtonStyles from '@app/style/icons/icons';
-import { gray } from '@app/style/variables/colors';
 import { createUseStyles } from 'react-jss';
-
-const deleteMovieCloseButtonStyles = {
-  ...closeButtonStyles,
-  right: '20px',
-  top: '15px',
-  transform: 'scale(2)',
-};
+import { gray } from '@app/style/variables/colors';
+import { deleteMovieCloseButtonStyles } from '@app/components/modals/coreModal/coreModal.component.style';
 
 const style = createUseStyles({
   closeButton: deleteMovieCloseButtonStyles,
