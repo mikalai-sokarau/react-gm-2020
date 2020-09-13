@@ -23,6 +23,14 @@ const style = createUseStyles({
     position: 'relative',
   },
   closeButton: deleteMovieCloseButtonStyles,
+  error: {
+    fontSize: '0.9em',
+    fontVariant: 'small-caps',
+    margin: 0,
+    position: 'absolute',
+    textTransform: 'lowercase',
+    textWeight: 100,
+  },
   modalButtons: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -49,6 +57,7 @@ const style = createUseStyles({
       color: peachy,
       fontSize: '1rem',
       marginBottom: '2rem',
+      position: 'relative',
       textTransform: 'uppercase',
     },
   },
