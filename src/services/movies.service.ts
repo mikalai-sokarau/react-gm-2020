@@ -31,6 +31,10 @@ class MovieService {
     return moviesToSearch.filter((m) => m.title.includes(text));
   }
 
+  getMovieById(id: number): IMovie {
+    return this.movies.find((m) => m.id === id);
+  }
+
   reactToModalAction(actionType: ModalType, movieId: number): void {
     switch (actionType) {
       case ModalType.Add:

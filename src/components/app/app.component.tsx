@@ -5,12 +5,13 @@ import Header from '@app/components/header/header.component';
 import Footer from '@app/components/footer/footer.component';
 import useStyle from '@app/components/app/app.component.styles';
 import CoreModal from '@app/components/modals/coreModal/coreModal.component';
-import ModalContext from '@app/components/modals/coreModal/coreModal.context';
 import { Genres, IMovie, IMovieSortOptions } from '@app/mockData/movies.model';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 import HeaderActiveComponent from '@app/components/app/app.component.interface';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { IModalContext, ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const App: FC<Record<string, unknown>> = () => {
   const classes = useStyle();
@@ -20,7 +21,7 @@ const App: FC<Record<string, unknown>> = () => {
   const [movies, setMovies] = useState(MoviesService.movies);
   const [chosenSortOption, setChosenSortOption] = useState(IMovieSortOptions.title);
   const [headerComponent, toggleHeaderComponent] = useState(HeaderActiveComponent.Header);
-  const [chosenModal, setChosenModal] = useState({ type: null });
+  const [chosenModal, setChosenModal] = useState<IModalContext>({ type: ModalType.Add });
 
   const handleSearchMovieSubmit = (text: string) => {
     setSearchText(text);
@@ -41,6 +42,12 @@ const App: FC<Record<string, unknown>> = () => {
     setChosenSortOption(value);
     setMovies(sortedMovies);
   };
+
+  if (chosenModal.actionType) {
+    MoviesService.reactToModalAction(chosenModal.actionType, chosenModal.movieId);
+    setChosenModal({ type: null });
+    setMovies(MoviesService.movies);
+  }
 
   return (
     <div className={classes.core}>
