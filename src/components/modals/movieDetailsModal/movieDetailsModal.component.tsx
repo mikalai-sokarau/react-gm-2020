@@ -131,6 +131,7 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
               ...EMPTY_MOVIE,
               id: movie.id,
               rating: movie.rating,
+              imagePath: movie.imagePath,
             });
             setValidationState(VALIDATION_DEFAULT_STATE);
           }}
