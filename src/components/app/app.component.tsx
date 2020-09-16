@@ -12,7 +12,7 @@ import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 import { IModalContext, ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
-const App: FC<Record<string, unknown>> = () => {
+const App: FC = () => {
   const classes = useStyle();
   const [searchText, setSearchText] = useState('');
   const [chosenMovie, setChosenMovie] = useState(null);

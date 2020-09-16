@@ -6,7 +6,7 @@ import SuccessModal from '@app/components/modals/successModal/successModal.compo
 import DeleteModal from '@app/components/modals/deleteMovieModal/deleteMovieModal.component';
 import MovieDetailsModal from '@app/components/modals/movieDetailsModal/movieDetailsModal.component';
 
-const CoreModal: FC<Record<string, unknown>> = () => {
+const CoreModal: FC = () => {
   const s = useStyle();
   const { chosenModal, setChosenModal } = useContext(ModalContext);
   let modal: JSX.Element;
