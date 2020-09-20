@@ -18,14 +18,14 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
   const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
 
   const isFormValid: () => boolean = () => {
-    const newValidationState = {} as IValidationState;
-
-    newValidationState.title = !movie.title;
-    newValidationState.releaseDate = !movie.releaseDate;
-    newValidationState.url = !movie.url;
-    newValidationState.genre = !movie.genre.length;
-    newValidationState.description = !movie.description;
-    newValidationState.duration = !movie.duration;
+    const newValidationState = {
+      title: !movie.title,
+      releaseDate: !movie.releaseDate,
+      url: !movie.url,
+      genre: !movie.genre.length,
+      description: !movie.description,
+      duration: !movie.duration,
+    };
 
     setValidationState(newValidationState);
 
