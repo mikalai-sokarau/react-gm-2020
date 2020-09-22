@@ -7,8 +7,9 @@ import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown
 const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
-  const clickOutsideHandler = (event: MouseEvent) => {
-    const isClickOutsideContainer = !(event.target as HTMLElement).closest(`.${s.dropdownContainer}`);
+  const clickOutsideHandler = (e: MouseEvent) => {
+    const isClickOutsideContainer = !(e.target as HTMLElement)
+      .closest(`.${s.dropdownContainer}`);
 
     if (isClickOutsideContainer) {
       toggleDropdown(false);
@@ -16,9 +17,9 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   };
 
   useEffect(() => {
-    addEventListener('mousedown', clickOutsideHandler);
+    document.addEventListener('mousedown', clickOutsideHandler);
 
-    return () => removeEventListener('mousedown', clickOutsideHandler);
+    return () => document.removeEventListener('mousedown', clickOutsideHandler);
   }, []);
 
   const handleGenresClick = (genre: Genres): void => {
