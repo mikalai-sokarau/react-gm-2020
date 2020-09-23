@@ -1,26 +1,18 @@
 import cN from 'classnames';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Genres } from '@app/mockData/movies.model';
+import useClickOutside from '@app/hooks/clickOutside';
 import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
 import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
 
 const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
-  const clickOutsideHandler = (e: MouseEvent) => {
-    const isClickOutsideContainer = !(e.target as HTMLElement)
-      .closest(`.${s.dropdownContainer}`);
+  const isClickedOutside = useClickOutside(s.dropdownContainer);
 
-    if (isClickOutsideContainer) {
-      toggleDropdown(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', clickOutsideHandler);
-
-    return () => document.removeEventListener('mousedown', clickOutsideHandler);
-  }, []);
+  if (isClickedOutside && isDropdownOpen) {
+    toggleDropdown(false);
+  }
 
   const handleGenresClick = (genre: Genres): void => {
     const chosenGenres = genres.includes(genre)

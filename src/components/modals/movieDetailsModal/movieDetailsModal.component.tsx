@@ -7,7 +7,6 @@ import { IModal } from '@app/components/modals/coreModal/coreModal.interface';
 import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
 import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 import {
-  IValidationState,
   VALIDATION_DEFAULT_STATE,
 } from '@app/components/modals/movieDetailsModal/movieDetailsModal.interface';
 
