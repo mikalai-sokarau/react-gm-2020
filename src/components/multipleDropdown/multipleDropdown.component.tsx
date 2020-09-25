@@ -1,14 +1,14 @@
 import cN from 'classnames';
 import React, { FC, useState } from 'react';
 import { Genres } from '@app/mockData/movies.model';
-import useClickOutside from '@app/hooks/clickOutside';
+import useClickedOutside from '@app/hooks/clickOutside';
 import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
 import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
 
 const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
-  const isClickedOutside = useClickOutside(s.dropdownContainer);
+  const isClickedOutside = useClickedOutside(s.dropdownContainer);
 
   if (isClickedOutside && isDropdownOpen) {
     toggleDropdown(false);
