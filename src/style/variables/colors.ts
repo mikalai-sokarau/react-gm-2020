@@ -15,3 +15,5 @@ export const transparent = {
   },
   peachy: '#f6526180',
 };
+
+export const darkGradient = '#00000096';

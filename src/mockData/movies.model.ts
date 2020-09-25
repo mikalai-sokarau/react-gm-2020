@@ -6,10 +6,33 @@ export enum Genres {
   Horror = 'horror',
 }
 
+export enum IMovieSortOptions {
+  title = 'title',
+  year = 'releaseDate',
+}
+
 export interface IMovie {
   title: string;
   genre: Array<Genres>;
-  year: number;
+  releaseDate: string;
   imagePath: string;
+  url: string;
   id: number;
+  duration: number | string;
+  rating: number;
+  description: string;
 }
+
+export const NO_IMAGE_PATH = '../assets/images/no image.jpg';
+
+export const EMPTY_MOVIE: IMovie = {
+  title: '',
+  genre: [],
+  releaseDate: '',
+  imagePath: NO_IMAGE_PATH,
+  url: '',
+  id: undefined,
+  duration: '',
+  rating: undefined,
+  description: '',
+};

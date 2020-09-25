@@ -19,12 +19,12 @@ const Dropdown: FC<IDropdown> = ({ title, options, onSortOptionClick }) => {
           {options.map((o) => (
             <li
               className={s.option}
-              key={o.value}
+              key={o.title}
               onClick={() => onSortOptionClick(o)}
               tabIndex={0}
               role="menuitem"
             >
-              {o.value}
+              {o.title}
             </li>
           ))}
         </ul>

@@ -1,11 +1,19 @@
 import cN from 'classnames';
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useContext } from 'react';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
-import { IMovieItem, MovieAction } from '@app/components/movieItem/movieItem.interface';
+import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
+import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
-const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
+const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
   const s = useStyle();
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
+  const { setChosenModal } = useContext(ModalContext);
+
+  const onImageClick = () => {
+    onMovieImageClick();
+    setMovieMenuState(false);
+  };
 
   return (
     <figure
@@ -17,7 +25,7 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
         alt={movie.title}
         height="490px"
         width="320px"
-        onClick={() => setMovieMenuState(false)}
+        onClick={onImageClick}
       />
       <figcaption className={s.movieInfoContainer}>
         <div>
@@ -30,7 +38,7 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
         </div>
         <p>
           <span className={s.year}>
-            {movie.year}
+            {movie.releaseDate.slice(0, 4)}
           </span>
         </p>
       </figcaption>
@@ -41,8 +49,12 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieActionClick }) => {
         <div className={cN(s.movieMenu, { open: isMovieMenuOpened })}>
           <div className={s.movieMenuContainer}>
             <ul className={s.movieMenuList}>
-              <li onClick={() => onMovieActionClick(MovieAction.Edit)}>edit</li>
-              <li onClick={() => onMovieActionClick(MovieAction.Delete)}>delete</li>
+              <li onClick={() => setChosenModal({ type: ModalType.Edit, movie })}>
+                edit
+              </li>
+              <li onClick={() => setChosenModal({ type: ModalType.Delete, movie })}>
+                delete
+              </li>
             </ul>
             <button
               type="button"

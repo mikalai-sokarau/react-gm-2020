@@ -1,48 +1,9 @@
 import { createUseStyles } from 'react-jss';
 import { gray, peachy, white } from '@app/style/variables/colors';
-
-const closeButtonIcon = {
-  position: 'absolute',
-  left: '10px',
-  top: '5px',
-  content: '" "',
-  height: '12px',
-  width: '2px',
-  backgroundColor: gray.tint1,
-};
+import closeButtonStyles from '@app/style/icons/icons';
 
 const style = createUseStyles({
-  closeButton: {
-    position: 'absolute',
-    top: '4px',
-    right: '4px',
-    width: '20px',
-    height: '20px',
-    backgroundColor: 'transparent',
-    border: 'none',
-
-    '&:before': {
-      ...closeButtonIcon,
-      transform: 'rotate(45deg)',
-    },
-
-    '&:after': {
-      ...closeButtonIcon,
-      transform: 'rotate(-45deg)',
-    },
-
-    '&:hover': {
-      cursor: 'pointer',
-
-      '&:before': {
-        backgroundColor: peachy,
-      },
-
-      '&:after': {
-        backgroundColor: peachy,
-      },
-    },
-  },
+  closeButton: closeButtonStyles,
   genre: {
     color: gray.tint1,
     display: 'inline-block',
@@ -70,6 +31,10 @@ const style = createUseStyles({
     padding: '5px',
     position: 'relative',
     margin: 0,
+
+    '& > img': {
+      cursor: 'pointer',
+    },
 
     '&:hover': {
       transform: 'scale(1.015)',

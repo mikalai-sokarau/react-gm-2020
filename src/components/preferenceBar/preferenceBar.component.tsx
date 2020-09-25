@@ -2,13 +2,13 @@ import cN from 'classnames';
 import React, { useState, FC } from 'react';
 import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
-import sortValues from '@app/components/preferenceBar/preferenceBar.model';
+import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
-import { IPreferenceBar } from '@app/components/preferenceBar/preferenceBar.interface';
+import { IPreferenceBar, ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 
-const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
+const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick, onSortingSelect }) => {
   const s = useStyle();
-  const [chosenDropdownItem, setDropdownItem] = useState(sortValues[0]);
+  const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
   const [chosenGenre, setGenre] = useState(Genres.All);
 
   const genreClick = (genre: string) => {
@@ -16,6 +16,10 @@ const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
 
     onGenreClick(g);
     setGenre(g);
+  };
+  const onSortingOptionClick = (option: ISortOption) => {
+    setDropdownItem(option);
+    onSortingSelect(option);
   };
 
   return (
@@ -33,9 +37,9 @@ const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
         ))}
       </div>
       <Dropdown
-        title={chosenDropdownItem.value}
-        options={sortValues}
-        onSortOptionClick={setDropdownItem}
+        title={chosenDropdownItem.title}
+        options={sortOptions}
+        onSortOptionClick={onSortingOptionClick}
       />
       <div className={s.borderLine} />
     </div>

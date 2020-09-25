@@ -1,14 +1,15 @@
-import { ISortValue } from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { IMovieSortOptions } from '@app/mockData/movies.model';
 
-const sortValues: Array<ISortValue> = [
+const sortOptions: Array<ISortOption> = [
   {
-    value: 'release date',
-    label: 'release date',
+    title: 'title',
+    value: IMovieSortOptions.title,
   },
   {
-    value: 'name',
-    label: 'name',
+    title: 'release date',
+    value: IMovieSortOptions.year,
   },
 ];
 
-export default sortValues;
+export default sortOptions;

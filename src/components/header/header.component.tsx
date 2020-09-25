@@ -1,16 +1,19 @@
 import cN from 'classnames';
-import React, { useState, FC } from 'react';
-import useCommonStyle from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';
+import React, { useState, useContext, FC } from 'react';
+import useCommonStyle from '@app/style/variables/sizes';
 import Button from '@app/components/button/button.component';
 import IHeader from '@app/components/header/header.interface';
 import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
+import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
+import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const Header: FC<IHeader> = ({ onSearchMovieSubmit }) => {
   const s = useStyle();
   const { appContainer } = useCommonStyle();
   const [inputText, setInputText] = useState('');
+  const { setChosenModal } = useContext(ModalContext);
 
   const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     setInputText((e.target as HTMLInputElement).value);
@@ -29,7 +32,7 @@ const Header: FC<IHeader> = ({ onSearchMovieSubmit }) => {
         <div className={s.addMovieButtonContainer}>
           <Button
             type={ButtonType.add}
-            onButtonClick={() => alert('Not implemented yet.')}
+            onButtonClick={() => setChosenModal({ type: ModalType.Add })}
           />
         </div>
         <div className={s.searchContainer}>
