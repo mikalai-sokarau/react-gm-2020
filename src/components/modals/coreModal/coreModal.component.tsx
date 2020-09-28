@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
 import { useStyle } from '@app/components/modals/coreModal/coreModal.component.style';
 import SuccessModal from '@app/components/modals/successModal/successModal.component';
 import DeleteModal from '@app/components/modals/deleteMovieModal/deleteMovieModal.component';

@@ -4,10 +4,10 @@ import React, { useState, useContext, FC } from 'react';
 import useCommonStyle from '@app/style/variables/sizes';
 import Button from '@app/components/button/button.component';
 import IHeader from '@app/components/header/header.interface';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
 import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const Header: FC<IHeader> = ({ onSearchMovieSubmit }) => {
   const s = useStyle();

@@ -1,16 +1,16 @@
 import React, { useState, FC } from 'react';
 import Main from '@app/components/main/main.component';
-import MoviesService from '@app/services/movies.service';
+import MoviesService from '@server/services/movies.service';
 import Header from '@app/components/header/header.component';
 import Footer from '@app/components/footer/footer.component';
 import useStyle from '@app/components/app/app.component.styles';
 import CoreModal from '@app/components/modals/coreModal/coreModal.component';
-import { Genres, IMovie, IMovieSortOptions } from '@app/mockData/movies.model';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 import HeaderActiveComponent from '@app/components/app/app.component.interface';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
+import { IModalContext, ModalContext } from '@shared/interfaces/coreModal.context';
+import { Genres, IMovie, IMovieSortOptions } from '@shared/interfaces/movies.model';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
-import { IModalContext, ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const App: FC = () => {
   const classes = useStyle();

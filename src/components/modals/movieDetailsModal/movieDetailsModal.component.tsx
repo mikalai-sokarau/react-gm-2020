@@ -1,9 +1,9 @@
 import React, { useState, FC } from 'react';
-import MovieService from '@app/services/movies.service';
-import { EMPTY_MOVIE } from '@app/mockData/movies.model';
+import MovieService from '@server/services/movies.service';
 import Button from '@app/components/button/button.component';
+import { EMPTY_MOVIE } from '@shared/interfaces/movies.model';
+import { IModal } from '@shared/interfaces/coreModal.interface';
 import { ButtonType } from '@app/components/button/button.interface';
-import { IModal } from '@app/components/modals/coreModal/coreModal.interface';
 import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
 import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 import {

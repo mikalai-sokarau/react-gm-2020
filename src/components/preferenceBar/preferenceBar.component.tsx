@@ -1,6 +1,6 @@
 import cN from 'classnames';
 import React, { useState, FC } from 'react';
-import { Genres } from '@app/mockData/movies.model';
+import { Genres } from '@shared/interfaces/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';

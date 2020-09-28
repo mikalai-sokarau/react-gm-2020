@@ -1,4 +1,4 @@
-import { IMovie } from '@app/mockData/movies.model';
+import { IMovie } from '@shared/interfaces/movies.model';
 
 export default interface IMovieDetails {
   movie: IMovie,

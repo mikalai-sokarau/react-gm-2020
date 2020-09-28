@@ -1,4 +1,4 @@
-import { IMovie, Genres } from '@app/mockData/movies.model';
+import { IMovie, Genres } from '@shared/interfaces/movies.model';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 
 export default interface IMain {

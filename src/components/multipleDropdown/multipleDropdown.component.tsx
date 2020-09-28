@@ -1,7 +1,7 @@
 import cN from 'classnames';
 import React, { FC, useState } from 'react';
-import { Genres } from '@app/mockData/movies.model';
 import useClickedOutside from '@app/hooks/clickOutside';
+import { Genres } from '@shared/interfaces/movies.model';
 import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
 import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
 

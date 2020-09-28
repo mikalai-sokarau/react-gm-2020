@@ -1,4 +1,4 @@
-import { Genres, IMovieSortOptions } from '@app/mockData/movies.model';
+import { Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
 
 export interface ISortOption {
   title: string;

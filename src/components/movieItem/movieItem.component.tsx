@@ -1,9 +1,9 @@
 import cN from 'classnames';
 import React, { useState, FC, useContext } from 'react';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
   const s = useStyle();

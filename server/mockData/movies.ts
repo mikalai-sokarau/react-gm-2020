@@ -1,4 +1,4 @@
-import { Genres, IMovie } from '@app/mockData/movies.model';
+import { Genres, IMovie } from '@shared/interfaces/movies.model';
 
 const movies: Array<IMovie> = [
   {
