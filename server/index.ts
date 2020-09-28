@@ -1,13 +1,12 @@
-import Koa from'koa';
+import Koa from 'koa';
+import router from './routes';
+import KoaJson from 'koa-json';
 
-const port = 4100;
 const app = new Koa();
+const port = process.env.NODE_PORT;
 
+app.use(KoaJson());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
-
-app.use(async ctx => {
-  ctx.body = 'hello Koa';
-  console.log(ctx.body);
-})
-
-app.listen(port);
+app.listen(port, () => console.log(`Server is started at port: ${port}`));
