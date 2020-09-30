@@ -1,9 +1,10 @@
 import KoaRouter from 'koa-router';
+import MovieService from '../services/movies.service';
 
 const router = new KoaRouter();
 
 router.get('/movies', async ctx => {
-  ctx.body = '/movies/get';
+  ctx.body = { movies: MovieService.movies };
 });
 
 router.get('/movies/:id', async ctx => {
