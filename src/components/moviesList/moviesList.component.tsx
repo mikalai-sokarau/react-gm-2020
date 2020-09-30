@@ -1,14 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
+import { useStoreon } from 'storeon/react';
+import { IMovie } from '@shared/interfaces/movies.model';
+import MovieItem from '@app/components/movieItem/movieItem.component';
 import IMoviesList from '@app/components/moviesList/moviesList.interface';
 import useStyle from '@app/components/moviesList/moviesList.component.style';
 
-const MoviesList: FC<IMoviesList> = ({ getMovies }) => {
+const MoviesList: FC<IMoviesList> = ({ onMovieImageClick }) => {
   const s = useStyle();
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    setMovies(getMovies());
-  }, [getMovies]);
+  const { movies } = useStoreon('movies');
 
   return (
     <section>
@@ -19,7 +18,13 @@ const MoviesList: FC<IMoviesList> = ({ getMovies }) => {
       {movies.length
         ? (
           <div className={s.moviesContainer}>
-            {movies}
+            {movies.map((m: IMovie) => (
+              <MovieItem
+                movie={m}
+                key={m.id}
+                onMovieImageClick={() => onMovieImageClick(m)}
+              />
+            ))}
           </div>
         )
         : <p className={s.noItemsFound}>no movies found</p>}

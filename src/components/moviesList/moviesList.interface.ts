@@ -1,3 +1,5 @@
+import { IMovie } from '@shared/interfaces/movies.model';
+
 export default interface IMoviesList {
-  getMovies: () => Array<JSX.Element>
+  onMovieImageClick: (movie: IMovie) => void;
 }
