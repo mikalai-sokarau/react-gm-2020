@@ -1,4 +1,6 @@
+import store from '@app/store/store';
 import React, { useState, FC } from 'react';
+import { StoreContext } from 'storeon/react';
 import Main from '@app/components/main/main.component';
 import MoviesService from '@server/services/movies.service';
 import Header from '@app/components/header/header.component';
@@ -17,7 +19,7 @@ const App: FC = () => {
   const [searchText, setSearchText] = useState('');
   const [chosenMovie, setChosenMovie] = useState(null);
   const [chosenGenre, setChosenGenre] = useState(Genres.All);
-  const [movies, setMovies] = useState(MoviesService.movies);
+  const [serviceMovies, setMovies] = useState(MoviesService.movies);
   const [chosenSortOption, setChosenSortOption] = useState(IMovieSortOptions.title);
   const [headerComponent, toggleHeaderComponent] = useState(HeaderActiveComponent.Header);
   const [chosenModal, setChosenModal] = useState<IModalContext>({ type: null });
@@ -37,7 +39,7 @@ const App: FC = () => {
     toggleHeaderComponent(HeaderActiveComponent.MovieDetails);
   };
   const handleSortingSelect = ({ value }: ISortOption) => {
-    const sortedMovies = MoviesService.sortMovies(value, movies);
+    const sortedMovies = MoviesService.sortMovies(value, serviceMovies);
     setChosenSortOption(value);
     setMovies(sortedMovies);
   };
@@ -52,24 +54,25 @@ const App: FC = () => {
   return (
     <div className={classes.core}>
       <ErrorBoundary>
-        <ModalContext.Provider value={{ chosenModal, setChosenModal }}>
-          {headerComponent === HeaderActiveComponent.Header
-            ? <Header onSearchMovieSubmit={handleSearchMovieSubmit} />
-            : (
-              <MovieDetails
-                movie={chosenMovie}
-                onBackButtonClick={() => toggleHeaderComponent(HeaderActiveComponent.Header)}
-              />
-            )}
-          <Main
-            movies={movies}
-            onGenreClick={handleGenreClick}
-            onMovieImageClick={handleMovieClick}
-            onSortingSelect={handleSortingSelect}
-          />
-          <Footer />
-          {chosenModal.type && <CoreModal />}
-        </ModalContext.Provider>
+        <StoreContext.Provider value={store}>
+          <ModalContext.Provider value={{ chosenModal, setChosenModal }}>
+            {headerComponent === HeaderActiveComponent.Header
+              ? <Header onSearchMovieSubmit={handleSearchMovieSubmit} />
+              : (
+                <MovieDetails
+                  movie={chosenMovie}
+                  onBackButtonClick={() => toggleHeaderComponent(HeaderActiveComponent.Header)}
+                />
+              )}
+            <Main
+              onGenreClick={handleGenreClick}
+              onMovieImageClick={handleMovieClick}
+              onSortingSelect={handleSortingSelect}
+            />
+            <Footer />
+            {chosenModal.type && <CoreModal />}
+          </ModalContext.Provider>
+        </StoreContext.Provider>
       </ErrorBoundary>
     </div>
   );
