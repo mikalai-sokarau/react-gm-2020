@@ -1,6 +1,6 @@
-import mockMovies from '@server/mockData/movies';
-import { ModalType } from '@shared/interfaces/coreModal.interface';
-import { IMovie, Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
+import mockMovies from '../mockData/movies';
+import { ModalType } from '../../shared/interfaces/coreModal.interface';
+import { IMovie, Genres, IMovieSortOptions } from '../../shared/interfaces/movies.model';
 
 class MovieService {
   movies: Array<IMovie>;
