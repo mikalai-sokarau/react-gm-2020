@@ -7,18 +7,18 @@ import useStyle from '@app/components/moviesList/moviesList.component.style';
 
 const MoviesList: FC<IMoviesList> = ({ onMovieImageClick }) => {
   const s = useStyle();
-  const { movies } = useStoreon('movies');
+  const { chosenMovies } = useStoreon('chosenMovies');
 
   return (
     <section>
       <div className={s.moviesAmount}>
-        {movies.length}
+        {chosenMovies.length}
         <span className={s.moviesAmountText}>movies found</span>
       </div>
-      {movies.length
+      {chosenMovies.length
         ? (
           <div className={s.moviesContainer}>
-            {movies.map((m: IMovie) => (
+            {chosenMovies.map((m: IMovie) => (
               <MovieItem
                 movie={m}
                 key={m.id}

@@ -7,7 +7,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
   store.on('@init', () => {
     store.dispatch('/movies/get');
 
-    return { movies: [] };
+    return {
+      allMovies: [],
+      chosenMovies: [],
+    };
   });
 
   store.on('/movies/add', async (state: IState, movie: IMovie) => {
@@ -80,7 +83,11 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     store.dispatch('/movies/save', movies);
   });
 
-  store.on('/movies/save', (state: IState, movies: Array<IMovie>) => ({ ...state, movies }));
+  store.on('/movies/save', (state: IState, movies: Array<IMovie>) => ({
+    ...state,
+    allMovies: movies,
+    chosenMovies: movies,
+  }));
 };
 
 export default moviesModule;

@@ -50,7 +50,9 @@ const style = createUseStyles({
     fontSize: '30px',
     fontWeight: 100,
     margin: '20px',
+    minWidth: '40px',
     padding: '0.6rem',
+    textAlign: 'center',
   },
   movieTitle: {
     display: 'inline-block',
