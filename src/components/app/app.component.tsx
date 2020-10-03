@@ -45,9 +45,7 @@ const App: FC = () => {
   };
 
   if (chosenModal.actionType) {
-    MoviesService.reactToModalAction(chosenModal.actionType, chosenModal.movie);
     setChosenModal({ type: chosenModal.type });
-    setMovies(MoviesService.movies);
     toggleHeaderComponent(HeaderActiveComponent.Header);
   }
 

@@ -15,11 +15,26 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
 
     try {
       const requestInit: RequestInit = {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify({ movie }),
         headers: { 'content-type': 'application/json' },
       };
       const response: Response = await fetch(`${API_URL}/movies/add`, requestInit);
+
+      movies = (await response.json()).movies;
+    } catch (e) {
+      movies = [];
+      handleError(e);
+    }
+
+    store.dispatch('/movies/save', movies);
+  });
+
+  store.on('/movies/delete', async (state: IState, id: string) => {
+    let movies: Array<IMovie>;
+
+    try {
+      const response: Response = await fetch(`${API_URL}/movies/delete/${id}`, { method: 'DELETE' });
 
       movies = (await response.json()).movies;
     } catch (e) {

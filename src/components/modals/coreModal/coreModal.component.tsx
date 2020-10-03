@@ -17,11 +17,11 @@ const CoreModal: FC = () => {
     case ModalType.Delete:
       modal = (
         <DeleteModal
-          onConfirmClick={() => setChosenModal({
-            actionType: ModalType.Delete,
-            movie: chosenModal.movie,
-            type: null,
-          })}
+          onConfirmClick={() => {
+            // TODO: add actions to constants
+            dispatch('/movies/delete', chosenModal.movie.id);
+            setChosenModal({ type: null });
+          }}
           onCancelClick={() => setChosenModal({ type: null })}
         />
       );

@@ -1,5 +1,4 @@
 import mockMovies from '../mockData/movies';
-import { ModalType } from '../../shared/interfaces/coreModal.interface';
 import { IMovie, Genres, IMovieSortOptions } from '../../shared/interfaces/movies.model';
 
 class MovieService {
@@ -43,22 +42,6 @@ class MovieService {
 
   getMovieById(movie = {} as IMovie): IMovie {
     return this.movies.find((m) => m.id === movie.id);
-  }
-
-  reactToModalAction(actionType: ModalType, movie: IMovie): void {
-    switch (actionType) {
-      case ModalType.Add:
-        // this.addMovie(movie);
-        break;
-      case ModalType.Delete:
-        this.deleteMovie(movie.id);
-        break;
-      case ModalType.Edit:
-        // this.editMovie(movie);
-        break;
-      default:
-        break;
-    }
   }
 
   sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {

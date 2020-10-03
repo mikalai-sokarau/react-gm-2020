@@ -11,16 +11,16 @@ router.get('/movies/:id', ctx => {
   ctx.body = '/movies/:id';
 });
 
-router.delete('/movies/:id', ctx => {
-  ctx.body = '/movies/delete';
+router.delete('/movies/delete/:id', ctx => {
+  ctx.body = { movies: MovieService.deleteMovie(Number(ctx.params.id)) };
 });
 
-router.put('/movies/add', ctx => {
+router.post('/movies/add', ctx => {
   ctx.body = { movies: MovieService.addMovie(ctx.request.body.movie) };
 });
 
 router.put('/movies/edit', ctx => {
-  ctx.body = { movies: MovieService.editMovie(ctx.request.body.movie) }
+  ctx.body = { movies: MovieService.editMovie(ctx.request.body.movie) };
 })
 
 export default router;
