@@ -1,9 +1,9 @@
+import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
-import MovieService from '@server/services/movies.service';
 import Button from '@app/components/button/button.component';
-import { EMPTY_MOVIE } from '@shared/interfaces/movies.model';
 import { IModal } from '@shared/interfaces/coreModal.interface';
 import { ButtonType } from '@app/components/button/button.interface';
+import { EMPTY_MOVIE, IMovie } from '@shared/interfaces/movies.model';
 import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
 import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 import {
@@ -12,7 +12,8 @@ import {
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
-  const movieData = MovieService.getMovieById(modalDetails.movie) || EMPTY_MOVIE;
+  const { allMovies } = useStoreon('allMovies');
+  const movieData = allMovies.find((m: IMovie) => m.id === modalDetails.movie.id) || EMPTY_MOVIE;
   const [movie, changeMovie] = useState({ ...movieData });
   const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
 

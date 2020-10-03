@@ -40,10 +40,6 @@ class MovieService {
     return moviesToSearch.filter((m) => m.title.includes(text));
   }
 
-  getMovieById(movie = {} as IMovie): IMovie {
-    return this.movies.find((m) => m.id === movie.id);
-  }
-
   sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {
     movies.sort((a, b) => (a[option] > b[option] ? 1 : -1));
 

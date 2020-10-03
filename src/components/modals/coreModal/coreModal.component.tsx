@@ -9,7 +9,7 @@ import MovieDetailsModal from '@app/components/modals/movieDetailsModal/movieDet
 
 const CoreModal: FC = () => {
   const s = useStyle();
-  const { dispatch } = useStoreon('movies');
+  const { dispatch } = useStoreon();
   const { chosenModal, setChosenModal } = useContext(ModalContext);
   let modal: JSX.Element;
 
