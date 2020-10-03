@@ -7,6 +7,11 @@ export const API_URL = 'http://localhost:4100';
 export interface IState {
   allMovies: Array<IMovie>;
   chosenMovies: Array<IMovie>;
+  search: {
+    chosenMovie: IMovie,
+    genre: Genres,
+    text: string,
+  };
 }
 
 export interface IEvents {
@@ -15,6 +20,9 @@ export interface IEvents {
   '/movies/edit': IMovie;
   '/movies/get': void;
   '/movies/save': Array<IMovie>;
-  '/movies/sort': { option: IMovieSortOptions, order: ISortOrderBy };
-  '/movies/filter': { text: string, genre: Genres };
+  '/search/sort': { option: IMovieSortOptions, order: ISortOrderBy };
+  '/search/filter': { text: string, genre: Genres };
+  '/search/text': string;
+  '/search/genre': Genres;
+  '/search/chosenMovie': IMovie;
 }

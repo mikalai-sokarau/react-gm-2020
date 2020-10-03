@@ -1,6 +1,6 @@
 import handleError from '@shared/utils/handleError';
 import { StoreonModule } from 'storeon';
-import { IMovie } from '@shared/interfaces/movies.model';
+import { Genres, IMovie } from '@shared/interfaces/movies.model';
 import { IState, IEvents, API_URL } from '@app/store/store.interface';
 
 const moviesModule: StoreonModule<IState, IEvents> = (store) => {
@@ -10,6 +10,11 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     return {
       allMovies: [],
       chosenMovies: [],
+      search: {
+        chosenMovie: null,
+        genre: Genres.All,
+        text: '',
+      },
     };
   });
 

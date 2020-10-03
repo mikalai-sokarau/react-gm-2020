@@ -5,14 +5,14 @@ import useStyle from '@app/components/main/main.component.style';
 import MoviesList from '@app/components/moviesList/moviesList.component';
 import PreferenceBar from '@app/components/preferenceBar/preferenceBar.component';
 
-const Main: FC<IMain> = ({ onGenreClick, onMovieImageClick }) => {
+const Main: FC<IMain> = ({ onMovieImageClick }) => {
   const classes = useStyle();
   const { appContainer } = useCommonStyle();
 
   return (
     <main className={classes.core}>
       <div className={appContainer}>
-        <PreferenceBar onGenreClick={onGenreClick} />
+        <PreferenceBar />
         <MoviesList onMovieImageClick={onMovieImageClick} />
       </div>
     </main>

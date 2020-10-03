@@ -1,9 +1,9 @@
-import sortModule from '@app/store/modules/sort.module';
 import moviesModule from '@app/store/modules/movies.module';
+import searchModule from '@app/store/modules/search.module';
 
 const modules = [
-  sortModule,
   moviesModule,
+  searchModule,
 ];
 
 export default modules;
