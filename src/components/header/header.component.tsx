@@ -1,5 +1,6 @@
 import cN from 'classnames';
 import { useStoreon } from 'storeon/react';
+import { IState } from '@app/store/store.interface';
 import Logo from '@app/components/logo/logo.component';
 import React, { useState, useContext, FC } from 'react';
 import useCommonStyle from '@app/style/variables/sizes';
@@ -12,15 +13,19 @@ import { ButtonType } from '@app/components/button/button.interface';
 const Header: FC = () => {
   const s = useStyle();
   const { appContainer } = useCommonStyle();
-  const { dispatch, search } = useStoreon('search');
+  const { dispatch, search } = useStoreon<IState>('search');
   const [inputText, setInputText] = useState(search.text);
   const { setChosenModal } = useContext(ModalContext);
+  const submitSearch = () => {
+    dispatch('/search/text', inputText);
+    dispatch('/search/filter');
+  };
 
   const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     setInputText((e.target as HTMLInputElement).value);
 
     if (e.key === 'Enter') {
-      dispatch('/search/text', inputText);
+      submitSearch();
     }
   };
 
@@ -47,7 +52,7 @@ const Header: FC = () => {
             />
             <Button
               type={ButtonType.search}
-              onButtonClick={() => dispatch('/search/text', inputText)}
+              onButtonClick={submitSearch}
             />
           </div>
         </div>

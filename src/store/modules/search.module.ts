@@ -15,11 +15,12 @@ const searchModule: StoreonModule<IState, IEvents> = (store) => {
     };
   });
 
-  store.on('/search/filter', ({ allMovies, ...state }: IState, { text, genre }) => {
+  store.on('/search/filter', ({ allMovies, ...state }: IState) => {
+    const { genre } = state.search;
     const moviesToSearch = genre === Genres.All
       ? allMovies
       : allMovies.filter((m) => m.genre.includes(genre));
-    const chosenMovies = moviesToSearch.filter((m) => m.title.includes(text));
+    const chosenMovies = moviesToSearch.filter((m) => m.title.includes(state.search.text));
 
     return {
       ...state,
@@ -28,10 +29,6 @@ const searchModule: StoreonModule<IState, IEvents> = (store) => {
   });
 
   store.on('/search/genre', (state, genre) => ({ ...state, search: { ...state.search, genre } }));
-
-  store.on('/search/chosenMovie', () => {
-
-  });
 
   store.on('/search/text', (state: IState, text: string) => ({ ...state, search: { ...state.search, text } }));
 };

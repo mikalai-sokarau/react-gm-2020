@@ -10,14 +10,15 @@ import { ISortOption, ISortOrderBy } from '@app/components/preferenceBar/prefere
 
 const PreferenceBar: FC = () => {
   const s = useStyle();
-  const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
+  const { dispatch } = useStoreon<IState>('search');
   const [chosenGenre, setGenre] = useState(Genres.All);
-  const { dispatch, search: { text } } = useStoreon<IState>('search');
+  const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
 
   const genreClick = (clickedGenre: string) => {
     const genre = clickedGenre.toLowerCase() as Genres;
 
-    dispatch('/search/filter', { text, genre });
+    dispatch('/search/genre', genre);
+    dispatch('/search/filter');
     setGenre(genre);
   };
   const onSortingOptionClick = (option: ISortOption) => {
