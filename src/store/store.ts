@@ -10,21 +10,6 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     return { movies: [] };
   });
 
-  store.on('/movies/get', async () => {
-    let movies: Array<IMovie> = [];
-
-    try {
-      const response: Response = await fetch(`${API_URL}/movies`);
-
-      movies = (await response.json()).movies;
-    } catch (e) {
-      movies = [];
-      handleError(e);
-    }
-
-    store.dispatch('/movies/save', movies);
-  });
-
   store.on('/movies/add', async (state: IState, movie: IMovie) => {
     let movies: Array<IMovie>;
 
@@ -35,6 +20,41 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
         headers: { 'content-type': 'application/json' },
       };
       const response: Response = await fetch(`${API_URL}/movies/add`, requestInit);
+
+      movies = (await response.json()).movies;
+    } catch (e) {
+      movies = [];
+      handleError(e);
+    }
+
+    store.dispatch('/movies/save', movies);
+  });
+
+  store.on('/movies/edit', async (state: IState, movie: IMovie) => {
+    let movies: Array<IMovie>;
+
+    try {
+      const requestInit: RequestInit = {
+        method: 'PUT',
+        body: JSON.stringify({ movie }),
+        headers: { 'content-type': 'application/json' },
+      };
+      const response: Response = await fetch(`${API_URL}/movies/edit`, requestInit);
+
+      movies = (await response.json()).movies;
+    } catch (e) {
+      movies = [];
+      handleError(e);
+    }
+
+    store.dispatch('/movies/save', movies);
+  });
+
+  store.on('/movies/get', async () => {
+    let movies: Array<IMovie> = [];
+
+    try {
+      const response: Response = await fetch(`${API_URL}/movies`);
 
       movies = (await response.json()).movies;
     } catch (e) {

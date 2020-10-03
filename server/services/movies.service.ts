@@ -25,10 +25,12 @@ class MovieService {
     return this.movies;
   }
 
-  editMovie(movie: IMovie): void {
+  editMovie(movie: IMovie): Array<IMovie> {
     const movieIndex = this.movies.findIndex((m) => m.id === movie.id);
 
     this.movies.splice(movieIndex, 1, movie);
+
+    return this.movies;
   }
 
   filterMovies(text: string, genre: Genres): Array<IMovie> {
@@ -52,7 +54,7 @@ class MovieService {
         this.deleteMovie(movie.id);
         break;
       case ModalType.Edit:
-        this.editMovie(movie);
+        // this.editMovie(movie);
         break;
       default:
         break;

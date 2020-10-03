@@ -41,6 +41,10 @@ const CoreModal: FC = () => {
               dispatch('/movies/add', movie);
             }
 
+            if (chosenModal.type === ModalType.Edit) {
+              dispatch('/movies/edit', movie);
+            }
+
             setChosenModal({
               movie,
               type: chosenModal.type === ModalType.Add ? ModalType.Success : null,
