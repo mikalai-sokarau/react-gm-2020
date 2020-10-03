@@ -9,14 +9,14 @@ class MovieService {
     this.movies = this.sortMovies(IMovieSortOptions.title, movies);
   }
 
-  addMovie(movie: IMovie): void {
-    const newMovie = {
+  addMovie(movie: IMovie): Array<IMovie> {
+    this.movies.push({
       ...movie,
       id: Date.now(),
       rating: Number((Math.random() * Math.floor(10)).toFixed(1)),
-    };
+    });
 
-    this.movies.push(newMovie);
+    return this.movies;
   }
 
   deleteMovie(id: number): Array<IMovie> {
@@ -46,7 +46,7 @@ class MovieService {
   reactToModalAction(actionType: ModalType, movie: IMovie): void {
     switch (actionType) {
       case ModalType.Add:
-        this.addMovie(movie);
+        // this.addMovie(movie);
         break;
       case ModalType.Delete:
         this.deleteMovie(movie.id);

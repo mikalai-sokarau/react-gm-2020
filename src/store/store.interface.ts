@@ -8,6 +8,7 @@ export interface IState {
 }
 
 export interface IEvents {
+  '/movies/add': IMovie;
   '/movies/get': void;
   '/movies/save': Array<IMovie>;
 }

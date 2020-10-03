@@ -1,3 +1,4 @@
+import { useStoreon } from 'storeon/react';
 import React, { FC, useContext } from 'react';
 import { ModalType } from '@shared/interfaces/coreModal.interface';
 import { ModalContext } from '@shared/interfaces/coreModal.context';
@@ -8,6 +9,7 @@ import MovieDetailsModal from '@app/components/modals/movieDetailsModal/movieDet
 
 const CoreModal: FC = () => {
   const s = useStyle();
+  const { dispatch } = useStoreon('movies');
   const { chosenModal, setChosenModal } = useContext(ModalContext);
   let modal: JSX.Element;
 
@@ -34,11 +36,17 @@ const CoreModal: FC = () => {
     default:
       modal = (
         <MovieDetailsModal
-          onConfirmClick={(movie) => setChosenModal({
-            movie,
-            type: chosenModal.type === ModalType.Add ? ModalType.Success : null,
-            actionType: chosenModal.type,
-          })}
+          onConfirmClick={(movie) => {
+            if (chosenModal.type === ModalType.Add) {
+              dispatch('/movies/add', movie);
+            }
+
+            setChosenModal({
+              movie,
+              type: chosenModal.type === ModalType.Add ? ModalType.Success : null,
+              actionType: chosenModal.type,
+            });
+          }}
           onCancelClick={() => setChosenModal({ type: null })}
           modalDetails={chosenModal}
         />

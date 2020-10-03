@@ -3,7 +3,7 @@ import MovieService from '../services/movies.service';
 
 const router = new KoaRouter();
 
-router.get('/movies', async ctx => {
+router.get('/movies', ctx => {
   ctx.body = { movies: MovieService.movies };
 });
 
@@ -15,8 +15,8 @@ router.delete('/movies/:id', async ctx => {
   ctx.body = '/movies/delete';
 });
 
-router.put('/movies', async ctx => {
-  ctx.body = '/movies/put';
+router.put('/movies/add', ctx => {
+  ctx.body = { movies: MovieService.addMovie(ctx.request.body.movie) };
 });
 
 export default router;

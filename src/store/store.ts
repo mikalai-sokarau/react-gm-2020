@@ -14,7 +14,8 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     let movies: Array<IMovie> = [];
 
     try {
-      const response = await fetch(`${API_URL}/movies`);
+      const response: Response = await fetch(`${API_URL}/movies`);
+
       movies = (await response.json()).movies;
     } catch (e) {
       movies = [];
@@ -24,7 +25,27 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     store.dispatch('/movies/save', movies);
   });
 
-  store.on('/movies/save', (state, movies) => ({ ...state, movies }));
+  store.on('/movies/add', async (state: IState, movie: IMovie) => {
+    let movies: Array<IMovie>;
+
+    try {
+      const requestInit: RequestInit = {
+        method: 'PUT',
+        body: JSON.stringify({ movie }),
+        headers: { 'content-type': 'application/json' },
+      };
+      const response: Response = await fetch(`${API_URL}/movies/add`, requestInit);
+
+      movies = (await response.json()).movies;
+    } catch (e) {
+      movies = [];
+      handleError(e);
+    }
+
+    store.dispatch('/movies/save', movies);
+  });
+
+  store.on('/movies/save', (state: IState, movies: Array<IMovie>) => ({ ...state, movies }));
 };
 
 const store = createStoreon<IState, IEvents>([moviesModule]);
