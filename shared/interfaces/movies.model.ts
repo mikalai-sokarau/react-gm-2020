@@ -7,6 +7,7 @@ export enum Genres {
 }
 
 export enum IMovieSortOptions {
+  rating = 'rating',
   title = 'title',
   year = 'releaseDate',
 }

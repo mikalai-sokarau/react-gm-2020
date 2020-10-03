@@ -10,6 +10,10 @@ const sortOptions: Array<ISortOption> = [
     title: 'release date',
     value: IMovieSortOptions.year,
   },
+  {
+    title: 'rating',
+    value: IMovieSortOptions.rating,
+  },
 ];
 
 export default sortOptions;

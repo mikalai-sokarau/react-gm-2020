@@ -1,15 +1,17 @@
 import cN from 'classnames';
+import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
-import { Genres } from '@shared/interfaces/movies.model';
+import { Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
-import { IPreferenceBar, ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { IPreferenceBar, ISortOption, ISortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
-const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick, onSortingSelect }) => {
+const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick }) => {
   const s = useStyle();
   const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
   const [chosenGenre, setGenre] = useState(Genres.All);
+  const { dispatch } = useStoreon('sort');
 
   const genreClick = (genre: string) => {
     const g = genre.toLowerCase() as Genres;
@@ -19,7 +21,15 @@ const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick, onSortingSelect }) =>
   };
   const onSortingOptionClick = (option: ISortOption) => {
     setDropdownItem(option);
-    onSortingSelect(option);
+    dispatch(
+      '/movies/sort',
+      {
+        option: option.value,
+        order: option.value === IMovieSortOptions.title
+          ? ISortOrderBy.asc
+          : ISortOrderBy.desc,
+      },
+    );
   };
 
   return (

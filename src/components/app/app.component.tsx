@@ -12,7 +12,6 @@ import HeaderActiveComponent from '@app/components/app/app.component.interface';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
 import { IModalContext, ModalContext } from '@shared/interfaces/coreModal.context';
 import { Genres, IMovie, IMovieSortOptions } from '@shared/interfaces/movies.model';
-import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const App: FC = () => {
   const classes = useStyle();
@@ -38,11 +37,6 @@ const App: FC = () => {
     setChosenMovie(movie);
     toggleHeaderComponent(HeaderActiveComponent.MovieDetails);
   };
-  const handleSortingSelect = ({ value }: ISortOption) => {
-    const sortedMovies = MoviesService.sortMovies(value, serviceMovies);
-    setChosenSortOption(value);
-    setMovies(sortedMovies);
-  };
 
   if (chosenModal.actionType) {
     setChosenModal({ type: chosenModal.type });
@@ -65,7 +59,6 @@ const App: FC = () => {
             <Main
               onGenreClick={handleGenreClick}
               onMovieImageClick={handleMovieClick}
-              onSortingSelect={handleSortingSelect}
             />
             <Footer />
             {chosenModal.type && <CoreModal />}
