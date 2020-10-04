@@ -1,30 +1,30 @@
 import cN from 'classnames';
 import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
-import { IState } from '@app/store/store.interface';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import { Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
+import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
 import { ISortOption, ISortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const PreferenceBar: FC = () => {
   const s = useStyle();
-  const { dispatch } = useStoreon<IState>('search');
+  const { dispatch } = useStoreon<IState>(StoreModule.search);
   const [chosenGenre, setGenre] = useState(Genres.All);
   const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
 
   const genreClick = (clickedGenre: string) => {
     const genre = clickedGenre.toLowerCase() as Genres;
 
-    dispatch('/search/genre', genre);
-    dispatch('/search/filter');
+    dispatch(ActionType.findMoviesByGenre, genre);
+    dispatch(ActionType.filterMovies);
     setGenre(genre);
   };
   const onSortingOptionClick = (option: ISortOption) => {
     setDropdownItem(option);
     dispatch(
-      '/search/sort',
+      ActionType.sortMovies,
       {
         option: option.value,
         order: option.value === IMovieSortOptions.title

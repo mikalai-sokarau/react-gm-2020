@@ -14,15 +14,32 @@ export interface IState {
   };
 }
 
+export enum StoreModule {
+  allMovies = 'allMovies',
+  chosenMovies = 'chosenMovies',
+  search = 'search',
+}
+
+export enum ActionType {
+  addMovie = '/movies/add',
+  deleteMovie = '/movies/delete',
+  editMovie = '/movies/edit',
+  getMovies = '/movies/get',
+  saveMovie = '/movies/save',
+  sortMovies = '/search/sort',
+  filterMovies = '/search/filter',
+  findMoviesByText = '/search/text',
+  findMoviesByGenre = '/search/genre',
+}
+
 export interface IEvents {
-  '/movies/add': IMovie;
-  '/movies/delete': string;
-  '/movies/edit': IMovie;
-  '/movies/get': void;
-  '/movies/save': Array<IMovie>;
-  '/search/sort': { option: IMovieSortOptions, order: ISortOrderBy };
-  '/search/filter': { text: string, genre: Genres };
-  '/search/text': string;
-  '/search/genre': Genres;
-  '/search/chosenMovie': IMovie;
+  [ActionType.addMovie]: IMovie;
+  [ActionType.deleteMovie]: string;
+  [ActionType.editMovie]: IMovie;
+  [ActionType.getMovies]: void;
+  [ActionType.saveMovie]: Array<IMovie>;
+  [ActionType.sortMovies]: { option: IMovieSortOptions, order: ISortOrderBy };
+  [ActionType.filterMovies]: { text: string, genre: Genres };
+  [ActionType.findMoviesByText]: string;
+  [ActionType.findMoviesByGenre]: Genres;
 }

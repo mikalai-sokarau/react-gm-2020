@@ -1,24 +1,12 @@
-import handleError from '@shared/utils/handleError';
 import { StoreonModule } from 'storeon';
-import { Genres, IMovie } from '@shared/interfaces/movies.model';
-import { IState, IEvents, API_URL } from '@app/store/store.interface';
+import handleError from '@shared/utils/handleError';
+import { IMovie } from '@shared/interfaces/movies.model';
+import {
+  IState, IEvents, API_URL, ActionType,
+} from '@app/store/store.interface';
 
 const moviesModule: StoreonModule<IState, IEvents> = (store) => {
-  store.on('@init', () => {
-    store.dispatch('/movies/get');
-
-    return {
-      allMovies: [],
-      chosenMovies: [],
-      search: {
-        chosenMovie: null,
-        genre: Genres.All,
-        text: '',
-      },
-    };
-  });
-
-  store.on('/movies/add', async (state: IState, movie: IMovie) => {
+  store.on(ActionType.addMovie, async (state: IState, movie: IMovie) => {
     let movies: Array<IMovie>;
 
     try {
@@ -35,10 +23,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch('/movies/save', movies);
+    store.dispatch(ActionType.saveMovie, movies);
   });
 
-  store.on('/movies/delete', async (state: IState, id: string) => {
+  store.on(ActionType.deleteMovie, async (state: IState, id: string) => {
     let movies: Array<IMovie>;
 
     try {
@@ -50,10 +38,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch('/movies/save', movies);
+    store.dispatch(ActionType.saveMovie, movies);
   });
 
-  store.on('/movies/edit', async (state: IState, movie: IMovie) => {
+  store.on(ActionType.editMovie, async (state: IState, movie: IMovie) => {
     let movies: Array<IMovie>;
 
     try {
@@ -70,10 +58,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch('/movies/save', movies);
+    store.dispatch(ActionType.saveMovie, movies);
   });
 
-  store.on('/movies/get', async () => {
+  store.on(ActionType.getMovies, async () => {
     let movies: Array<IMovie> = [];
 
     try {
@@ -85,10 +73,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch('/movies/save', movies);
+    store.dispatch(ActionType.saveMovie, movies);
   });
 
-  store.on('/movies/save', (state: IState, movies: Array<IMovie>) => ({
+  store.on(ActionType.saveMovie, (state: IState, movies: Array<IMovie>) => ({
     ...state,
     allMovies: movies,
     chosenMovies: movies,

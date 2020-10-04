@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { useStoreon } from 'storeon/react';
 import { IMovie } from '@shared/interfaces/movies.model';
+import { StoreModule } from '@app/store/store.interface';
 import MovieItem from '@app/components/movieItem/movieItem.component';
 import IMoviesList from '@app/components/moviesList/moviesList.interface';
 import useStyle from '@app/components/moviesList/moviesList.component.style';
 
 const MoviesList: FC<IMoviesList> = ({ onMovieImageClick }) => {
   const s = useStyle();
-  const { chosenMovies } = useStoreon('chosenMovies');
+  const { chosenMovies } = useStoreon(StoreModule.chosenMovies);
 
   return (
     <section>

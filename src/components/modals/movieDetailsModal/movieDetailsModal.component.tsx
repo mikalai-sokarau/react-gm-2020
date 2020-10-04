@@ -1,5 +1,6 @@
 import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
+import { StoreModule } from '@app/store/store.interface';
 import Button from '@app/components/button/button.component';
 import { IModal } from '@shared/interfaces/coreModal.interface';
 import { ButtonType } from '@app/components/button/button.interface';
@@ -12,8 +13,10 @@ import {
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
-  const { allMovies } = useStoreon('allMovies');
-  const movieData = allMovies.find((m: IMovie) => m.id === modalDetails.movie.id) || EMPTY_MOVIE;
+  const { allMovies } = useStoreon(StoreModule.allMovies);
+  const movieData = modalDetails.movie
+    ? allMovies.find((m: IMovie) => m.id === modalDetails.movie.id)
+    : EMPTY_MOVIE;
   const [movie, changeMovie] = useState({ ...movieData });
   const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
 

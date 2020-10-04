@@ -1,10 +1,10 @@
 import { StoreonModule } from 'storeon';
 import { Genres } from '@shared/interfaces/movies.model';
-import { IState, IEvents } from '@app/store/store.interface';
+import { IState, IEvents, ActionType } from '@app/store/store.interface';
 import { ISortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const searchModule: StoreonModule<IState, IEvents> = (store) => {
-  store.on('/search/sort', ({ chosenMovies, ...state }: IState, { option, order }) => {
+  store.on(ActionType.sortMovies, ({ chosenMovies, ...state }: IState, { option, order }) => {
     chosenMovies.sort((a, b) => (a[option] > b[option] ? 1 : -1));
 
     return {
@@ -15,7 +15,7 @@ const searchModule: StoreonModule<IState, IEvents> = (store) => {
     };
   });
 
-  store.on('/search/filter', ({ allMovies, ...state }: IState) => {
+  store.on(ActionType.filterMovies, ({ allMovies, ...state }: IState) => {
     const { genre } = state.search;
     const moviesToSearch = genre === Genres.All
       ? allMovies
@@ -28,9 +28,11 @@ const searchModule: StoreonModule<IState, IEvents> = (store) => {
     };
   });
 
-  store.on('/search/genre', (state, genre) => ({ ...state, search: { ...state.search, genre } }));
+  store.on(ActionType.findMoviesByGenre, (state, genre) => (
+    { ...state, search: { ...state.search, genre } }));
 
-  store.on('/search/text', (state: IState, text: string) => ({ ...state, search: { ...state.search, text } }));
+  store.on(ActionType.findMoviesByText, (state: IState, text: string) => (
+    { ...state, search: { ...state.search, text } }));
 };
 
 export default searchModule;
