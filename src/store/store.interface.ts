@@ -1,5 +1,5 @@
 import { Genres, IMovie, IMovieSortOptions } from '@shared/interfaces/movies.model';
-import { ISortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
+import { SortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
 // TODO: add default redirect to the port 4100.
 export const API_URL = 'http://localhost:4100';
@@ -38,7 +38,7 @@ export interface IEvents {
   [ActionType.editMovie]: IMovie;
   [ActionType.getMovies]: void;
   [ActionType.saveMovie]: Array<IMovie>;
-  [ActionType.sortMovies]: { option: IMovieSortOptions, order: ISortOrderBy };
+  [ActionType.sortMovies]: { option: IMovieSortOptions, order: SortOrderBy };
   [ActionType.filterMovies]: void;
   [ActionType.findMoviesByText]: string;
   [ActionType.findMoviesByGenre]: Genres;

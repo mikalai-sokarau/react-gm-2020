@@ -6,7 +6,7 @@ import { Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
-import { ISortOption, ISortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortOption, SortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const PreferenceBar: FC = () => {
   const s = useStyle();
@@ -28,8 +28,8 @@ const PreferenceBar: FC = () => {
       {
         option: option.value,
         order: option.value === IMovieSortOptions.title
-          ? ISortOrderBy.asc
-          : ISortOrderBy.desc,
+          ? SortOrderBy.asc
+          : SortOrderBy.desc,
       },
     );
   };

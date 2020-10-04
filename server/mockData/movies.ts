@@ -163,7 +163,7 @@ const movies: Array<IMovie> = [
     url: 'ratatouille.com',
     id: 15,
     duration: 111,
-    rating: 8.1,
+    rating: 8,
     description: 'Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.',
   },
   {

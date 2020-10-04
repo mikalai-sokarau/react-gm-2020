@@ -7,10 +7,6 @@ router.get('/movies', ctx => {
   ctx.body = { movies: MovieService.movies };
 });
 
-router.get('/movies/:id', ctx => {
-  ctx.body = '/movies/:id';
-});
-
 router.delete('/movies/delete/:id', ctx => {
   ctx.body = { movies: MovieService.deleteMovie(Number(ctx.params.id)) };
 });

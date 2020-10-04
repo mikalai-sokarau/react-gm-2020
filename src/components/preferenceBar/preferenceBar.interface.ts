@@ -1,6 +1,6 @@
 import { IMovieSortOptions } from '@shared/interfaces/movies.model';
 
-export enum ISortOrderBy {
+export enum SortOrderBy {
   asc,
   desc
 }
