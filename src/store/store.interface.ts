@@ -39,7 +39,7 @@ export interface IEvents {
   [ActionType.getMovies]: void;
   [ActionType.saveMovie]: Array<IMovie>;
   [ActionType.sortMovies]: { option: IMovieSortOptions, order: ISortOrderBy };
-  [ActionType.filterMovies]: { text: string, genre: Genres };
+  [ActionType.filterMovies]: void;
   [ActionType.findMoviesByText]: string;
   [ActionType.findMoviesByGenre]: Genres;
 }

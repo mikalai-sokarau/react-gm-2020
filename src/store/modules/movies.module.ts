@@ -24,6 +24,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     }
 
     store.dispatch(ActionType.saveMovie, movies);
+    store.dispatch(ActionType.filterMovies);
   });
 
   store.on(ActionType.deleteMovie, async (state: IState, id: string) => {
@@ -39,6 +40,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     }
 
     store.dispatch(ActionType.saveMovie, movies);
+    store.dispatch(ActionType.filterMovies);
   });
 
   store.on(ActionType.editMovie, async (state: IState, movie: IMovie) => {
@@ -59,6 +61,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     }
 
     store.dispatch(ActionType.saveMovie, movies);
+    store.dispatch(ActionType.filterMovies);
   });
 
   store.on(ActionType.getMovies, async () => {
