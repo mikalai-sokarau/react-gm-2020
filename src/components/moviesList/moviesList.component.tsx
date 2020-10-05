@@ -1,10 +1,14 @@
-import React, { FC } from 'react';
-import MovieItem from '@app/components/movieItem/movieItem.component';
+import React, { FC, useEffect, useState } from 'react';
 import IMoviesList from '@app/components/moviesList/moviesList.interface';
 import useStyle from '@app/components/moviesList/moviesList.component.style';
 
-const MoviesList: FC<IMoviesList> = ({ movies, onMovieImageClick }) => {
+const MoviesList: FC<IMoviesList> = ({ getMovies }) => {
   const s = useStyle();
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(getMovies());
+  }, [getMovies]);
 
   return (
     <section>
@@ -15,13 +19,7 @@ const MoviesList: FC<IMoviesList> = ({ movies, onMovieImageClick }) => {
       {movies.length
         ? (
           <div className={s.moviesContainer}>
-            {movies.map((m) => (
-              <MovieItem
-                movie={m}
-                key={m.id}
-                onMovieImageClick={() => onMovieImageClick(m)}
-              />
-            ))}
+            {movies}
           </div>
         )
         : <p className={s.noItemsFound}>no movies found</p>}
