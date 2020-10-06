@@ -4,7 +4,7 @@ import MovieService from '../services/movies.service';
 const router = new KoaRouter();
 
 router.get('/movies', ctx => {
-  ctx.body = { movies: MovieService.movies };
+  ctx.body = { movies: MovieService.getMovies(ctx.query) };
 });
 
 router.delete('/movies/delete/:id', ctx => {
