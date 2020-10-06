@@ -1,5 +1,6 @@
-import { Genres, IMovie, IMovieSortOptions } from '@shared/interfaces/movies.model';
-import { SortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
+import {
+  Genres, IMovie, IMovieSortOptions, SortOrderBy,
+} from '@shared/interfaces/movies.model';
 
 // TODO: add default redirect to the port 4100.
 export const API_URL = 'http://localhost:4100';

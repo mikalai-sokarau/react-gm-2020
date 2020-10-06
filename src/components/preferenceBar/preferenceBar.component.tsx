@@ -2,11 +2,11 @@ import cN from 'classnames';
 import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
 import Dropdown from '@app/components/dropdown/dropdown.component';
-import { Genres, IMovieSortOptions } from '@shared/interfaces/movies.model';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
-import { ISortOption, SortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { Genres, IMovieSortOptions, SortOrderBy } from '@shared/interfaces/movies.model';
 
 const PreferenceBar: FC = () => {
   const s = useStyle();

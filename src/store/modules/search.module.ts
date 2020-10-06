@@ -1,7 +1,6 @@
 import { StoreonModule } from 'storeon';
-import { Genres } from '@shared/interfaces/movies.model';
+import { Genres, SortOrderBy } from '@shared/interfaces/movies.model';
 import { IState, IEvents, ActionType } from '@app/store/store.interface';
-import { SortOrderBy } from '@app/components/preferenceBar/preferenceBar.interface';
 
 const searchModule: StoreonModule<IState, IEvents> = (store) => {
   store.on(ActionType.sortMovies, ({ chosenMovies, ...state }: IState, { option, order }) => {
