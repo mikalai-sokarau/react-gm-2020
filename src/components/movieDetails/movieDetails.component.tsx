@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import Logo from '@app/components/logo/logo.component';
 import useCommonStyle from '@app/style/variables/sizes';
-import useStyle from '@app/components/movieDetails/movieDetails.component.style';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useGenreStyle from '@app/components/movieItem/movieItem.component.style';
 import IMovieDetails from '@app/components/movieDetails/movieDetails.interface';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import useStyle from '@app/components/movieDetails/movieDetails.component.style';
 
 const MovieDetails: FC<IMovieDetails> = ({ movie, onBackButtonClick }) => {
   const s = useStyle();
@@ -26,6 +27,8 @@ const MovieDetails: FC<IMovieDetails> = ({ movie, onBackButtonClick }) => {
         <figure className={s.movieDetails}>
           <img
             src={movie.imagePath}
+            // eslint-disable-next-line no-return-assign
+            onError={(e) => ((e.target as HTMLImageElement).src = NO_IMAGE_PATH)}
             alt={movie.title}
             height="435px"
             width="280px"
