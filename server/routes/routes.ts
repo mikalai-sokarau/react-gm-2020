@@ -12,8 +12,7 @@ router.delete('/movies/delete/:id', ctx => {
     MovieService.deleteMovie(Number(ctx.params.id));
     ctx.status = 200;
   } catch (e) {
-    ctx.body = { error: e };
-    ctx.status = 500;
+    ctx.throw(400, e.message);
   }
 });
 
@@ -22,8 +21,7 @@ router.post('/movies/add', ctx => {
     ctx.body = MovieService.addMovie(ctx.request.body.movie);
     ctx.status = 200;
   } catch (e) {
-    ctx.body = { error: e };
-    ctx.status = 500;
+    ctx.throw(400, e.message);
   }
 });
 
@@ -32,8 +30,7 @@ router.put('/movies/edit', ctx => {
     MovieService.editMovie(ctx.request.body.movie);
     ctx.status = 200;
   } catch (e) {
-    ctx.body = { error: e };
-    ctx.status = 500;
+    ctx.throw(400, e.message);
   }
 })
 

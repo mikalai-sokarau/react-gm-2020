@@ -22,9 +22,12 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
         const newMovie = await response.json();
 
         movies = [...state.movies, newMovie];
+      } else {
+        const text = await response.text();
+        throw new Error(text);
       }
     } catch (e) {
-      movies = [];
+      movies = state.movies;
       handleError(e);
     }
 
@@ -41,9 +44,12 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
         const movieId = Number(id);
 
         movies = state.movies.filter((m) => m.id !== movieId);
+      } else {
+        const text = await response.text();
+        throw new Error(text);
       }
     } catch (e) {
-      movies = [];
+      movies = state.movies;
       handleError(e);
     }
 
@@ -56,7 +62,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     try {
       const requestInit: RequestInit = {
         method: 'PUT',
-        body: JSON.stringify({ movie }),
+        body: JSON.stringify({ ...movie, title: '' }),
         headers: { 'content-type': 'application/json' },
       };
       const response: Response = await fetch(`${API_URL}/movies/edit`, requestInit);
@@ -64,9 +70,12 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       if (response.ok) {
         movies = [...state.movies];
         movies.splice(movies.findIndex((m) => m.id === movie.id), 1, movie);
+      } else {
+        const text = await response.text();
+        throw new Error(text);
       }
     } catch (e) {
-      movies = [];
+      movies = state.movies;
       handleError(e);
     }
 
