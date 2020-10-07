@@ -20,10 +20,8 @@ class MovieService {
     return this.movies;
   }
 
-  deleteMovie(id: number): Array<IMovie> {
+  deleteMovie(id: number): void {
     this.movies = this.movies.filter((m) => m.id !== id);
-
-    return this.movies;
   }
 
   editMovie(movie: IMovie): Array<IMovie> {

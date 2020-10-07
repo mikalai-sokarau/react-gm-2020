@@ -33,7 +33,11 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     try {
       const response: Response = await fetch(`${API_URL}/movies/delete/${id}`, { method: 'DELETE' });
 
-      movies = (await response.json()).movies;
+      if (response.ok) {
+        const movieId = Number(id);
+
+        movies = state.movies.filter(m => m.id !== movieId);
+      }
     } catch (e) {
       movies = [];
       handleError(e);

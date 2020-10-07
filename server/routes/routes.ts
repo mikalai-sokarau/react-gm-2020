@@ -8,7 +8,13 @@ router.get('/movies', ctx => {
 });
 
 router.delete('/movies/delete/:id', ctx => {
-  ctx.body = { movies: MovieService.deleteMovie(Number(ctx.params.id)) };
+  try {
+    MovieService.deleteMovie(Number(ctx.params.id));
+    ctx.status = 200;
+  } catch (e) {
+    ctx.body = { error: e };
+    ctx.status = 500;
+  }
 });
 
 router.post('/movies/add', ctx => {
