@@ -18,7 +18,11 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       };
       const response: Response = await fetch(`${API_URL}/movies/add`, requestInit);
 
-      movies = (await response.json()).movies;
+      if (response.ok) {
+        const newMovie = await response.json();
+
+        movies = [...state.movies, newMovie];
+      }
     } catch (e) {
       movies = [];
       handleError(e);

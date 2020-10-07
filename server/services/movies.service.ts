@@ -10,14 +10,16 @@ class MovieService {
     this.movies = this.sortMovies(IMovieSortOptions.title, movies);
   }
 
-  addMovie(movie: IMovie): Array<IMovie> {
-    this.movies.push({
+  addMovie(movie: IMovie): IMovie {
+    const newMovie = {
       ...movie,
       id: Date.now(),
       rating: Number((Math.random() * Math.floor(10)).toFixed(1)),
-    });
+    }
+    
+    this.movies.push(newMovie);
 
-    return this.movies;
+    return newMovie;
   }
 
   deleteMovie(id: number): void {
