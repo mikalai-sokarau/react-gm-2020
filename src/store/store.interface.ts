@@ -1,3 +1,4 @@
+import ISearchQueryParams from '@server/services/movies.service.interface';
 import {
   Genres, IMovie, IMovieSortOptions, SortOrderBy,
 } from '@shared/interfaces/movies.model';
@@ -9,11 +10,23 @@ export interface IState {
   allMovies: Array<IMovie>;
   chosenMovies: Array<IMovie>;
   search: {
-    chosenMovie: IMovie,
     genre: Genres,
+    offset: number,
+    orderBy: SortOrderBy,
+    size: number,
+    sortBy: IMovieSortOptions,
     text: string,
   };
 }
+
+export const DEFAULT_SEARCH_STATE = {
+  genre: Genres.All,
+  offset: 0,
+  orderBy: SortOrderBy.asc,
+  size: undefined as number,
+  sortBy: IMovieSortOptions.title,
+  text: '',
+};
 
 export enum StoreModule {
   allMovies = 'allMovies',
@@ -27,20 +40,14 @@ export enum ActionType {
   editMovie = '/movies/edit',
   getMovies = '/movies/get',
   saveMovie = '/movies/save',
-  sortMovies = '/search/sort',
   filterMovies = '/search/filter',
-  findMoviesByText = '/search/text',
-  findMoviesByGenre = '/search/genre',
 }
 
 export interface IEvents {
   [ActionType.addMovie]: IMovie;
   [ActionType.deleteMovie]: string;
   [ActionType.editMovie]: IMovie;
-  [ActionType.getMovies]: void;
-  [ActionType.saveMovie]: Array<IMovie>;
-  [ActionType.sortMovies]: { option: IMovieSortOptions, order: SortOrderBy };
+  [ActionType.getMovies]: ISearchQueryParams;
+  [ActionType.saveMovie]: { movies: Array<IMovie>, params?: any };
   [ActionType.filterMovies]: void;
-  [ActionType.findMoviesByText]: string;
-  [ActionType.findMoviesByGenre]: Genres;
 }

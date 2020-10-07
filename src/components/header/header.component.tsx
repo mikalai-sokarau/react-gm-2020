@@ -17,8 +17,7 @@ const Header: FC = () => {
   const [inputText, setInputText] = useState(search.text);
   const { setChosenModal } = useContext(ModalContext);
   const submitSearch = () => {
-    dispatch(ActionType.findMoviesByText, inputText);
-    dispatch(ActionType.filterMovies);
+    dispatch(ActionType.getMovies, { ...search, text: inputText });
   };
 
   const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -49,6 +48,7 @@ const Header: FC = () => {
               placeholder="What do you want to watch?"
               className={s.searchInput}
               onKeyUp={inputKeyPressHandler}
+              defaultValue={search.text}
             />
             <Button
               type={ButtonType.search}

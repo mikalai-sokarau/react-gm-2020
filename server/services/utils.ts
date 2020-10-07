@@ -3,7 +3,6 @@ import {
   IMovie,
   SortOrderBy,
   IMovieSortOptions,
-  DEFAULT_MOVIES_NUMBER,
 } from '../../shared/interfaces/movies.model';
 import ISearchQueryParams from './movies.service.interface';
 
@@ -61,12 +60,14 @@ function getOrderedMoviesByDirection(
 function getPartialMovies(
   movies: Array<IMovie>,
   offset: string | number = 0,
-  size: string | number = DEFAULT_MOVIES_NUMBER
+  size: string | number
 ): Array<IMovie> {
   const from = Number(offset);
   const to = from + Number(size);
-  
-  return movies.slice(from, to);
+
+  return from && to
+    ? movies.slice(from, to)
+    : movies;
 };
 
 function getGenresEnumValue(value: Genres): Genres {
@@ -93,6 +94,4 @@ function getSortOrderEnumValue(value: SortOrderBy): SortOrderBy {
   }
 }
 
-export {
-  getFilteredMovies
-}
+export default getFilteredMovies;

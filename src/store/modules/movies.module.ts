@@ -1,6 +1,7 @@
 import { StoreonModule } from 'storeon';
 import handleError from '@shared/utils/handleError';
 import { IMovie } from '@shared/interfaces/movies.model';
+import ISearchQueryParams from '@server/services/movies.service.interface';
 import {
   IState, IEvents, API_URL, ActionType,
 } from '@app/store/store.interface';
@@ -23,8 +24,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch(ActionType.saveMovie, movies);
-    store.dispatch(ActionType.filterMovies);
+    store.dispatch(ActionType.saveMovie, { movies });
   });
 
   store.on(ActionType.deleteMovie, async (state: IState, id: string) => {
@@ -39,8 +39,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch(ActionType.saveMovie, movies);
-    store.dispatch(ActionType.filterMovies);
+    store.dispatch(ActionType.saveMovie, { movies });
   });
 
   store.on(ActionType.editMovie, async (state: IState, movie: IMovie) => {
@@ -60,15 +59,21 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch(ActionType.saveMovie, movies);
-    store.dispatch(ActionType.filterMovies);
+    store.dispatch(ActionType.saveMovie, { movies });
   });
 
-  store.on(ActionType.getMovies, async () => {
+  store.on(ActionType.getMovies, async (state: IState, params: ISearchQueryParams) => {
     let movies: Array<IMovie> = [];
+    const queryParams = Object
+      .entries(params)
+      .filter(([key, value]) => Boolean(value))
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
 
     try {
-      const response: Response = await fetch(`${API_URL}/movies`);
+      const response: Response = await fetch(
+        `${API_URL}/movies${queryParams ? `?${queryParams}` : ''}`,
+      );
 
       movies = (await response.json()).movies;
     } catch (e) {
@@ -76,11 +81,12 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch(ActionType.saveMovie, movies);
+    store.dispatch(ActionType.saveMovie, { movies, params });
   });
 
-  store.on(ActionType.saveMovie, (state: IState, movies: Array<IMovie>) => ({
+  store.on(ActionType.saveMovie, (state: IState, { movies, params = state.search }) => ({
     ...state,
+    search: params,
     allMovies: movies,
     chosenMovies: movies,
   }));

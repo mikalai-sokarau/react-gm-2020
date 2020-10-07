@@ -10,24 +10,24 @@ import { Genres, IMovieSortOptions, SortOrderBy } from '@shared/interfaces/movie
 
 const PreferenceBar: FC = () => {
   const s = useStyle();
-  const { dispatch } = useStoreon<IState>(StoreModule.search);
+  const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [chosenGenre, setGenre] = useState(Genres.All);
   const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
 
   const genreClick = (clickedGenre: string) => {
     const genre = clickedGenre.toLowerCase() as Genres;
 
-    dispatch(ActionType.findMoviesByGenre, genre);
-    dispatch(ActionType.filterMovies);
+    dispatch(ActionType.getMovies, { ...search, genre });
     setGenre(genre);
   };
   const onSortingOptionClick = (option: ISortOption) => {
     setDropdownItem(option);
     dispatch(
-      ActionType.sortMovies,
+      ActionType.getMovies,
       {
-        option: option.value,
-        order: option.value === IMovieSortOptions.title
+        ...search,
+        sortBy: option.value,
+        orderBy: option.value === IMovieSortOptions.title
           ? SortOrderBy.asc
           : SortOrderBy.desc,
       },

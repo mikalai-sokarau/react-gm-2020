@@ -1,5 +1,3 @@
-export const DEFAULT_MOVIES_NUMBER = 20;
-
 export enum Genres {
   All = 'all',
   Action = 'action',

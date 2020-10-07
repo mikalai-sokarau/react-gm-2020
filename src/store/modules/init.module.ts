@@ -1,19 +1,16 @@
 import { StoreonModule } from 'storeon';
-import { Genres } from '@shared/interfaces/movies.model';
-import { IState, IEvents, ActionType } from '@app/store/store.interface';
+import {
+  IState, IEvents, ActionType, DEFAULT_SEARCH_STATE,
+} from '@app/store/store.interface';
 
 const initModule: StoreonModule<IState, IEvents> = (store) => {
   store.on('@init', () => {
-    store.dispatch(ActionType.getMovies);
+    store.dispatch(ActionType.getMovies, DEFAULT_SEARCH_STATE);
 
     return {
       allMovies: [],
       chosenMovies: [],
-      search: {
-        chosenMovie: null,
-        genre: Genres.All,
-        text: '',
-      },
+      search: DEFAULT_SEARCH_STATE,
     };
   });
 };
