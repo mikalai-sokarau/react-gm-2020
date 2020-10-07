@@ -1,7 +1,7 @@
 import mockMovies from '../mockData/movies';
 import ISearchQueryParams from './movies.service.interface';
 import { IMovie, Genres, IMovieSortOptions } from '../../shared/interfaces/movies.model';
-import { getFilteredMoviesByGenre, getFilteredMoviesByText, getOrderedMoviesByDirection, getPartialMovies, getSortedMoviesByOption } from './utils';
+import { getFilteredMovies } from './utils';
 
 class MovieService {
   movies: Array<IMovie>;
@@ -42,14 +42,8 @@ class MovieService {
     return moviesToSearch.filter((m) => m.title.includes(text));
   }
 
-  getMovies({ genre, offset, orderBy, sortBy, size, text }: ISearchQueryParams): Array<IMovie> {
-    const filteredMoviesByGenre = getFilteredMoviesByGenre(this.movies, genre);
-    const filteredMoviesByText = getFilteredMoviesByText(filteredMoviesByGenre, text);
-    const sortedMoviesByOption = getSortedMoviesByOption(filteredMoviesByText, sortBy);
-    const orderedMoviesByDirection = getOrderedMoviesByDirection(sortedMoviesByOption, orderBy);
-    const partialMovies = getPartialMovies(orderedMoviesByDirection, offset, size);
-    
-    return partialMovies;
+  getMovies(params: ISearchQueryParams): Array<IMovie> {
+    return getFilteredMovies(this.movies, params);
   }
 
   sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {
