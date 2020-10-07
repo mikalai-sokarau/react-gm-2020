@@ -87,8 +87,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
   store.on(ActionType.saveMovie, (state: IState, { movies, params = state.search }) => ({
     ...state,
     search: params,
-    allMovies: movies,
-    chosenMovies: movies,
+    movies,
   }));
 };
 

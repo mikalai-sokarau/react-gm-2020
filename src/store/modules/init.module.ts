@@ -8,8 +8,7 @@ const initModule: StoreonModule<IState, IEvents> = (store) => {
     store.dispatch(ActionType.getMovies, DEFAULT_SEARCH_STATE);
 
     return {
-      allMovies: [],
-      chosenMovies: [],
+      movies: [],
       search: DEFAULT_SEARCH_STATE,
     };
   });

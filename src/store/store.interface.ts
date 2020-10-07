@@ -7,8 +7,7 @@ import {
 export const API_URL = 'http://localhost:4100';
 
 export interface IState {
-  allMovies: Array<IMovie>;
-  chosenMovies: Array<IMovie>;
+  movies: Array<IMovie>;
   search: {
     genre: Genres,
     offset: number,
@@ -29,8 +28,7 @@ export const DEFAULT_SEARCH_STATE = {
 };
 
 export enum StoreModule {
-  allMovies = 'allMovies',
-  chosenMovies = 'chosenMovies',
+  movies = 'movies',
   search = 'search',
 }
 

@@ -13,9 +13,9 @@ import {
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
-  const { allMovies } = useStoreon(StoreModule.allMovies);
+  const { movies } = useStoreon(StoreModule.movies);
   const movieData = modalDetails.movie
-    ? allMovies.find((m: IMovie) => m.id === modalDetails.movie.id)
+    ? movies.find((m: IMovie) => m.id === modalDetails.movie.id)
     : EMPTY_MOVIE;
   const [movie, changeMovie] = useState({ ...movieData });
   const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
