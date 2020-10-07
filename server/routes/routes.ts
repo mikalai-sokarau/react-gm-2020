@@ -22,7 +22,13 @@ router.post('/movies/add', ctx => {
 });
 
 router.put('/movies/edit', ctx => {
-  ctx.body = { movies: MovieService.editMovie(ctx.request.body.movie) };
+  try {
+    MovieService.editMovie(ctx.request.body.movie);
+    ctx.status = 200;
+  } catch (e) {
+    ctx.body = { error: e };
+    ctx.status = 500;
+  }
 })
 
 export default router;

@@ -36,7 +36,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       if (response.ok) {
         const movieId = Number(id);
 
-        movies = state.movies.filter(m => m.id !== movieId);
+        movies = state.movies.filter((m) => m.id !== movieId);
       }
     } catch (e) {
       movies = [];
@@ -57,7 +57,10 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       };
       const response: Response = await fetch(`${API_URL}/movies/edit`, requestInit);
 
-      movies = (await response.json()).movies;
+      if (response.ok) {
+        movies = [...state.movies];
+        movies.splice(movies.findIndex((m) => m.id === movie.id), 1, movie);
+      }
     } catch (e) {
       movies = [];
       handleError(e);

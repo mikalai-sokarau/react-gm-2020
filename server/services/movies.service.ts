@@ -24,12 +24,8 @@ class MovieService {
     this.movies = this.movies.filter((m) => m.id !== id);
   }
 
-  editMovie(movie: IMovie): Array<IMovie> {
-    const movieIndex = this.movies.findIndex((m) => m.id === movie.id);
-
-    this.movies.splice(movieIndex, 1, movie);
-
-    return this.movies;
+  editMovie(movie: IMovie): void {
+    this.movies.splice(this.movies.findIndex((m) => m.id === movie.id), 1, movie);
   }
 
   filterMovies(text: string, genre: Genres): Array<IMovie> {
