@@ -1,7 +1,7 @@
-import ISearchQueryParams from '@server/services/movies.service.interface';
 import {
   Genres, IMovie, IMovieSortOptions, SortOrderBy,
 } from '@shared/interfaces/movies.model';
+import ISearchQueryParams from '@server/services/movies.service.interface';
 
 // TODO: add default redirect to the port 4100.
 export const API_URL = 'http://localhost:4100';
@@ -38,7 +38,6 @@ export enum ActionType {
   editMovie = '/movies/edit',
   getMovies = '/movies/get',
   saveMovie = '/movies/save',
-  filterMovies = '/search/filter',
 }
 
 export interface IEvents {
@@ -47,5 +46,4 @@ export interface IEvents {
   [ActionType.editMovie]: IMovie;
   [ActionType.getMovies]: ISearchQueryParams;
   [ActionType.saveMovie]: { movies: Array<IMovie>, params?: any };
-  [ActionType.filterMovies]: void;
 }
