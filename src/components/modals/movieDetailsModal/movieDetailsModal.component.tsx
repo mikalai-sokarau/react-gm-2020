@@ -28,8 +28,10 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
       onSubmit={onConfirmClick}
     >
       {({
+        dirty,
         errors,
         touched,
+        isValid,
         handleBlur,
         handleChange,
         handleSubmit,
@@ -111,6 +113,7 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
             <Button
               type={ButtonType.submit}
               onButtonClick={handleSubmit}
+              isDisabled={!(isValid && dirty)}
             />
           </div>
           <button
