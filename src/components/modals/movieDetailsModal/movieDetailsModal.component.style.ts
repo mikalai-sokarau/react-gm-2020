@@ -2,6 +2,16 @@ import { createUseStyles } from 'react-jss';
 import { gray, peachy, white } from '@app/style/variables/colors';
 import { deleteMovieCloseButtonStyles } from '@app/components/modals/coreModal/coreModal.component.style';
 
+const validationStatus = {
+  '&.correct': {
+    border: '1px solid green',
+  },
+
+  '&.hasError': {
+    border: '1px solid red',
+  },
+};
+
 const inputStyle = {
   background: gray.tint3,
   border: '1px solid transparent',
@@ -13,6 +23,8 @@ const inputStyle = {
   height: '3rem',
   padding: '0 20px',
   width: '480px',
+
+  ...validationStatus,
 };
 
 const style = createUseStyles({
@@ -30,6 +42,9 @@ const style = createUseStyles({
     position: 'absolute',
     textTransform: 'lowercase',
     textWeight: 100,
+  },
+  hasError: {
+    border: '1px solid red',
   },
   modalButtons: {
     display: 'flex',
@@ -90,4 +105,7 @@ const style = createUseStyles({
   },
 });
 
-export default style;
+export {
+  style,
+  validationStatus,
+};
