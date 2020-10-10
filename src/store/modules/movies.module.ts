@@ -62,7 +62,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     try {
       const requestInit: RequestInit = {
         method: 'PUT',
-        body: JSON.stringify({ ...movie, title: '' }),
+        body: JSON.stringify({ movie }),
         headers: { 'content-type': 'application/json' },
       };
       const response: Response = await fetch(`${API_URL}/movies/edit`, requestInit);
