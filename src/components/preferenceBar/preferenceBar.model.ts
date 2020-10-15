@@ -1,5 +1,5 @@
+import { IMovieSortOptions } from '@shared/interfaces/movies.model';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
-import { IMovieSortOptions } from '@app/mockData/movies.model';
 
 const sortOptions: Array<ISortOption> = [
   {
@@ -9,6 +9,10 @@ const sortOptions: Array<ISortOption> = [
   {
     title: 'release date',
     value: IMovieSortOptions.year,
+  },
+  {
+    title: 'rating',
+    value: IMovieSortOptions.rating,
   },
 ];
 

@@ -1,4 +1,4 @@
-export interface IValidationState {
+export interface IEmptyMovieState {
   description: boolean;
   duration: boolean;
   genre: boolean;
@@ -6,12 +6,3 @@ export interface IValidationState {
   title: boolean;
   url: boolean;
 }
-
-export const VALIDATION_DEFAULT_STATE: IValidationState = {
-  description: false,
-  duration: false,
-  genre: false,
-  releaseDate: false,
-  title: false,
-  url: false,
-};

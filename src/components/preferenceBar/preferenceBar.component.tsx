@@ -1,25 +1,37 @@
 import cN from 'classnames';
+import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
-import { Genres } from '@app/mockData/movies.model';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
+import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
-import { IPreferenceBar, ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { Genres, IMovieSortOptions, SortOrderBy } from '@shared/interfaces/movies.model';
 
-const PreferenceBar: FC<IPreferenceBar> = ({ onGenreClick, onSortingSelect }) => {
+const PreferenceBar: FC = () => {
   const s = useStyle();
-  const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
+  const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [chosenGenre, setGenre] = useState(Genres.All);
+  const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
 
-  const genreClick = (genre: string) => {
-    const g = genre.toLowerCase() as Genres;
+  const genreClick = (clickedGenre: string) => {
+    const genre = clickedGenre.toLowerCase() as Genres;
 
-    onGenreClick(g);
-    setGenre(g);
+    dispatch(ActionType.getMovies, { ...search, genre });
+    setGenre(genre);
   };
   const onSortingOptionClick = (option: ISortOption) => {
     setDropdownItem(option);
-    onSortingSelect(option);
+    dispatch(
+      ActionType.getMovies,
+      {
+        ...search,
+        sortBy: option.value,
+        orderBy: option.value === IMovieSortOptions.title
+          ? SortOrderBy.asc
+          : SortOrderBy.desc,
+      },
+    );
   };
 
   return (

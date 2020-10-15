@@ -1,6 +1,8 @@
+import { useStoreon } from 'storeon/react';
 import React, { FC, useContext } from 'react';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
+import { ActionType } from '@app/store/store.interface';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
 import { useStyle } from '@app/components/modals/coreModal/coreModal.component.style';
 import SuccessModal from '@app/components/modals/successModal/successModal.component';
 import DeleteModal from '@app/components/modals/deleteMovieModal/deleteMovieModal.component';
@@ -8,6 +10,7 @@ import MovieDetailsModal from '@app/components/modals/movieDetailsModal/movieDet
 
 const CoreModal: FC = () => {
   const s = useStyle();
+  const { dispatch } = useStoreon();
   const { chosenModal, setChosenModal } = useContext(ModalContext);
   let modal: JSX.Element;
 
@@ -15,11 +18,10 @@ const CoreModal: FC = () => {
     case ModalType.Delete:
       modal = (
         <DeleteModal
-          onConfirmClick={() => setChosenModal({
-            actionType: ModalType.Delete,
-            movie: chosenModal.movie,
-            type: null,
-          })}
+          onConfirmClick={() => {
+            dispatch(ActionType.deleteMovie, chosenModal.movie.id);
+            setChosenModal({ type: null });
+          }}
           onCancelClick={() => setChosenModal({ type: null })}
         />
       );
@@ -34,11 +36,21 @@ const CoreModal: FC = () => {
     default:
       modal = (
         <MovieDetailsModal
-          onConfirmClick={(movie) => setChosenModal({
-            movie,
-            type: chosenModal.type === ModalType.Add ? ModalType.Success : null,
-            actionType: chosenModal.type,
-          })}
+          onConfirmClick={(movie) => {
+            if (chosenModal.type === ModalType.Add) {
+              dispatch(ActionType.addMovie, movie);
+            }
+
+            if (chosenModal.type === ModalType.Edit) {
+              dispatch(ActionType.editMovie, movie);
+            }
+
+            setChosenModal({
+              movie,
+              type: chosenModal.type === ModalType.Add ? ModalType.Success : null,
+              actionType: chosenModal.type,
+            });
+          }}
           onCancelClick={() => setChosenModal({ type: null })}
           modalDetails={chosenModal}
         />

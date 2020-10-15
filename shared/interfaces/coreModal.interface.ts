@@ -1,5 +1,5 @@
-import { IModalContext } from '@app/components/modals/coreModal/coreModal.context';
-import { IMovie } from '@app/mockData/movies.model';
+import { IMovie } from '@shared/interfaces/movies.model';
+import { IModalContext } from '@shared/interfaces/coreModal.context';
 
 export enum ModalType {
   Add = 'add',

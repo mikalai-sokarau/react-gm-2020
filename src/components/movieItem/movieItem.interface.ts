@@ -1,4 +1,4 @@
-import { IMovie } from '@app/mockData/movies.model';
+import { IMovie } from '@shared/interfaces/movies.model';
 
 export enum MovieAction {
   Edit,

@@ -7,6 +7,7 @@ export enum Genres {
 }
 
 export enum IMovieSortOptions {
+  rating = 'rating',
   title = 'title',
   year = 'releaseDate',
 }
@@ -36,3 +37,8 @@ export const EMPTY_MOVIE: IMovie = {
   rating: undefined,
   description: '',
 };
+
+export enum SortOrderBy {
+  asc = 'asc',
+  desc = 'desc'
+}

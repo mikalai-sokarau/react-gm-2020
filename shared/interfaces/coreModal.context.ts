@@ -1,6 +1,6 @@
 import React from 'react';
-import { IMovie } from '@app/mockData/movies.model';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
+import { IMovie } from '@shared/interfaces/movies.model';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
 
 export interface IModalContext {
   actionType?: ModalType;

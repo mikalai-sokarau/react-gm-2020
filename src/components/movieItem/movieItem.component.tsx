@@ -1,9 +1,10 @@
 import cN from 'classnames';
 import React, { useState, FC, useContext } from 'react';
+import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
-import { ModalType } from '@app/components/modals/coreModal/coreModal.interface';
-import { ModalContext } from '@app/components/modals/coreModal/coreModal.context';
 
 const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
   const s = useStyle();
@@ -23,6 +24,8 @@ const MovieItem: FC<IMovieItem> = ({ movie, onMovieImageClick }) => {
       <img
         src={movie.imagePath}
         alt={movie.title}
+        // eslint-disable-next-line no-return-assign
+        onError={(e) => (e.target as HTMLImageElement).src = NO_IMAGE_PATH}
         height="490px"
         width="320px"
         onClick={onImageClick}

@@ -1,11 +1,13 @@
 import cN from 'classnames';
 import React, { FC, useState } from 'react';
-import { Genres } from '@app/mockData/movies.model';
 import useClickedOutside from '@app/hooks/clickOutside';
+import { Genres } from '@shared/interfaces/movies.model';
 import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
 import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
 
-const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
+const MultipleDropdown: FC<IMultipleDropdown> = ({
+  genres, onGenreClick, onBlurHandler, styles,
+}) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
   const isClickedOutside = useClickedOutside(s.dropdownContainer);
@@ -23,11 +25,14 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({ genres, onGenreClick }) => {
   };
 
   return (
-    <div className={cN(s.dropdownContainer, { open: isDropdownOpen })}>
+    <div
+      className={cN(s.dropdownContainer, { open: isDropdownOpen })}
+      onBlur={onBlurHandler}
+    >
       <div
         role="menu"
         tabIndex={0}
-        className={s.dropdownTitle}
+        className={cN(s.dropdownTitle, styles)}
         onClick={() => toggleDropdown(!isDropdownOpen)}
       >
         select genre
