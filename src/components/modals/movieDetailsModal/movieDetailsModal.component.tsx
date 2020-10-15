@@ -18,7 +18,7 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
   const s = useStyle();
   const { movies } = useStoreon(StoreModule.movies);
   const movie = modalDetails.movie
-    ? { ...movies.find((m: IMovie) => m.id === modalDetails.movie.id) }
+    ? movies.find((m: IMovie) => m.id === modalDetails.movie.id)
     : EMPTY_MOVIE;
 
   return (
