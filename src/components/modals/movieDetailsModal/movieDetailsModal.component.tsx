@@ -1,155 +1,129 @@
+import cN from 'classnames';
+import { Formik } from 'formik';
+import React, { FC } from 'react';
 import { useStoreon } from 'storeon/react';
-import React, { useState, FC } from 'react';
 import { StoreModule } from '@app/store/store.interface';
 import Button from '@app/components/button/button.component';
 import { IModal } from '@shared/interfaces/coreModal.interface';
 import { ButtonType } from '@app/components/button/button.interface';
 import { EMPTY_MOVIE, IMovie } from '@shared/interfaces/movies.model';
+import FormField from '@app/components/formField/formField.component';
 import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
-import useStyle from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
-import {
-  VALIDATION_DEFAULT_STATE,
-} from '@app/components/modals/movieDetailsModal/movieDetailsModal.interface';
+// eslint-disable max-len
+import validationSchema from '@app/components/modals/movieDetailsModal/movieDetailsModal.validation.schema';
+import { style as useStyle } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
+// eslint-enable max-len
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
   const { movies } = useStoreon(StoreModule.movies);
-  const movieData = modalDetails.movie
+  const movie = modalDetails.movie
     ? movies.find((m: IMovie) => m.id === modalDetails.movie.id)
     : EMPTY_MOVIE;
-  const [movie, changeMovie] = useState({ ...movieData });
-  const [validationState, setValidationState] = useState(VALIDATION_DEFAULT_STATE);
-
-  const isFormValid: () => boolean = () => {
-    const newValidationState = {
-      title: !movie.title,
-      releaseDate: !movie.releaseDate,
-      url: !movie.url,
-      genre: !movie.genre.length,
-      description: !movie.description,
-      duration: !movie.duration,
-    };
-
-    setValidationState(newValidationState);
-
-    return !Object.values(newValidationState).includes(true);
-  };
 
   return (
-    <div className={s.background}>
-      <h2 className={s.modalTitle}>
-        {modalDetails.type}
-        {' '}
-        movie
-      </h2>
-      <div className={s.scrollContainer}>
-        <form className={s.modalForm} autoComplete="off">
-          <label htmlFor="movieTitle">
-            title
-            <input
-              type="text"
-              id="movieTitle"
-              value={movie.title}
-              onChange={({ target: { value: title } }) => {
-                changeMovie({ ...movie, title });
-                setValidationState({ ...validationState, title: !title });
-              }}
+    <Formik
+      initialValues={...movie}
+      validationSchema={validationSchema}
+      onSubmit={onConfirmClick}
+    >
+      {({
+        dirty,
+        errors,
+        touched,
+        isValid,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        setFieldValue,
+        setFieldTouched,
+        values: {
+          title, releaseDate, url, genre, description, duration,
+        },
+        resetForm,
+      }) => (
+        <div className={s.background}>
+          <h2 className={s.modalTitle}>
+            {modalDetails.type}
+            {' '}
+            movie
+          </h2>
+          <div className={s.scrollContainer}>
+            <form className={s.modalForm} autoComplete="off" onSubmit={handleSubmit}>
+              <FormField
+                name="title"
+                type="text"
+                value={title}
+              />
+              <FormField
+                text="release date"
+                name="releaseDate"
+                type="date"
+                value={releaseDate}
+              />
+              <FormField
+                text="movie url"
+                name="url"
+                type="url"
+                value={url}
+              />
+              <label htmlFor="genre">
+                genre
+                <MultipleDropdown
+                  genres={genre}
+                  onGenreClick={(g) => setFieldValue('genre', g, true)}
+                  onBlurHandler={() => setFieldTouched('genre', true)}
+                  styles={cN({
+                    correct: touched.genre && !errors.genre,
+                    hasError: touched.genre && errors.genre,
+                  })}
+                />
+                {touched.genre && errors.genre && <p className={s.error}>{errors.genre}</p>}
+              </label>
+              <label htmlFor="description">
+                overview
+                <textarea
+                  id="description"
+                  name="description"
+                  value={description}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className={cN({
+                    correct: touched.description && !errors.description,
+                    hasError: touched.description && errors.description,
+                  })}
+                />
+                {touched.description
+                    && errors.description
+                    && <p className={s.error}>{errors.description}</p>}
+              </label>
+              <FormField
+                text="runtime"
+                name="duration"
+                type="number"
+                value={duration}
+              />
+            </form>
+          </div>
+          <div className={s.modalButtons}>
+            <Button
+              type={ButtonType.reset}
+              onButtonClick={() => resetForm({ values: EMPTY_MOVIE })}
             />
-            {validationState.title && <p className={s.error}>please add the title.</p>}
-          </label>
-          <label htmlFor="movieYear">
-            release date
-            <input
-              type="date"
-              id="movieYear"
-              value={movie.releaseDate}
-              onChange={({ target: { value: releaseDate } }) => {
-                changeMovie({ ...movie, releaseDate });
-                setValidationState({ ...validationState, releaseDate: !releaseDate });
-              }}
+            <Button
+              type={ButtonType.submit}
+              onButtonClick={handleSubmit}
+              isDisabled={!(isValid && dirty)}
             />
-            {validationState.releaseDate
-              && (
-                <p className={s.error}>
-                  please choose a release date.
-                </p>
-              )}
-          </label>
-          <label htmlFor="movieUrl">
-            movie url
-            <input
-              type="url"
-              id="movieUrl"
-              value={movie.url}
-              onChange={({ target: { value: url } }) => {
-                changeMovie({ ...movie, url });
-                setValidationState({ ...validationState, url: !url });
-              }}
-            />
-            {validationState.url && <p className={s.error}>please add the url.</p>}
-          </label>
-          <label htmlFor="movieGenre">
-            genre
-            <MultipleDropdown
-              genres={movie.genre}
-              onGenreClick={(genre) => {
-                changeMovie({ ...movie, genre });
-                setValidationState({ ...validationState, genre: !genre.length });
-              }}
-            />
-            {validationState.genre && <p className={s.error}>please choose at least one genre.</p>}
-          </label>
-          <label htmlFor="movieDescription">
-            overview
-            <textarea
-              id="movieDescription"
-              value={movie.description}
-              onChange={({ target: { value: description } }) => {
-                changeMovie({ ...movie, description });
-                setValidationState({ ...validationState, description: !description });
-              }}
-            />
-            {validationState.description && <p className={s.error}>please add the overview.</p>}
-          </label>
-          <label htmlFor="movieDuration">
-            runtime
-            <input
-              type="number"
-              id="movieDuration"
-              value={movie.duration}
-              onChange={({ target: { value: duration } }) => {
-                changeMovie({ ...movie, duration });
-                setValidationState({ ...validationState, duration: !duration });
-              }}
-            />
-            {validationState.duration && <p className={s.error}>please add the duration.</p>}
-          </label>
-        </form>
-      </div>
-      <div className={s.modalButtons}>
-        <Button
-          type={ButtonType.reset}
-          onButtonClick={() => {
-            changeMovie({
-              ...EMPTY_MOVIE,
-              id: movie.id,
-              rating: movie.rating,
-              imagePath: movie.imagePath,
-            });
-            setValidationState(VALIDATION_DEFAULT_STATE);
-          }}
-        />
-        <Button
-          type={ButtonType.submit}
-          onButtonClick={() => isFormValid() && onConfirmClick(movie)}
-        />
-      </div>
-      <button
-        type="button"
-        className={s.closeButton}
-        onClick={onCancelClick}
-      />
-    </div>
+          </div>
+          <button
+            type="button"
+            className={s.closeButton}
+            onClick={onCancelClick}
+          />
+        </div>
+      )}
+    </Formik>
   );
 };
 

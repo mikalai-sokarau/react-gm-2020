@@ -86,6 +86,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     let movies: Array<IMovie> = [];
     const queryParams = Object
       .entries(params)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .filter(([key, value]) => Boolean(value))
       .map(([key, value]) => `${key}=${value}`)
       .join('&');

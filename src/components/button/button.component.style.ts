@@ -17,14 +17,20 @@ const focus = {
 };
 
 const peachyButtonStyles = {
-  backgroundColor: peachy,
-  borderColor: peachy,
-  color: white,
+  backgroundColor: gray.tint3,
+  borderColor: gray.tint1,
+  color: gray.tint1,
   width: sizes.mediumWidth,
 
-  '&:hover': {
-    backgroundColor: white,
-    color: peachy,
+  '&:not(.disabled)': {
+    backgroundColor: peachy,
+    borderColor: peachy,
+    color: white,
+
+    '&:hover': {
+      backgroundColor: white,
+      color: peachy,
+    },
   },
 };
 

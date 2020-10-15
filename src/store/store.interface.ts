@@ -45,5 +45,6 @@ export interface IEvents {
   [ActionType.deleteMovie]: string;
   [ActionType.editMovie]: IMovie;
   [ActionType.getMovies]: ISearchQueryParams;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [ActionType.saveMovie]: { movies: Array<IMovie>, params?: any };
 }
