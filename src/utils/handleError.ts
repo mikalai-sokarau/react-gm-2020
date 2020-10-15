@@ -3,6 +3,6 @@ const handleError = (e: Error) => {
   // eslint-disable-next-line no-console
   console.error(e);
   alert(e); // killer feature %)
-}
+};
 
-export default handleError
+export default handleError;

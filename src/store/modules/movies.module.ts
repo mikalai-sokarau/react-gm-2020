@@ -1,5 +1,5 @@
 import { StoreonModule } from 'storeon';
-import handleError from '@shared/utils/handleError';
+import handleError from '@app/utils/handleError';
 import { IMovie } from '@shared/interfaces/movies.model';
 import ISearchQueryParams from '@server/services/movies.service.interface';
 import {

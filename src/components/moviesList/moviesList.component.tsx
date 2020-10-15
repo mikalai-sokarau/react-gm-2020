@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { useStoreon } from 'storeon/react';
-import { IMovie } from '@shared/interfaces/movies.model';
-import { StoreModule } from '@app/store/store.interface';
+import { IState, StoreModule } from '@app/store/store.interface';
 import MovieItem from '@app/components/movieItem/movieItem.component';
 import IMoviesList from '@app/components/moviesList/moviesList.interface';
 import useStyle from '@app/components/moviesList/moviesList.component.style';
 
 const MoviesList: FC<IMoviesList> = ({ onMovieImageClick }) => {
   const s = useStyle();
-  const { movies } = useStoreon(StoreModule.movies);
+  const { movies } = useStoreon<IState>(StoreModule.movies);
 
   return (
     <section>
@@ -19,7 +18,7 @@ const MoviesList: FC<IMoviesList> = ({ onMovieImageClick }) => {
       {movies.length
         ? (
           <div className={s.moviesContainer}>
-            {movies.map((m: IMovie) => (
+            {movies.map((m) => (
               <MovieItem
                 movie={m}
                 key={m.id}
