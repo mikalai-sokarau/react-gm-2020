@@ -2,7 +2,7 @@ import cN from 'classnames';
 import React, { FC } from 'react';
 import { useField } from 'formik';
 import { IFormField } from '@app/components/formField/formField.interface';
-import { style as useStyle } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
+import useStyle from '@app/components/formField/formField.component.style';
 
 const FormField: FC<IFormField> = ({
   name, type, value, text,

@@ -27,6 +27,15 @@ const inputStyle = {
   ...validationStatus,
 };
 
+const error = {
+  fontSize: '0.9em',
+  fontVariant: 'small-caps',
+  margin: 0,
+  position: 'absolute',
+  textTransform: 'lowercase',
+  textWeight: 100,
+};
+
 const style = createUseStyles({
   background: {
     background: gray.tint4,
@@ -35,14 +44,7 @@ const style = createUseStyles({
     position: 'relative',
   },
   closeButton: deleteMovieCloseButtonStyles,
-  error: {
-    fontSize: '0.9em',
-    fontVariant: 'small-caps',
-    margin: 0,
-    position: 'absolute',
-    textTransform: 'lowercase',
-    textWeight: 100,
-  },
+  error,
   hasError: {
     border: '1px solid red',
   },
@@ -107,5 +109,6 @@ const style = createUseStyles({
 
 export {
   style,
+  error,
   validationStatus,
 };
