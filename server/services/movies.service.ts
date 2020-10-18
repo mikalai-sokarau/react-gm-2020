@@ -50,6 +50,10 @@ class MovieService {
     return getFilteredMovies(this.movies, params);
   }
 
+  getMovieById(id: number): IMovie {
+    return this.movies.find(m => m.id === id);
+  }
+
   sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {
     movies.sort((a, b) => (a[option] > b[option] ? 1 : -1));
 

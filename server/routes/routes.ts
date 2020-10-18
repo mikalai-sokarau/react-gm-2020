@@ -7,6 +7,15 @@ router.get('/movies', ctx => {
   ctx.body = { movies: MovieService.getMovies(ctx.query) };
 });
 
+router.get('/movie/:id', ctx => {
+  try {
+    ctx.body = MovieService.getMovieById(Number(ctx.params.id));
+    ctx.status = 200;
+  } catch (e) {
+    ctx.throw(400, e.message)
+  }
+});
+
 router.delete('/movies/delete/:id', ctx => {
   try {
     MovieService.deleteMovie(Number(ctx.params.id));
@@ -32,6 +41,6 @@ router.put('/movies/edit', ctx => {
   } catch (e) {
     ctx.throw(400, e.message);
   }
-})
+});
 
 export default router;
