@@ -1,8 +1,11 @@
 import { createUseStyles } from 'react-jss';
-import { gray, peachy, darkGradient } from '@app/style/variables/colors';
+import {
+  gray, peachy, darkGradient, white,
+} from '@app/style/variables/colors';
 
 const style = createUseStyles({
   backToSearchButton: {
+    color: white,
     cursor: 'pointer',
     transform: 'rotate(90deg)',
 
@@ -17,7 +20,7 @@ const style = createUseStyles({
   movieDetailsContainer: {
     background: `
       linear-gradient(${darkGradient},${darkGradient}),
-      url(assets/images/covers.jpg)
+      url(/assets/images/covers.jpg)
     `,
     padding: '20px 0',
     color: gray.tint1,
