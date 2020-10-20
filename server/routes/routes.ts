@@ -9,8 +9,14 @@ router.get('/movies', ctx => {
 
 router.get('/movie/:id', ctx => {
   try {
-    ctx.body = MovieService.getMovieById(Number(ctx.params.id));
-    ctx.status = 200;
+    const movie = MovieService.getMovieById(Number(ctx.params.id));
+
+    if (movie) {
+      ctx.body = movie;
+      ctx.status = 200;
+    } else {
+      throw new Error('no movie found.');
+    }
   } catch (e) {
     ctx.throw(400, e.message)
   }
