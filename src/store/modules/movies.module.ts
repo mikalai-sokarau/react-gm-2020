@@ -83,11 +83,13 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
   });
 
   store.on(ActionType.getMovies, async (state: IState, params: ISearchQueryParams) => {
+    if (!params.text) return;
+
     let movies: Array<IMovie> = [];
     const queryParams = Object
       .entries(params)
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .filter(([key, value]) => Boolean(value))
+      .filter(([key, value]) => Boolean(value) && typeof value !== 'object')
       .map(([key, value]) => `${key}=${value}`)
       .join('&');
 
@@ -103,6 +105,29 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
     }
 
     store.dispatch(ActionType.saveMovie, { movies, params });
+  });
+
+  store.on(ActionType.getMovieDetails, async (state: IState, id: string) => {
+    let movie: IMovie;
+
+    if (state.search.chosenMovie?.id === Number(id)) {
+      return;
+    }
+
+    try {
+      const response: Response = await fetch(
+        `${API_URL}/movie/${id}`,
+      );
+
+      movie = await response.json();
+    } catch (e) {
+      movie = null;
+    }
+
+    store.dispatch(
+      ActionType.saveMovie,
+      { ...state, params: { ...state.search, chosenMovie: movie } },
+    );
   });
 
   store.on(ActionType.saveMovie, (state: IState, { movies, params = state.search }) => ({
