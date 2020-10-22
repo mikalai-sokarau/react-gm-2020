@@ -102,7 +102,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
       handleError(e);
     }
 
-    store.dispatch(ActionType.saveMovie, { movies, params });
+    store.dispatch(ActionType.saveMovie, { movies, params: { ...params, chosenMovie: null } });
   });
 
   store.on(ActionType.getMovieDetails, async (state: IState, id: string) => {
@@ -128,7 +128,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
 
     store.dispatch(
       ActionType.saveMovie,
-      { ...state, movies, params: { ...state.search, chosenMovie: movie } },
+      { movies, params: { ...state.search, chosenMovie: movie } },
     );
   });
 

@@ -14,7 +14,8 @@ const style = createUseStyles({
     },
   },
   movieDetails: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: '280px auto',
     margin: '40px 0 40px',
   },
   movieDetailsContainer: {
@@ -22,8 +23,9 @@ const style = createUseStyles({
       linear-gradient(${darkGradient},${darkGradient}),
       url(/assets/images/covers.jpg)
     `,
-    padding: '20px 0',
     color: gray.tint1,
+    minHeight: '539px',
+    padding: '20px 0',
   },
   movieDetailsData: {
     margin: '0 60px',
@@ -43,7 +45,6 @@ const style = createUseStyles({
     fontSize: '1.5rem',
     fontWeight: 100,
     justifyContent: 'space-between',
-
   },
   movieRating: {
     border: `1px solid ${gray.tint1}`,
