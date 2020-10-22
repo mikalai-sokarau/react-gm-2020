@@ -1,4 +1,5 @@
 import cN from 'classnames';
+import ROUTES from '@app/routes';
 import React, { FC } from 'react';
 import { useStoreon } from 'storeon/react';
 import { useHistory } from 'react-router-dom';
@@ -27,7 +28,7 @@ const NotFound: FC = () => {
         <Button
           type={ButtonType.backToHome}
           onButtonClick={() => {
-            history.push('/');
+            history.push(ROUTES.HOME);
             dispatch(ActionType.resetState);
           }}
         />

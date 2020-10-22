@@ -1,10 +1,12 @@
 import cN from 'classnames';
+import ROUTES from '@app/routes';
 import { useStoreon } from 'storeon/react';
 import Logo from '@app/components/logo/logo.component';
 import useCommonStyle from '@app/style/variables/sizes';
 import {
   Route, Switch, useHistory, useParams,
 } from 'react-router-dom';
+import { Genres } from '@shared/interfaces/movies.model';
 import Button from '@app/components/button/button.component';
 import { ModalType } from '@shared/interfaces/coreModal.interface';
 import React, {
@@ -15,7 +17,6 @@ import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
-import { Genres } from '@shared/interfaces/movies.model';
 
 const Header: FC = () => {
   const s = useStyle();
@@ -27,7 +28,7 @@ const Header: FC = () => {
   const history = useHistory();
   const submitSearch = () => {
     if (inputText !== text) {
-      history.push(inputText ? `/search/${inputText}` : '/');
+      history.push(inputText ? `${ROUTES.SEARCH}${inputText}` : ROUTES.HOME);
       dispatch(ActionType.getMovies, { ...search, text: inputText, genre: Genres.All });
     }
   };
@@ -40,12 +41,15 @@ const Header: FC = () => {
 
   useEffect(() => {
     setInputText(text || '');
-    dispatch(ActionType.getMovies, { ...search, text, genre: Genres.All });
+
+    if (!history.location.pathname.includes(ROUTES.MOVIE_DETAILS)) {
+      dispatch(ActionType.getMovies, { ...search, text, genre: Genres.All });
+    }
   }, [text]);
 
   return (
     <Switch>
-      <Route path="/movie/:id" render={() => <MovieDetails />} />
+      <Route path={`${ROUTES.MOVIE_DETAILS}:id`} component={MovieDetails} />
       <Route
         path="/"
         render={() => (

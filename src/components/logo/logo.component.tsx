@@ -1,3 +1,4 @@
+import ROUTES from '@app/routes';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
 import { useStoreon } from 'storeon/react';
@@ -13,7 +14,7 @@ const Logo: FC = () => {
     <div
       className={common}
       onClick={() => {
-        history.push('/');
+        history.push(ROUTES.HOME);
         dispatch(ActionType.resetState);
       }}
     >

@@ -1,6 +1,7 @@
 import React, {
   useState, FC, lazy, Suspense,
 } from 'react';
+import ROUTES from '@app/routes';
 import store from '@app/store/store';
 import { StoreContext } from 'storeon/react';
 import useStyle from '@app/components/app/app.component.styles';
@@ -31,7 +32,7 @@ const App: FC = () => {
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                   <Route
-                    path={['/', '/movie/:id', '/search/:text']}
+                    path={['/', `${ROUTES.MOVIE_DETAILS}:id`, `${ROUTES.SEARCH}:text`]}
                     exact
                     render={() => (
                       <>

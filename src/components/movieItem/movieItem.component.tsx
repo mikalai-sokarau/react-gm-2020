@@ -1,4 +1,5 @@
 import cN from 'classnames';
+import ROUTES from '@app/routes';
 import { Link } from 'react-router-dom';
 import React, { useState, FC, useContext } from 'react';
 import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
@@ -17,7 +18,7 @@ const MovieItem: FC<IMovieItem> = ({ movie }) => {
       className={s.movieContainer}
       onMouseLeave={() => setMovieMenuState(false)}
     >
-      <Link to={`/movie/${movie.id}`}>
+      <Link to={`${ROUTES.MOVIE_DETAILS}${movie.id}`}>
         <img
           src={movie.imagePath}
           alt={movie.title}
