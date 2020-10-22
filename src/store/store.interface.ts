@@ -40,7 +40,9 @@ export enum ActionType {
   editMovie = '/movies/edit',
   getMovies = '/movies/get',
   saveMovie = '/movies/save',
-  getMovieDetails = '/movies/getMovieDetails'
+  getMovieDetails = '/movies/getMovieDetails',
+  removeChosenMovie = '/movies/removeChosenMovie',
+  resetState = '/movies/resetState'
 }
 
 export interface IEvents {
@@ -51,4 +53,6 @@ export interface IEvents {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [ActionType.saveMovie]: { movies: Array<IMovie>, params?: any };
   [ActionType.getMovieDetails]: string;
+  [ActionType.removeChosenMovie]: void;
+  [ActionType.resetState]: void;
 }

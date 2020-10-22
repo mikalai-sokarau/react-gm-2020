@@ -1,36 +1,47 @@
 import cN from 'classnames';
 import { useStoreon } from 'storeon/react';
 import Logo from '@app/components/logo/logo.component';
-import React, { useState, useContext, FC } from 'react';
 import useCommonStyle from '@app/style/variables/sizes';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import {
+  Route, Switch, useHistory, useParams,
+} from 'react-router-dom';
 import Button from '@app/components/button/button.component';
 import { ModalType } from '@shared/interfaces/coreModal.interface';
+import React, {
+  useState, useContext, FC, useEffect,
+} from 'react';
 import { ModalContext } from '@shared/interfaces/coreModal.context';
 import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
+import { Genres } from '@shared/interfaces/movies.model';
 
 const Header: FC = () => {
   const s = useStyle();
   const { appContainer } = useCommonStyle();
+  const { text } = useParams<{ text: string }>();
   const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [inputText, setInputText] = useState(search.text);
   const { setChosenModal } = useContext(ModalContext);
   const history = useHistory();
   const submitSearch = () => {
-    history.push(`/search/${inputText}`);
-    dispatch(ActionType.getMovies, { ...search, text: inputText });
-  };
-
-  const inputKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setInputText((e.target as HTMLInputElement).value);
-
-    if (e.key === 'Enter') {
-      submitSearch();
+    if (inputText !== text) {
+      history.push(inputText ? `/search/${inputText}` : '/');
+      dispatch(ActionType.getMovies, { ...search, text: inputText, genre: Genres.All });
     }
   };
+
+  const inputKeyPressHandler = (({ key }: React.KeyboardEvent<HTMLInputElement>) => {
+    if (key === 'Enter') {
+      submitSearch();
+    }
+  });
+
+  useEffect(() => {
+    setInputText(text || '');
+    dispatch(ActionType.getMovies, { ...search, text, genre: Genres.All });
+  }, [text]);
 
   return (
     <Switch>
@@ -56,8 +67,9 @@ const Header: FC = () => {
                     type="text"
                     placeholder="What do you want to watch?"
                     className={s.searchInput}
+                    onChange={(({ target: { value } }) => setInputText(value))}
                     onKeyUp={inputKeyPressHandler}
-                    defaultValue={search.text}
+                    value={inputText}
                   />
                   <Button
                     type={ButtonType.search}
