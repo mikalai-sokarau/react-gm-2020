@@ -3,6 +3,8 @@ import { peachy } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   common: {
+    cursor: 'pointer',
+
     '& span': {
       fontSize: '1.1rem',
       color: peachy,
