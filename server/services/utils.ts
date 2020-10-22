@@ -36,7 +36,7 @@ function getFilteredMoviesByText(
 ): Array<IMovie> {
   return text
     ? movies.filter(m => m.description.includes(text) || m.title.includes(text))
-    : movies;
+    : [];
 }
 
 function getSortedMoviesByOption(
