@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo Correctly renders Logo component 1`] = `
+<div
+  onMouseLeave={[Function]}
+>
+  <span
+    className="sortTitle-0-2-4"
+  >
+    sort by
+  </span>
+  <div
+    className="dropdownContainer-0-2-2"
+    onClick={[Function]}
+  >
+    <div
+      className="dropdownTitle-0-2-3"
+      role="menu"
+      tabIndex={0}
+    >
+      dropdown test
+    </div>
+    <ul
+      className="optionsList-0-2-5"
+    >
+      <li
+        className="option-0-2-1"
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex={0}
+      >
+        title
+      </li>
+      <li
+        className="option-0-2-1"
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex={0}
+      >
+        release date
+      </li>
+      <li
+        className="option-0-2-1"
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex={0}
+      >
+        rating
+      </li>
+    </ul>
+  </div>
+</div>
+`;
