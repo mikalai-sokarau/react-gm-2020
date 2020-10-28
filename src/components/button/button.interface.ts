@@ -18,6 +18,6 @@ export const BUTTON_TEXT = {
 
 export interface IButton {
   type: ButtonType,
-  onButtonClick: () => void,
+  onButtonClick?: () => void,
   isDisabled?: boolean,
 }
