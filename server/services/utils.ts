@@ -11,7 +11,7 @@ function getFilteredMovies(
   { genre, offset, orderBy, sortBy, size, text }: ISearchQueryParams
 ): Array<IMovie> {
   const filteredMoviesByGenre = getFilteredMoviesByGenre(movies, genre);
-  const filteredMoviesByText = getFilteredMoviesByText(filteredMoviesByGenre, text);
+  const filteredMoviesByText = getFilteredMoviesByText(filteredMoviesByGenre, text?.toLowerCase());
   const sortedMoviesByOption = getSortedMoviesByOption(filteredMoviesByText, sortBy);
   const orderedMoviesByDirection = getOrderedMoviesByDirection(sortedMoviesByOption, orderBy);
   const partialMovies = getPartialMovies(orderedMoviesByDirection, offset, size);
@@ -35,7 +35,10 @@ function getFilteredMoviesByText(
   text: string
 ): Array<IMovie> {
   return text
-    ? movies.filter(m => m.description.includes(text) || m.title.includes(text))
+    ? movies.filter(m =>
+      m.description.toLowerCase().includes(text)
+      || m.title.toLowerCase().includes(text)
+    )
     : [];
 }
 

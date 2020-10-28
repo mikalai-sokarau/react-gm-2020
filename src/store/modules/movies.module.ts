@@ -108,7 +108,7 @@ const moviesModule: StoreonModule<IState, IEvents> = (store) => {
   store.on(ActionType.getMovieDetails, async (state: IState, id: string) => {
     let movie: IMovie;
 
-    if (state.search.chosenMovie?.id === Number(id) || !state.search.text) {
+    if (state.search.chosenMovie?.id === Number(id)) {
       return;
     }
 
