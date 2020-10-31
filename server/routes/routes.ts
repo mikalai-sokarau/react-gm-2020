@@ -7,6 +7,21 @@ router.get('/movies', ctx => {
   ctx.body = { movies: MovieService.getMovies(ctx.query) };
 });
 
+router.get('/movie/:id', ctx => {
+  try {
+    const movie = MovieService.getMovieById(Number(ctx.params.id));
+
+    if (movie) {
+      ctx.body = movie;
+      ctx.status = 200;
+    } else {
+      throw new Error('no movie found.');
+    }
+  } catch (e) {
+    ctx.throw(400, e.message)
+  }
+});
+
 router.delete('/movies/delete/:id', ctx => {
   try {
     MovieService.deleteMovie(Number(ctx.params.id));
@@ -32,6 +47,6 @@ router.put('/movies/edit', ctx => {
   } catch (e) {
     ctx.throw(400, e.message);
   }
-})
+});
 
 export default router;
