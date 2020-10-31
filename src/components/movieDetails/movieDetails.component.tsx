@@ -22,12 +22,8 @@ const MovieDetails: FC = () => {
   useEffect(() => {
     const isEmptyOrNewMovie = !movie || movie.id !== Number(id);
 
-    if (text && isEmptyOrNewMovie) {
+    if (isEmptyOrNewMovie) {
       dispatch(ActionType.getMovieDetails, id);
-    }
-
-    if (!text) {
-      history.replace(ROUTES.HOME);
     }
   }, [id]);
 

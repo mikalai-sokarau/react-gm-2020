@@ -925,7 +925,7 @@ const movies: Array<IMovie> = [
   {
     id: 299536,
     title: "Avengers: Infinity War",
-    rating: 0,
+    rating: 9,
     releaseDate: "2018-04-25",
     imagePath: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
     url: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",

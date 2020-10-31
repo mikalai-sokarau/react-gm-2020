@@ -38,14 +38,6 @@ class MovieService {
     this.movies.splice(this.movies.findIndex((m) => m.id === movie.id), 1, movie);
   }
 
-  filterMovies(text: string, genre: Genres): Array<IMovie> {
-    const moviesToSearch = genre === Genres.All
-      ? this.movies
-      : this.movies.filter((m) => m.genre.includes(genre));
-
-    return moviesToSearch.filter((m) => m.title.includes(text));
-  }
-
   getMovies(params: ISearchQueryParams): Array<IMovie> {
     return getFilteredMovies(this.movies, params);
   }
