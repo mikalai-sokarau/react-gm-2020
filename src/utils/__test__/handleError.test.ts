@@ -4,6 +4,7 @@ import handleError from '@app/utils/handleError';
 afterEach(cleanup);
 
 describe('handleError', () => {
+  /* eslint-disable no-console */
   it('calls console.log and alert with error mesage', () => {
     const message = 'hello';
 
@@ -15,4 +16,5 @@ describe('handleError', () => {
     expect(console.error).toHaveBeenCalledWith(message);
     expect(window.alert).toHaveBeenCalledWith(message);
   });
+  /* eslint-enable no-console */
 });
