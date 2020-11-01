@@ -10,5 +10,8 @@ to build the application in the development mode
 `> npm run build:prod`\
 to build the application in the production mode
 
-`> npm run test`\
+`> npm test`\
 to run jest tests
+
+`> npm run test:coverage`\
+to calculate test coverage
