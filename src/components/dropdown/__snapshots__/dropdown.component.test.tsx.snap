@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Logo Correctly renders Logo component 1`] = `
+exports[`Dropdown Dropdown component matches snapshot 1`] = `
 <div
   onMouseLeave={[Function]}
 >

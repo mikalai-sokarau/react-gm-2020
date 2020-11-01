@@ -4,8 +4,8 @@ import renderer from 'react-test-renderer';
 import Dropdown from '@app/components/Dropdown/Dropdown.component';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 
-describe('Logo', () => {
-  it('Correctly renders Logo component', () => {
+describe('Dropdown', () => {
+  it('Dropdown component matches snapshot', () => {
     const dropdown = renderer
       .create(
         <Dropdown
