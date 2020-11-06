@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.dev.js",
     "server:start": "cross-env NODE_PORT=4100 npx nodemon",
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom ---watch",
     "test:coverage": "jest --env=jsdom --coverage --no-cache",
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.dev.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -37,6 +37,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@types/classnames": "^2.2.10",
     "@types/jest": "^26.0.15",
