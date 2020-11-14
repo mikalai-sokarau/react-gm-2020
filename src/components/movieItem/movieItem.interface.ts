@@ -7,4 +7,5 @@ export enum MovieAction {
 
 export interface IMovieItem {
   movie: IMovie;
+  classes: { [key: string]: string };
 }

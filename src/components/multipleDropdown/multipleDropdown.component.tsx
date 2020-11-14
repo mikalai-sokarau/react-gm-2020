@@ -1,14 +1,14 @@
 import cN from 'classnames';
+import withStyles from 'react-jss';
 import React, { FC, useState } from 'react';
 import useClickedOutside from '@app/hooks/clickOutside';
 import { Genres } from '@shared/interfaces/movies.model';
-import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
+import jssstyles from '@app/components/multipleDropdown/multipleDropdown.component.style';
 import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
 
 const MultipleDropdown: FC<IMultipleDropdown> = ({
-  genres, onGenreClick, onBlurHandler, styles,
+  genres, onGenreClick, onBlurHandler, styles, classes: s,
 }) => {
-  const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
   const isClickedOutside = useClickedOutside(s.dropdownContainer);
 
@@ -63,4 +63,4 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({
   );
 };
 
-export default MultipleDropdown;
+export default withStyles(jssstyles)(MultipleDropdown);

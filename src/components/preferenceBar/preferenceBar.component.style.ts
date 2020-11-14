@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import { white, peachy, gray } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const styles = {
   preferenceBarContainer: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -42,6 +41,6 @@ const style = createUseStyles({
     position: 'absolute',
     width: '100%',
   },
-});
+};
 
-export default style;
+export default styles;

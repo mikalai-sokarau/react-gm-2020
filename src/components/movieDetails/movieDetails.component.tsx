@@ -1,21 +1,19 @@
 import ROUTES from '@app/routes';
+import withStyles from 'react-jss';
 import { useStoreon } from 'storeon/react';
 import React, { FC, useEffect } from 'react';
+import commonStyles from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';
-import useCommonStyle from '@app/style/variables/sizes';
 import { useHistory, useParams } from 'react-router-dom';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
-import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useGenreStyle from '@app/components/movieItem/movieItem.component.style';
-import useStyle from '@app/components/movieDetails/movieDetails.component.style';
+import { ActionType, IState, StoreModule } from '@app/store/store.interface';
+import genreStyles from '@app/components/movieItem/movieItem.component.style';
+import styles from '@app/components/movieDetails/movieDetails.component.style';
 
-const MovieDetails: FC = () => {
-  const s = useStyle();
+const MovieDetails: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
   const history = useHistory();
-  const genreStyles = useGenreStyle();
-  const { appContainer } = useCommonStyle();
   const { id } = useParams<{ id: string }>();
   const { dispatch, search: { chosenMovie: movie, text } } = useStoreon<IState>(StoreModule.search);
 
@@ -29,7 +27,7 @@ const MovieDetails: FC = () => {
 
   return (
     <section className={s.movieDetailsContainer}>
-      <div className={appContainer}>
+      <div className={s.appContainer}>
         <header className={s.movieDetailsHeader}>
           <Logo />
           <FontAwesomeIcon
@@ -56,9 +54,9 @@ const MovieDetails: FC = () => {
                 <h2 className={s.movieTitle}>{movie.title}</h2>
                 <span className={s.movieRating}>{movie.rating}</span>
               </div>
-              <p className={genreStyles.genresList}>
+              <p className={s.genresList}>
                 {movie.genre.map((g) => (
-                  <span className={genreStyles.genre} key={g}>{g}</span>
+                  <span className={s.genre} key={g}>{g}</span>
                 ))}
               </p>
               <div className={s.movieDetaisMetadata}>
@@ -78,4 +76,4 @@ const MovieDetails: FC = () => {
   );
 };
 
-export default MovieDetails;
+export default withStyles({ ...styles, ...commonStyles, ...genreStyles })(MovieDetails);

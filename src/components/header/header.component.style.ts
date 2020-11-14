@@ -1,9 +1,8 @@
-import { createUseStyles } from 'react-jss';
 import { white, gray, transparent } from '@app/style/variables/colors';
 
 const HEADER_HEIGHT = '350px';
 
-const style = createUseStyles({
+const styles = {
   header: {
     height: HEADER_HEIGHT,
     background: 'url(/assets/images/covers.jpg)',
@@ -48,6 +47,6 @@ const style = createUseStyles({
     color: white,
     padding: '0 1rem',
   },
-});
+};
 
-export default style;
+export default styles;

@@ -1,8 +1,7 @@
-import { createUseStyles } from 'react-jss';
 import { gray, white, peachy } from '@app/style/variables/colors';
 import { validationStatus } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 
-const style = createUseStyles({
+const styles = {
   checkmark: {
     backgroundColor: white,
     height: '15px',
@@ -139,6 +138,6 @@ const style = createUseStyles({
       },
     },
   },
-});
+};
 
-export default style;
+export default styles;

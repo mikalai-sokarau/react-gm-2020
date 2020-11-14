@@ -1,12 +1,10 @@
-import { createUseStyles } from 'react-jss';
-
-const style = createUseStyles({
+const styles = {
   appContainer: {
     height: '100%',
     margin: 'auto',
     position: 'relative',
     width: '1200px',
   },
-});
+};
 
-export default style;
+export default styles;

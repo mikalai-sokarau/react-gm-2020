@@ -1,10 +1,12 @@
 import cN from 'classnames';
+import withStyles from 'react-jss';
 import React, { useState, FC } from 'react';
-import useStyle from '@app/components/dropdown/dropdown.component.style';
+import styles from '@app/components/dropdown/dropdown.component.style';
 import { IDropdown } from '@app/components/dropdown/dropdown.interface';
 
-const Dropdown: FC<IDropdown> = ({ title, options, onSortOptionClick }) => {
-  const s = useStyle();
+const Dropdown: FC<IDropdown> = ({
+  title, options, onSortOptionClick, classes: s,
+}) => {
   const [isDropdownOpen, toggleDropdown] = useState(false);
 
   return (
@@ -33,4 +35,4 @@ const Dropdown: FC<IDropdown> = ({ title, options, onSortOptionClick }) => {
   );
 };
 
-export default Dropdown;
+export default withStyles(styles)(Dropdown);

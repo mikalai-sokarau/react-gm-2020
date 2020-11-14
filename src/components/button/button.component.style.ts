@@ -1,4 +1,3 @@
-import { createUseStyles } from 'react-jss';
 import {
   peachy,
   gray,
@@ -47,7 +46,7 @@ const peachyButtonStyles = {
   },
 };
 
-const style = createUseStyles({
+const styles = {
   button: {
     border: '1px solid',
     borderRadius: '5px',
@@ -92,6 +91,6 @@ const style = createUseStyles({
   },
   reset,
   submit: peachyButtonStyles,
-});
+};
 
-export default style;
+export default styles;

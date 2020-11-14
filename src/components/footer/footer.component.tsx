@@ -1,15 +1,12 @@
 import React, { FC } from 'react';
-import useStyle from '@app/components/footer/footer.component.style';
+import withStyles from 'react-jss';
 import Logo from '@app/components/logo/logo.component';
+import style from '@app/components/footer/footer.component.style';
 
-const Footer: FC = () => {
-  const { footer } = useStyle();
+const Footer: FC<{classes: { [key: string]: string }}> = ({ classes }) => (
+  <footer className={classes.footer}>
+    <Logo />
+  </footer>
+);
 
-  return (
-    <footer className={footer}>
-      <Logo />
-    </footer>
-  );
-};
-
-export default Footer;
+export default withStyles(style)(Footer);

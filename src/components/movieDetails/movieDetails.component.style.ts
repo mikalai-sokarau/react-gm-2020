@@ -1,9 +1,8 @@
-import { createUseStyles } from 'react-jss';
 import {
   gray, peachy, darkGradient, white,
 } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const styles = {
   backToSearchButton: {
     color: white,
     cursor: 'pointer',
@@ -65,6 +64,6 @@ const style = createUseStyles({
     marginBottom: 0,
     textTransform: 'capitalize',
   },
-});
+};
 
-export default style;
+export default styles;

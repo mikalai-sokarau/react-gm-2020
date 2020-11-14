@@ -1,8 +1,9 @@
 import cN from 'classnames';
 import ROUTES from '@app/routes';
+import withStyles from 'react-jss';
 import { useStoreon } from 'storeon/react';
+import commonStyles from '@app/style/variables/sizes';
 import Logo from '@app/components/logo/logo.component';
-import useCommonStyle from '@app/style/variables/sizes';
 import {
   Route, Switch, useHistory, useParams,
 } from 'react-router-dom';
@@ -12,22 +13,19 @@ import { ModalType } from '@shared/interfaces/coreModal.interface';
 import React, {
   useState, useContext, FC, useEffect,
 } from 'react';
+import styles from '@app/components/header/header.component.style';
 import { ModalContext } from '@shared/interfaces/coreModal.context';
-import useStyle from '@app/components/header/header.component.style';
 import { ButtonType } from '@app/components/button/button.interface';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 
-const Header: FC = () => {
-  const s = useStyle();
-  const { appContainer } = useCommonStyle();
-  const { text } = useParams<{ text: string }>();
+const Header: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
   const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [inputText, setInputText] = useState(search.text);
   const { setChosenModal } = useContext(ModalContext);
   const history = useHistory();
   const submitSearch = () => {
-    if (inputText !== text) {
+    if (inputText !== search.text) {
       history.push(inputText ? `${ROUTES.SEARCH}${inputText}` : ROUTES.HOME);
       dispatch(ActionType.getMovies, { ...search, text: inputText, genre: Genres.All });
     }
@@ -40,12 +38,8 @@ const Header: FC = () => {
   });
 
   useEffect(() => {
-    setInputText(text || '');
-
-    if (!history.location.pathname.includes(ROUTES.MOVIE_DETAILS)) {
-      dispatch(ActionType.getMovies, { ...search, text, genre: Genres.All });
-    }
-  }, [text]);
+    setInputText(search.text || '');
+  }, [search.text]);
 
   return (
     <Switch>
@@ -54,7 +48,7 @@ const Header: FC = () => {
         path="/"
         render={() => (
           <header className={s.header}>
-            <div className={cN(appContainer, s.headerContainer)}>
+            <div className={cN(s.appContainer, s.headerContainer)}>
               <div className={s.logoContainer}>
                 <Logo />
               </div>
@@ -89,4 +83,4 @@ const Header: FC = () => {
   );
 };
 
-export default Header;
+export default withStyles({ ...styles, ...commonStyles })(Header);

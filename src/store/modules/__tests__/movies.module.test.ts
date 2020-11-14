@@ -1,6 +1,6 @@
-import { createStoreon, StoreonDispatch } from 'storeon';
+import { StoreonDispatch } from 'storeon';
 
-import modules from '@app/store/modules';
+import configureStore from '@app/store/store';
 import { addMovie } from '@app/store/modules/movies.events';
 import { Genres, IMovie } from '@shared/interfaces/movies.model';
 import { ActionType, API_URL, DEFAULT_STORE_STATE } from '@app/store/store.interface';
@@ -47,7 +47,7 @@ afterAll(() => {
 
 describe('reducer', () => {
   it('should init a store with default state', () => {
-    const store = createStoreon(modules);
+    const store = configureStore();
 
     expect(store.get()).toEqual(DEFAULT_STORE_STATE);
   });
@@ -60,7 +60,7 @@ describe('reducer', () => {
   });
 
   it('should send a movie to the server when receives the "Add movie" action', () => {
-    const store = createStoreon(modules);
+    const store = configureStore();
     const requestInit: RequestInit = {
       method: 'POST',
       body: JSON.stringify({ movie: mockMovie }),
@@ -74,7 +74,7 @@ describe('reducer', () => {
   });
 
   it('should delete a movie from the server when receives the "Delete movie" action', () => {
-    const store = createStoreon(modules);
+    const store = configureStore();
     const requestInit: RequestInit = {
       method: 'DELETE',
     };
@@ -87,7 +87,7 @@ describe('reducer', () => {
   });
 
   it('new movie should appear in the store after handling the addMovie action', async () => {
-    const store = createStoreon(modules);
+    const store = configureStore();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, max-len
     const mockDispatch = jest.fn().mockImplementation(store.dispatch) as unknown as StoreonDispatch<any>;
     const addMovieMock = addMovie(store);
@@ -102,7 +102,7 @@ describe('reducer', () => {
   });
 
   it('should handle unsuccessful response', async () => {
-    const store = createStoreon(modules);
+    const store = configureStore();
     const addMovieMock = addMovie(store);
 
     store.on(ActionType.addMovie, addMovieMock);

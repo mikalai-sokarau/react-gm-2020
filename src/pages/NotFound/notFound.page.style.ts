@@ -1,7 +1,6 @@
 import { gray, white } from '@app/style/variables/colors';
-import { createUseStyles } from 'react-jss';
 
-const style = createUseStyles({
+const styles = {
   background: {
     backgroundColor: gray.tint4,
     height: '100%',
@@ -30,6 +29,6 @@ const style = createUseStyles({
       marginBottom: '6rem',
     },
   },
-});
+};
 
-export default style;
+export default styles;

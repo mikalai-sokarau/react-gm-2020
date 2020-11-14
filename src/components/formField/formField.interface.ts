@@ -3,4 +3,5 @@ export interface IFormField {
   type: string;
   value: string;
   text?: string;
+  classes: { [key: string]: string },
 }

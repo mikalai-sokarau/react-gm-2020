@@ -1,8 +1,7 @@
-import { createUseStyles } from 'react-jss';
 import { gray, peachy, white } from '@app/style/variables/colors';
 import closeButtonStyles from '@app/style/icons/icons';
 
-const style = createUseStyles({
+const styles = {
   closeButton: closeButtonStyles,
   genre: {
     color: gray.tint1,
@@ -120,6 +119,6 @@ const style = createUseStyles({
     padding: '5px',
     borderRadius: '5px',
   },
-});
+};
 
-export default style;
+export default styles;

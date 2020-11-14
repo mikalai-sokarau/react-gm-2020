@@ -1,15 +1,15 @@
 import cN from 'classnames';
+import withStyles from 'react-jss';
 import { useStoreon } from 'storeon/react';
 import React, { useState, FC } from 'react';
 import Dropdown from '@app/components/dropdown/dropdown.component';
 import sortOptions from '@app/components/preferenceBar/preferenceBar.model';
 import { ActionType, IState, StoreModule } from '@app/store/store.interface';
-import useStyle from '@app/components/preferenceBar/preferenceBar.component.style';
+import styles from '@app/components/preferenceBar/preferenceBar.component.style';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
 import { Genres, IMovieSortOptions, SortOrderBy } from '@shared/interfaces/movies.model';
 
-const PreferenceBar: FC = () => {
-  const s = useStyle();
+const PreferenceBar: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
   const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [chosenGenre, setGenre] = useState(Genres.All);
   const [chosenDropdownItem, setDropdownItem] = useState(sortOptions[0]);
@@ -62,4 +62,4 @@ const PreferenceBar: FC = () => {
   );
 };
 
-export default PreferenceBar;
+export default withStyles(styles)(PreferenceBar);

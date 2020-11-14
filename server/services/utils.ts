@@ -3,8 +3,8 @@ import {
   IMovie,
   SortOrderBy,
   IMovieSortOptions,
-} from '../../shared/interfaces/movies.model';
-import ISearchQueryParams from './movies.service.interface';
+} from '@shared/interfaces/movies.model';
+import ISearchQueryParams from '@server/services/movies.service.interface';
 
 function getFilteredMovies(
   movies: Array<IMovie> = [],

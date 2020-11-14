@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import { gray, white, peachy } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const styles = {
   option: {
     fontWeight: 100,
     padding: '5px 0 5px 15px',
@@ -71,6 +70,6 @@ const style = createUseStyles({
       color: 'white',
     },
   },
-});
+};
 
-export default style;
+export default styles;

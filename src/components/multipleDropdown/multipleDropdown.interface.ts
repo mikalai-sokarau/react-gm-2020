@@ -5,4 +5,5 @@ export default interface IMultipleDropdown {
   onGenreClick: (chosenGenres: Array<Genres>) => void;
   onBlurHandler: (e: React.FocusEvent) => void;
   styles: string;
+  classes: { [key: string]: string };
 }
