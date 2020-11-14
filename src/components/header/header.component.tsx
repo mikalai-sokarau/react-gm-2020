@@ -20,13 +20,12 @@ import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import MovieDetails from '@app/components/movieDetails/movieDetails.component';
 
 const Header: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
-  const { text } = useParams<{ text: string }>();
   const { dispatch, search } = useStoreon<IState>(StoreModule.search);
   const [inputText, setInputText] = useState(search.text);
   const { setChosenModal } = useContext(ModalContext);
   const history = useHistory();
   const submitSearch = () => {
-    if (inputText !== text) {
+    if (inputText !== search.text) {
       history.push(inputText ? `${ROUTES.SEARCH}${inputText}` : ROUTES.HOME);
       dispatch(ActionType.getMovies, { ...search, text: inputText, genre: Genres.All });
     }
@@ -39,8 +38,8 @@ const Header: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
   });
 
   useEffect(() => {
-    setInputText(text || '');
-  }, [text]);
+    setInputText(search.text || '');
+  }, [search.text]);
 
   return (
     <Switch>

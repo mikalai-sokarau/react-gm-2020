@@ -12,7 +12,7 @@ import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
 const DEFAULT_IMAGE_SIZE = {
   height: '490px',
   width: '320px',
-}
+};
 
 const MovieItem: FC<IMovieItem> = ({ movie, classes: s }) => {
   const [isMovieMenuOpened, setMovieMenuState] = useState(false);
