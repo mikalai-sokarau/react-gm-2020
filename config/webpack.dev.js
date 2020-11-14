@@ -13,6 +13,7 @@ const developmentConfiguration = {
     open: true,
     historyApiFallback: true,
   },
+  watch: true,
   devtool: 'source-map',
   plugins: [
     new HotModuleReplacementPlugin()

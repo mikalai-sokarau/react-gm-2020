@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const { getEnvironmentVariables } = require('./utils');
 
-const [ ouputPath, title ] = getEnvironmentVariables();
+const [ouputPath, title] = getEnvironmentVariables();
 
 module.exports = {
   entry: './src/index.tsx',
@@ -29,11 +29,11 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title,
-      template: 'src/index.html',
-      filename: 'index.html'
-    }),
+    // new HtmlWebpackPlugin({
+    //   title,
+    //   template: 'src/index.html',
+    //   filename: 'index.html'
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
