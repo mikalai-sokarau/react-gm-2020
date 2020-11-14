@@ -11,22 +11,20 @@ import { ButtonType } from '@app/components/button/button.interface';
 import { PAGE_NOT_FOUND_PATH } from '@shared/interfaces/movies.model';
 
 const NotFoundPage: FC<
-  { classes?: { [key: string]: string } }
-> = ({ classes: s }) => {
-  return (
-    <div className={s.background}>
-      <div className={cN(s.appContainer, s.notFoundContainer)}>
-        <div className={s.logoContainer}>
-          <Logo />
-        </div>
-        <h3>page not found</h3>
-        <img src={PAGE_NOT_FOUND_PATH} alt="page not found" />
-        <Link to={ROUTES.HOME}>
-          <Button type={ButtonType.backToHome} />
-        </Link>
+{ classes?: { [key: string]: string } }
+> = ({ classes: s }) => (
+  <div className={s.background}>
+    <div className={cN(s.appContainer, s.notFoundContainer)}>
+      <div className={s.logoContainer}>
+        <Logo />
       </div>
+      <h3>page not found</h3>
+      <img src={PAGE_NOT_FOUND_PATH} alt="page not found" />
+      <Link to={ROUTES.HOME}>
+        <Button type={ButtonType.backToHome} />
+      </Link>
     </div>
-  );
-};
+  </div>
+);
 
 export default withStyles({ ...styles, ...commonStyles })(NotFoundPage);
