@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { StoreContext } from 'storeon/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import store from '@app/store/store';
+import configureStore from '@app/store/store';
 import App from '@app/components/app/app.component';
 import 'src/index.css'; // TODO: import styles directly into index.html using webpack
 
-ReactDOM.render(
-  <Router>
-    <StoreContext.Provider value={store}>
-      <App />
-    </StoreContext.Provider>
-  </Router>,
+ReactDOM.hydrate(
+  <App Router={BrowserRouter} store={configureStore()} />,
   document.querySelector('#root'),
+  () => {
+    // because of server and brower jss styles conflicts
+    // https://cssinjs.org/server-side-rendering
+    const ssStyles = document.getElementById('server-side-styles');
+    ssStyles.parentNode.removeChild(ssStyles);
+  },
 );
