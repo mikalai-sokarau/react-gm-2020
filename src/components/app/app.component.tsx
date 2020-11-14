@@ -14,7 +14,9 @@ import CoreModal from '@app/components/modals/coreModal/coreModal.component';
 import ErrorBoundary from '@app/components/errorBoundary/errorBoundary.component';
 import { IModalContext, ModalContext } from '@shared/interfaces/coreModal.context';
 
-const App: FC<IApp> = ({ Router, store, location, context, classes }) => {
+const App: FC<IApp> = ({
+  Router, store, location, context, classes,
+}) => {
   const [chosenModal, setChosenModal] = useState<IModalContext>({ type: null });
 
   if (chosenModal.actionType) {
