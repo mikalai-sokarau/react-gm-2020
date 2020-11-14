@@ -1,12 +1,10 @@
 import Koa from 'koa';
 import path from 'path';
 import cors from '@koa/cors';
-import router from './routes';
 import KoaJson from 'koa-json';
 import KoaStatic from 'koa-static';
+import router from '@server/routes';
 import BodyParser from 'koa-bodyparser';
-
-// TODO: add absolute paths support to server
 
 const app = new Koa();
 const port = process.env.NODE_PORT;

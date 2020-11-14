@@ -1,5 +1,5 @@
 import KoaRouter from 'koa-router';
-import { serverRenderer } from '../serverRenderer';
+import { serverRenderer } from '@server/serverRenderer';
 
 const router = new KoaRouter();
 

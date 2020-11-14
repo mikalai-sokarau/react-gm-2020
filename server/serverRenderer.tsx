@@ -1,11 +1,11 @@
 import React from 'react';
+import configureStore from '@app/store/store';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter as Router } from 'react-router-dom';
-import App from '../src/components/app/app.component';
-import configureStore from 'src/store/store';
-import { DEFAULT_SEARCH_STATE } from '../src/store/store.interface';
-import MovieService from './services/movies.service';
+import App from '@app/components/app/app.component';
 import { JssProvider, SheetsRegistry } from 'react-jss';
+import { StaticRouter as Router } from 'react-router-dom';
+import MovieService from '@server/services/movies.service';
+import { DEFAULT_SEARCH_STATE } from '@app/store/store.interface';
 
 const renderHTML = (app: string, preloadedState: string, sheets: string) =>
   `

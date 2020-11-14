@@ -1,5 +1,5 @@
 import KoaRouter from 'koa-router';
-import MovieService from '../services/movies.service';
+import MovieService from '@server/services/movies.service';
 
 const router = new KoaRouter();
 

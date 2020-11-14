@@ -1,6 +1,6 @@
 import KoaRouter from 'koa-router';
-import nestedRouter from './routes';
-import staticRouter from './static';
+import nestedRouter from '@server/routes/routes';
+import staticRouter from '@server/routes/static';
 
 const router = new KoaRouter();
 

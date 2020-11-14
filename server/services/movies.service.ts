@@ -1,7 +1,7 @@
-import getFilteredMovies from './utils';
-import mockMovies from '../mockData/movies';
-import ISearchQueryParams from './movies.service.interface';
-import { IMovie, Genres, IMovieSortOptions } from '../../shared/interfaces/movies.model';
+import mockMovies from '@server/mockData/movies';
+import getFilteredMovies from '@server/services/utils';
+import ISearchQueryParams from '@server/services/movies.service.interface';
+import { IMovie, IMovieSortOptions } from '@shared/interfaces/movies.model';
 
 class MovieService {
   movies: Array<IMovie>;
