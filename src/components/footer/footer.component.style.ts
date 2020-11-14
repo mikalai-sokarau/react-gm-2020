@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import { gray } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const style = {
   footer: {
     backgroundColor: gray.tint3,
     minHeight: '50px',
@@ -10,6 +9,6 @@ const style = createUseStyles({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+};
 
 export default style;

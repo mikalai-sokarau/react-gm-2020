@@ -1,21 +1,21 @@
 import cN from 'classnames';
 import ROUTES from '@app/routes';
 import React, { FC } from 'react';
+import withStyles from 'react-jss';
 import { Link } from 'react-router-dom';
 import Logo from '@app/components/logo/logo.component';
-import useCommonStyle from '@app/style/variables/sizes';
+import commonStyles from '@app/style/variables/sizes';
+import styles from '@app/pages/NotFound/notFound.page.style';
 import Button from '@app/components/button/button.component';
 import { ButtonType } from '@app/components/button/button.interface';
 import { PAGE_NOT_FOUND_PATH } from '@shared/interfaces/movies.model';
-import useStyle from '@app/components/notFound/notFound.component.style';
 
-const NotFound: FC = () => {
-  const s = useStyle();
-  const { appContainer } = useCommonStyle();
-
+const NotFoundPage: FC<
+  { classes?: { [key: string]: string } }
+> = ({ classes: s }) => {
   return (
     <div className={s.background}>
-      <div className={cN(appContainer, s.notFoundContainer)}>
+      <div className={cN(s.appContainer, s.notFoundContainer)}>
         <div className={s.logoContainer}>
           <Logo />
         </div>
@@ -29,4 +29,4 @@ const NotFound: FC = () => {
   );
 };
 
-export default NotFound;
+export default withStyles({ ...styles, ...commonStyles })(NotFoundPage);

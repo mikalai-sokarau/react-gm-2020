@@ -1,16 +1,19 @@
-import React, { FC } from 'react';
 import cN from 'classnames';
-import useStyle from '@app/components/button/button.component.style';
+import React, { FC } from 'react';
+import withStyles from 'react-jss';
+import styles from '@app/components/button/button.component.style';
 import { IButton, ButtonType, BUTTON_TEXT } from '@app/components/button/button.interface';
 
-const Button: FC<IButton> = ({ type, isDisabled, onButtonClick }) => {
-  const { button, ...classes } = useStyle();
+const Button: FC<IButton> = ({
+  type, isDisabled, onButtonClick, classes,
+}) => {
+  const { button, ...other } = classes;
   const buttonClassName = ButtonType[type];
 
   return (
     <input
       type="button"
-      className={cN(button, classes[buttonClassName], { disabled: isDisabled })}
+      className={cN(button, other[buttonClassName], { disabled: isDisabled })}
       value={BUTTON_TEXT[type]}
       onClick={onButtonClick}
       disabled={isDisabled}
@@ -18,4 +21,4 @@ const Button: FC<IButton> = ({ type, isDisabled, onButtonClick }) => {
   );
 };
 
-export default Button;
+export default withStyles(styles)(Button);

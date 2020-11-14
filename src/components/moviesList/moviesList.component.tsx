@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
+import withStyles from 'react-jss';
 import { useStoreon } from 'storeon/react';
 import { IState, StoreModule } from '@app/store/store.interface';
 import MovieItem from '@app/components/movieItem/movieItem.component';
-import useStyle from '@app/components/moviesList/moviesList.component.style';
+import styles from '@app/components/moviesList/moviesList.component.style';
 
-const MoviesList: FC = () => {
-  const s = useStyle();
+const MoviesList: FC<{ classes: { [key: string]: string } }> = ({ classes: s }) => {
   const { movies } = useStoreon<IState>(StoreModule.movies);
 
   return (
@@ -25,4 +25,4 @@ const MoviesList: FC = () => {
   );
 };
 
-export default MoviesList;
+export default withStyles(styles)(MoviesList);

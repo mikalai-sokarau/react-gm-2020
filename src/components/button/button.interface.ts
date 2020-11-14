@@ -17,7 +17,8 @@ export const BUTTON_TEXT = {
 };
 
 export interface IButton {
-  type: ButtonType,
-  onButtonClick?: () => void,
-  isDisabled?: boolean,
+  type: ButtonType;
+  onButtonClick?: () => void;
+  isDisabled?: boolean;
+  classes: { [key: string]: string };
 }

@@ -1,8 +1,7 @@
-import { createUseStyles } from 'react-jss';
 import { error } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
 
-const style = createUseStyles({
+const styles = {
   error,
-});
+};
 
-export default style;
+export default styles;

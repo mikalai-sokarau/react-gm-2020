@@ -1,15 +1,14 @@
 import cN from 'classnames';
 import React, { FC } from 'react';
 import { useField } from 'formik';
+import withStyles from 'react-jss';
+import styles from '@app/components/formField/formField.component.style';
 import { IFormField } from '@app/components/formField/formField.interface';
-import useStyle from '@app/components/formField/formField.component.style';
 
 const FormField: FC<IFormField> = ({
-  name, type, value, text,
+  name, type, value, text, classes,
 }) => {
   const [{ onBlur, onChange }, { error, touched }] = useField({ name, type, value });
-  const s = useStyle();
-
   return (
     <label htmlFor={name}>
       {text || name}
@@ -25,9 +24,9 @@ const FormField: FC<IFormField> = ({
           hasError: touched && error,
         })}
       />
-      {touched && error && <p data-testid={name} className={s.error}>{error}</p>}
+      {touched && error && <p data-testid={name} className={classes.error}>{error}</p>}
     </label>
   );
 };
 
-export default FormField;
+export default withStyles(styles)(FormField);

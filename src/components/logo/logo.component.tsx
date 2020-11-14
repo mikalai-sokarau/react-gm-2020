@@ -1,10 +1,11 @@
 import ROUTES from '@app/routes';
 import React, { FC } from 'react';
+import withStyles from 'react-jss';
 import { Link } from 'react-router-dom';
-import useStyle from '@app/components/logo/logo.component.style';
+import styles from '@app/components/logo/logo.component.style';
 
-const Logo: FC = () => {
-  const { common, firstPart, lastPart } = useStyle();
+const Logo: FC<{ classes: { [key: string]: string } }> = ({ classes }) => {
+  const { common, firstPart, lastPart } = classes;
 
   return (
     <Link to={ROUTES.HOME}>
@@ -16,4 +17,4 @@ const Logo: FC = () => {
   );
 };
 
-export default Logo;
+export default withStyles(styles)(Logo);

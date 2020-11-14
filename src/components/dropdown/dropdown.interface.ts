@@ -4,4 +4,5 @@ export interface IDropdown {
   title: string;
   options: Array<ISortOption>;
   onSortOptionClick: (chosenOption: ISortOption) => void;
+  classes: { [key: string]: string };
 }

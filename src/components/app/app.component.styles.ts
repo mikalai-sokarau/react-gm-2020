@@ -1,11 +1,9 @@
-import { createUseStyles } from 'react-jss';
-
-const style = createUseStyles({
+const styles = {
   core: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
   },
-});
+};
 
-export default style;
+export default styles;

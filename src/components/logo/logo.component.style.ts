@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import { peachy } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const styles = {
   common: {
     cursor: 'pointer',
 
@@ -20,6 +19,6 @@ const style = createUseStyles({
     fontWeight: 100,
     letterSpacing: '0.8px',
   },
-});
+};
 
-export default style;
+export default styles;

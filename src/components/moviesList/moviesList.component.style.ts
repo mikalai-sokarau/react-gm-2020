@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import { white } from '@app/style/variables/colors';
 
-const style = createUseStyles({
+const styles = {
   moviesAmount: {
     color: white,
     fontSize: '1.25rem',
@@ -28,6 +27,6 @@ const style = createUseStyles({
     fontWeight: 100,
     fontSize: '1.4em',
   },
-});
+};
 
-export default style;
+export default styles;
