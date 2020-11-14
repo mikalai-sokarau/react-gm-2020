@@ -74,7 +74,7 @@ export const serverRenderer = (ctx: any): void => {
 
   const htmlString = renderToString(renderRoot());
   const preloadedState = JSON.stringify(store.get());
-  const appTemplate = renderHTML(htmlString, preloadedState, JSON.stringify(sheets));
+  const appTemplate = renderHTML(htmlString, preloadedState, sheets.toString());
 
   ctx.body = appTemplate;
 }
