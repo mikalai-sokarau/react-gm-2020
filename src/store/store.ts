@@ -1,7 +1,22 @@
-import { createStoreon } from 'storeon';
-import modules from '@app/store/modules';
-import { IState, IEvents } from '@app/store/store.interface';
+import isBrowser from '@app/utils/isBrowser';
+import { createStoreon, StoreonStore } from 'storeon';
+import moviesModule from '@app/store/modules/movies.module';
+import { IState, IEvents, DEFAULT_STORE_STATE } from '@app/store/store.interface';
 
-const store = createStoreon<IState, IEvents>(modules);
+const configureStore = (initialState?: IState) => {
+  const modules = [
+    (store: StoreonStore<IState, IEvents>) => {
+      store.on('@init', () => (isBrowser
+        ? (window as any)?.PRELOADED_STATE || DEFAULT_STORE_STATE
+        : initialState));
+    },
+  ];
 
-export default store;
+  if (isBrowser) {
+    modules.push(moviesModule);
+  }
+
+  return createStoreon<IState, IEvents>(modules);
+};
+
+export default configureStore;
