@@ -4,7 +4,7 @@ import {
 import ISearchQueryParams from '@server/services/movies.service.interface';
 
 // TODO: add default redirect to the port 4100.
-export const API_URL = 'http://localhost:4100';
+export const API_URL = 'http://localhost:4100/api';
 
 export const DEFAULT_SEARCH_STATE = {
   genre: Genres.All,
