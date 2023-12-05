@@ -1,7 +1,7 @@
-import cN from 'classnames';
-import React, { useState, FC } from 'react';
 import useStyle from '@app/components/dropdown/dropdown.component.style';
 import { IDropdown } from '@app/components/dropdown/dropdown.interface';
+import cN from 'classnames';
+import React, { FC, useState } from 'react';
 
 const Dropdown: FC<IDropdown> = ({ title, options, onSortOptionClick }) => {
   const s = useStyle();

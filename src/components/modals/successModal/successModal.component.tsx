@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
 import useStyle from '@app/components/modals/successModal/successModal.component.style';
+import React, { FC } from 'react';
 
 const SuccessModal: FC<{ onCancelClick: () => void }> = ({ onCancelClick }) => {
   const s = useStyle();

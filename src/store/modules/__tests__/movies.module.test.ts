@@ -1,9 +1,9 @@
-import { createStoreon, StoreonDispatch } from 'storeon';
 
 import modules from '@app/store/modules';
 import { addMovie } from '@app/store/modules/movies.events';
-import { Genres, IMovie } from '@shared/interfaces/movies.model';
 import { ActionType, API_URL, DEFAULT_STORE_STATE } from '@app/store/store.interface';
+import { Genres, IMovie } from '@shared/interfaces/movies.model';
+import { createStoreon, StoreonDispatch } from 'storeon';
 
 const mockMovie: IMovie = {
   title: 'mock title',
@@ -69,8 +69,8 @@ describe('reducer', () => {
 
     store.dispatch(ActionType.addMovie, mockMovie);
 
-    expect(fetch).toBeCalledTimes(1);
-    expect(fetch).toBeCalledWith(`${API_URL}/movies/add`, requestInit);
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(fetch).toHaveBeenCalledWith(`${API_URL}/movies/add`, requestInit);
   });
 
   it('should delete a movie from the server when receives the "Delete movie" action', () => {
@@ -82,8 +82,8 @@ describe('reducer', () => {
 
     store.dispatch(ActionType.deleteMovie, id);
 
-    expect(fetch).toBeCalledTimes(1);
-    expect(fetch).toBeCalledWith(`${API_URL}/movies/delete/${id}`, requestInit);
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(fetch).toHaveBeenCalledWith(`${API_URL}/movies/delete/${id}`, requestInit);
   });
 
   it('new movie should appear in the store after handling the addMovie action', async () => {
@@ -97,7 +97,7 @@ describe('reducer', () => {
 
     await addMovieMock(DEFAULT_STORE_STATE, mockMovie);
 
-    expect(mockDispatch).toBeCalledWith(ActionType.saveMovie, { movies: [mockMovie] });
+    expect(mockDispatch).toHaveBeenCalledWith(ActionType.saveMovie, { movies: [mockMovie] });
     expect(store.get()).toEqual({ ...DEFAULT_STORE_STATE, movies: [mockMovie] });
   });
 

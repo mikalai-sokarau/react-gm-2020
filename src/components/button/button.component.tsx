@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import cN from 'classnames';
 import useStyle from '@app/components/button/button.component.style';
-import { IButton, ButtonType, BUTTON_TEXT } from '@app/components/button/button.interface';
+import { BUTTON_TEXT, ButtonType, IButton } from '@app/components/button/button.interface';
+import cN from 'classnames';
+import React, { FC } from 'react';
 
 const Button: FC<IButton> = ({ type, isDisabled, onButtonClick }) => {
   const { button, ...classes } = useStyle();

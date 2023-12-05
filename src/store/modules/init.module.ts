@@ -1,7 +1,7 @@
-import { StoreonModule } from 'storeon';
 import {
-  IState, IEvents, ActionType, DEFAULT_SEARCH_STATE,
+  ActionType, DEFAULT_SEARCH_STATE, IEvents, IState,
 } from '@app/store/store.interface';
+import { StoreonModule } from 'storeon';
 
 const initModule: StoreonModule<IState, IEvents> = (store) => {
   store.on('@init', () => {

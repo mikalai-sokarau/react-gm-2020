@@ -1,12 +1,15 @@
-import cN from 'classnames';
-import React, { FC, useState } from 'react';
+import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
+import { IMultipleDropdown } from '@app/components/multipleDropdown/multipleDropdown.interface';
 import useClickedOutside from '@app/hooks/clickOutside';
 import { Genres } from '@shared/interfaces/movies.model';
-import useStyle from '@app/components/multipleDropdown/multipleDropdown.component.style';
-import IMultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.interface';
+import cN from 'classnames';
+import React, { FC, useState } from 'react';
 
 const MultipleDropdown: FC<IMultipleDropdown> = ({
-  genres, onGenreClick, onBlurHandler, styles,
+  genres,
+  onGenreClick,
+  onBlurHandler,
+  styles,
 }) => {
   const s = useStyle();
   const [isDropdownOpen, toggleDropdown] = useState(false);
@@ -25,10 +28,7 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({
   };
 
   return (
-    <div
-      className={cN(s.dropdownContainer, { open: isDropdownOpen })}
-      onBlur={onBlurHandler}
-    >
+    <div className={cN(s.dropdownContainer, { open: isDropdownOpen })} onBlur={onBlurHandler}>
       <div
         role="menu"
         tabIndex={0}
@@ -38,26 +38,24 @@ const MultipleDropdown: FC<IMultipleDropdown> = ({
         select genre
       </div>
       <ul className={s.optionsList}>
-        {Object.values(Genres).map((g) => g !== Genres.All && (
-          <li
-            className={s.option}
-            key={g}
-            tabIndex={0}
-            role="menuitem"
-          >
-            <label htmlFor={g}>
-              <input
-                id={g}
-                readOnly
-                type="checkbox"
-                checked={genres.includes(g)}
-                onClick={() => handleGenresClick(g)}
-              />
-              <span className={s.checkmark} />
-              <span>{g}</span>
-            </label>
-          </li>
-        ))}
+        {Object.values(Genres).map(
+          (g) =>
+            g !== Genres.All && (
+              <li className={s.option} key={g} tabIndex={0} role="menuitem">
+                <label htmlFor={g}>
+                  <input
+                    id={g}
+                    readOnly
+                    type="checkbox"
+                    checked={genres.includes(g)}
+                    onClick={() => handleGenresClick(g)}
+                  />
+                  <span className={s.checkmark} />
+                  <span>{g}</span>
+                </label>
+              </li>
+            )
+        )}
       </ul>
     </div>
   );

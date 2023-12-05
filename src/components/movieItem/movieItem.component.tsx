@@ -1,12 +1,12 @@
-import cN from 'classnames';
-import ROUTES from '@app/routes';
-import { Link } from 'react-router-dom';
-import React, { useState, FC, useContext } from 'react';
-import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
-import { ModalType } from '@shared/interfaces/coreModal.interface';
-import { ModalContext } from '@shared/interfaces/coreModal.context';
 import useStyle from '@app/components/movieItem/movieItem.component.style';
 import { IMovieItem } from '@app/components/movieItem/movieItem.interface';
+import ROUTES from '@app/routes';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
+import cN from 'classnames';
+import React, { FC, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MovieItem: FC<IMovieItem> = ({ movie }) => {
   const s = useStyle();

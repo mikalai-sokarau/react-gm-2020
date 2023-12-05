@@ -1,8 +1,8 @@
-import cN from 'classnames';
-import React, { FC } from 'react';
-import { useField } from 'formik';
-import { IFormField } from '@app/components/formField/formField.interface';
 import useStyle from '@app/components/formField/formField.component.style';
+import { IFormField } from '@app/components/formField/formField.interface';
+import cN from 'classnames';
+import { useField } from 'formik';
+import React, { FC } from 'react';
 
 const FormField: FC<IFormField> = ({
   name, type, value, text,

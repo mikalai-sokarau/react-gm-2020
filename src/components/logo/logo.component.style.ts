@@ -1,12 +1,13 @@
-import { createUseStyles } from 'react-jss';
 import { peachy } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   common: {
     cursor: 'pointer',
+    textDecoration: 'none',
 
     '& span': {
-      fontSize: '1.1rem',
+      fontSize: '2rem',
       color: peachy,
       userSelect: 'none',
     },

@@ -1,7 +1,7 @@
 import getFilteredMovies from './utils';
 import mockMovies from '../mockData/movies';
 import ISearchQueryParams from './movies.service.interface';
-import { IMovie, Genres, IMovieSortOptions } from '../../shared/interfaces/movies.model';
+import { IMovie, IMovieSortOptions } from '../../shared/interfaces/movies.model';
 
 class MovieService {
   movies: Array<IMovie>;
@@ -12,15 +12,17 @@ class MovieService {
 
   addMovie(movie: IMovie): IMovie {
     if (!this.isMovieValid(movie)) {
-      throw new Error('Add movie request hasn\'t been successful. Please check that provided movie is valid.');
+      throw new Error(
+        "Add movie request hasn't been successful. Please check that provided movie is valid."
+      );
     }
 
     const newMovie = {
       ...movie,
       id: Date.now(),
       rating: Number((Math.random() * Math.floor(10)).toFixed(1)),
-    }
-    
+    };
+
     this.movies.push(newMovie);
 
     return newMovie;
@@ -32,10 +34,16 @@ class MovieService {
 
   editMovie(movie: IMovie): void {
     if (!this.isMovieValid(movie)) {
-      throw new Error('Edit movie request hasn\'t been successful. Please check that provided movie is valid.');
+      throw new Error(
+        "Edit movie request hasn't been successful. Please check that provided movie is valid."
+      );
     }
 
-    this.movies.splice(this.movies.findIndex((m) => m.id === movie.id), 1, movie);
+    this.movies.splice(
+      this.movies.findIndex((m) => m.id === movie.id),
+      1,
+      movie
+    );
   }
 
   getMovies(params: ISearchQueryParams): Array<IMovie> {
@@ -43,7 +51,7 @@ class MovieService {
   }
 
   getMovieById(id: number): IMovie {
-    return this.movies.find(m => m.id === id);
+    return this.movies.find((m) => m.id === id);
   }
 
   sortMovies(option: IMovieSortOptions, movies?: Array<IMovie>): Array<IMovie> {
@@ -56,12 +64,13 @@ class MovieService {
     let isValid: boolean;
 
     try {
-      isValid = movie.title
-        && movie.url
-        && movie.genre.length
-        && movie.description
-        && movie.duration
-        && !isNaN(Number(new Date(movie.releaseDate)));
+      isValid =
+        movie.title &&
+        movie.url &&
+        movie.genre.length &&
+        movie.description &&
+        movie.duration &&
+        !Number.isNaN(Number(new Date(movie.releaseDate)));
     } catch (e) {
       isValid = false;
     }

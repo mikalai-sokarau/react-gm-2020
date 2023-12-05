@@ -1,8 +1,7 @@
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from '@testing-library/react';
 import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
 import { Genres } from '@shared/interfaces/movies.model';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 
 const onGenreClickMock = jest.fn();
 const onBlurHandlerMock = jest.fn();
@@ -13,17 +12,16 @@ const mockProps = {
   styles: 'style',
 };
 
-/* eslint-disable react/jsx-props-no-spreading */
 describe('MultipleDropdown', () => {
   it('should render', () => {
-    render(<MultipleDropdown {...mockProps} />);
+    expect(render(<MultipleDropdown {...mockProps} />)).toBeDefined();
   });
 
   it('should open/close dropdown menu onclick', () => {
     const { getByRole, container } = render(
       <div className="elementOutsideDropdown">
         <MultipleDropdown {...mockProps} />
-      </div>,
+      </div>
     );
     const menuContainer = getByRole('menu');
     const dropdownContainer = container.querySelector('[class^=dropdownContainer]');
@@ -42,7 +40,7 @@ describe('MultipleDropdown', () => {
 
     fireEvent.click(comedyGenre);
 
-    expect(onGenreClickMock).toBeCalledTimes(1);
-    expect(onGenreClickMock).toBeCalledWith([Genres.Action, Genres.Drama, Genres.Horror]);
+    expect(onGenreClickMock).toHaveBeenCalledTimes(1);
+    expect(onGenreClickMock).toHaveBeenCalledWith([Genres.Action, Genres.Drama, Genres.Horror]);
   });
 });

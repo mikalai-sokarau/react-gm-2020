@@ -1,32 +1,26 @@
+import Button from '@app/components/button/button.component';
+import { ButtonType } from '@app/components/button/button.interface';
+import FormField from '@app/components/formField/formField.component';
+import { style as useStyle } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
+import validationSchema from '@app/components/modals/movieDetailsModal/movieDetailsModal.validation.schema';
+import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
+import { StoreModule } from '@app/store/store.interface';
+import { IModal } from '@shared/interfaces/coreModal.interface';
+import { EMPTY_MOVIE, IMovie } from '@shared/interfaces/movies.model';
 import cN from 'classnames';
 import { Formik } from 'formik';
 import React, { FC } from 'react';
 import { useStoreon } from 'storeon/react';
-import { StoreModule } from '@app/store/store.interface';
-import Button from '@app/components/button/button.component';
-import { IModal } from '@shared/interfaces/coreModal.interface';
-import { ButtonType } from '@app/components/button/button.interface';
-import { EMPTY_MOVIE, IMovie } from '@shared/interfaces/movies.model';
-import FormField from '@app/components/formField/formField.component';
-import MultipleDropdown from '@app/components/multipleDropdown/multipleDropdown.component';
-// eslint-disable max-len
-import validationSchema from '@app/components/modals/movieDetailsModal/movieDetailsModal.validation.schema';
-import { style as useStyle } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
-// eslint-enable max-len
 
 const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDetails }) => {
   const s = useStyle();
   const { movies } = useStoreon(StoreModule.movies);
-  const movie = modalDetails.movie
+  const movie = modalDetails?.movie
     ? movies.find((m: IMovie) => m.id === modalDetails.movie.id)
     : EMPTY_MOVIE;
 
   return (
-    <Formik
-      initialValues={...movie}
-      validationSchema={validationSchema}
-      onSubmit={onConfirmClick}
-    >
+    <Formik initialValues={movie} validationSchema={validationSchema} onSubmit={onConfirmClick}>
       {({
         dirty,
         errors,
@@ -37,36 +31,16 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
         handleSubmit,
         setFieldValue,
         setFieldTouched,
-        values: {
-          title, releaseDate, url, genre, description, duration,
-        },
+        values: { title, releaseDate, url, genre, description, duration },
         resetForm,
       }) => (
         <div className={s.background}>
-          <h2 className={s.modalTitle}>
-            {modalDetails.type}
-            {' '}
-            movie
-          </h2>
+          <h2 className={s.modalTitle}>{modalDetails.type} movie</h2>
           <div className={s.scrollContainer}>
             <form className={s.modalForm} autoComplete="off" onSubmit={handleSubmit}>
-              <FormField
-                name="title"
-                type="text"
-                value={title}
-              />
-              <FormField
-                text="release date"
-                name="releaseDate"
-                type="date"
-                value={releaseDate}
-              />
-              <FormField
-                text="movie url"
-                name="url"
-                type="url"
-                value={url}
-              />
+              <FormField name="title" type="text" value={title} />
+              <FormField text="release date" name="releaseDate" type="date" value={releaseDate} />
+              <FormField text="movie url" name="url" type="url" value={url} />
               <label htmlFor="genre">
                 genre
                 <MultipleDropdown
@@ -78,7 +52,11 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
                     hasError: touched.genre && errors.genre,
                   })}
                 />
-                {touched.genre && errors.genre && <p data-testid="genre" className={s.error}>{errors.genre}</p>}
+                {touched.genre && errors.genre && (
+                  <p data-testid="genre" className={s.error}>
+                    {errors.genre}
+                  </p>
+                )}
               </label>
               <label htmlFor="description">
                 overview
@@ -93,16 +71,13 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
                     hasError: touched.description && errors.description,
                   })}
                 />
-                {touched.description
-                    && errors.description
-                    && <p data-testid="description" className={s.error}>{errors.description}</p>}
+                {touched.description && errors.description && (
+                  <p data-testid="description" className={s.error}>
+                    {errors.description}
+                  </p>
+                )}
               </label>
-              <FormField
-                text="runtime"
-                name="duration"
-                type="number"
-                value={duration}
-              />
+              <FormField text="runtime" name="duration" type="number" value={duration} />
             </form>
           </div>
           <div className={s.modalButtons}>
@@ -116,11 +91,7 @@ const MovieDetailsModal: FC<IModal> = ({ onConfirmClick, onCancelClick, modalDet
               isDisabled={!(isValid && dirty)}
             />
           </div>
-          <button
-            type="button"
-            className={s.closeButton}
-            onClick={onCancelClick}
-          />
+          <button type="button" className={s.closeButton} onClick={onCancelClick} />
         </div>
       )}
     </Formik>

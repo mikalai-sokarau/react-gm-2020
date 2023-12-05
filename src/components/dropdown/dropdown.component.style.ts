@@ -1,5 +1,5 @@
+import { gray, peachy, white } from '@app/style/variables/colors';
 import { createUseStyles } from 'react-jss';
-import { gray, white, peachy } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   option: {

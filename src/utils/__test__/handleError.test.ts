@@ -1,5 +1,5 @@
-import { cleanup } from '@testing-library/react';
 import handleError from '@app/utils/handleError';
+import { cleanup } from '@testing-library/react';
 
 afterEach(cleanup);
 

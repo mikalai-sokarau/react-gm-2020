@@ -1,10 +1,10 @@
-import { createUseStyles } from 'react-jss';
 import {
-  peachy,
   gray,
-  white,
+  peachy,
   transparent,
+  white,
 } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const sizes = {
   mediumWidth: '180px',

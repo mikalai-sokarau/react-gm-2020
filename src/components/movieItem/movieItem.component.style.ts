@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { gray, peachy, white } from '@app/style/variables/colors';
 import closeButtonStyles from '@app/style/icons/icons';
+import { gray, peachy, white } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   closeButton: closeButtonStyles,

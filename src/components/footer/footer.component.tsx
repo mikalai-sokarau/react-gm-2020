@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
 import useStyle from '@app/components/footer/footer.component.style';
 import Logo from '@app/components/logo/logo.component';
+import React, { FC } from 'react';
 
 const Footer: FC = () => {
   const { footer } = useStyle();

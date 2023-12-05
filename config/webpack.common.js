@@ -16,64 +16,42 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.json',
-      '.ts',
-      '.tsx'
-    ],
-    plugins: [
-      new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })
-    ]
+    extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: 'tsconfig.json' })],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title,
       template: 'src/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].css',
     }),
     new CopyPlugin({
-      patterns: [{
-        from: './src/assets',
-        to: path.join(__dirname, ouputPath + '/assets')
-      }]
-    })
+      patterns: [
+        {
+          from: './src/assets',
+          to: path.join(__dirname, ouputPath + '/assets'),
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        loader: 'awesome-typescript-loader',
-      },
-      {
-        test: /\.m?(js|jsx)$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env'
-            ]
-          }
-        }
-      },
+      { test: /\.([cm]?ts|tsx)$/, loader: 'ts-loader' },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpe?g|gif|png|svg|woff2?|ttf|wav|mp3|ico)$/,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]?[hash]'
-        }
-      }
-    ]
-  }
+          name: '[path][name].[ext]?[hash]',
+        },
+      },
+    ],
+  },
 };

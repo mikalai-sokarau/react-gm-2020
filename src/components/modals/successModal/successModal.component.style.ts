@@ -1,6 +1,6 @@
+import { deleteMovieCloseButtonStyles } from '@app/components/modals/coreModal/coreModal.component.style';
 import { gray, peachy, white } from '@app/style/variables/colors';
 import { createUseStyles } from 'react-jss';
-import { deleteMovieCloseButtonStyles } from '@app/components/modals/coreModal/coreModal.component.style';
 
 const style = createUseStyles({
   background: {

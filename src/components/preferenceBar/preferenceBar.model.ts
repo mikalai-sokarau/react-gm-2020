@@ -1,5 +1,5 @@
-import { IMovieSortOptions } from '@shared/interfaces/movies.model';
 import { ISortOption } from '@app/components/preferenceBar/preferenceBar.interface';
+import { IMovieSortOptions } from '@shared/interfaces/movies.model';
 
 const sortOptions: Array<ISortOption> = [
   {

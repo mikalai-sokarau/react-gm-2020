@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import { StoreonStore } from 'storeon';
-import handleError from '@app/utils/handleError';
-import { IMovie } from '@shared/interfaces/movies.model';
 import {
-  IState, API_URL, ActionType, DEFAULT_SEARCH_STATE, ISearch,
+  ActionType, API_URL, DEFAULT_SEARCH_STATE, ISearch, IState,
 } from '@app/store/store.interface';
+import handleError from '@app/utils/handleError';
 import ISearchQueryParams from '@server/services/movies.service.interface';
+import { IMovie } from '@shared/interfaces/movies.model';
+import { StoreonStore } from 'storeon';
 
 export const addMovie = (store: StoreonStore) => async (state: IState, movie: IMovie) => {
   let movies: Array<IMovie>;

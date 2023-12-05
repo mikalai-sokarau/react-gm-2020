@@ -1,7 +1,7 @@
-import { createUseStyles } from 'react-jss';
 import {
-  gray, peachy, darkGradient, white,
+  darkGradient, gray, peachy, white,
 } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   backToSearchButton: {

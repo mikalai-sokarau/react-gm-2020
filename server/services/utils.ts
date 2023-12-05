@@ -11,11 +11,25 @@ function getFilteredMovies(
   { genre, offset, orderBy, sortBy, size, text }: ISearchQueryParams
 ): Array<IMovie> {
   const filteredMoviesByGenre = getFilteredMoviesByGenre(movies, genre);
-  const filteredMoviesByText = getFilteredMoviesByText(filteredMoviesByGenre, text?.toLowerCase());
-  const sortedMoviesByOption = getSortedMoviesByOption(filteredMoviesByText, sortBy);
-  const orderedMoviesByDirection = getOrderedMoviesByDirection(sortedMoviesByOption, orderBy);
-  const partialMovies = getPartialMovies(orderedMoviesByDirection, offset, size);
-  
+
+  const filteredMoviesByText = getFilteredMoviesByText(
+    filteredMoviesByGenre,
+    text?.toLowerCase()
+  );
+  const sortedMoviesByOption = getSortedMoviesByOption(
+    filteredMoviesByText,
+    sortBy
+  );
+  const orderedMoviesByDirection = getOrderedMoviesByDirection(
+    sortedMoviesByOption,
+    orderBy
+  );
+  const partialMovies = getPartialMovies(
+    orderedMoviesByDirection,
+    offset,
+    size
+  );
+
   return partialMovies;
 }
 
@@ -27,7 +41,7 @@ function getFilteredMoviesByGenre(
 
   return genre === Genres.All
     ? movies
-    : movies.filter(m => m.genre.includes(genre));
+    : movies.filter((m) => m.genre.includes(genre));
 }
 
 function getFilteredMoviesByText(
@@ -35,10 +49,11 @@ function getFilteredMoviesByText(
   text: string
 ): Array<IMovie> {
   return text
-    ? movies.filter(m =>
-      m.description.toLowerCase().includes(text)
-      || m.title.toLowerCase().includes(text)
-    )
+    ? movies.filter(
+        (m) =>
+          m.description.toLowerCase().includes(text) ||
+          m.title.toLowerCase().includes(text)
+      )
     : [];
 }
 
@@ -68,10 +83,8 @@ function getPartialMovies(
   const from = Number(offset);
   const to = from + Number(size);
 
-  return from && to
-    ? movies.slice(from, to)
-    : movies;
-};
+  return from && to ? movies.slice(from, to) : movies;
+}
 
 function getGenresEnumValue(value: Genres): Genres {
   switch (value) {

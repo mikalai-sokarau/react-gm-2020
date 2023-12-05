@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
 import Button from '@app/components/button/button.component';
-import { IModal } from '@shared/interfaces/coreModal.interface';
 import { ButtonType } from '@app/components/button/button.interface';
 import useStyle from '@app/components/modals/deleteMovieModal/deleteMovieModal.component.style';
+import { IModal } from '@shared/interfaces/coreModal.interface';
+import React, { FC } from 'react';
 
 const DeleteModal: FC<IModal> = ({ onCancelClick, onConfirmClick }) => {
   const s = useStyle();

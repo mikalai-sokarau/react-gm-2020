@@ -1,7 +1,7 @@
+import ISearchQueryParams from '@server/services/movies.service.interface';
 import {
   Genres, IMovie, IMovieSortOptions, SortOrderBy,
 } from '@shared/interfaces/movies.model';
-import ISearchQueryParams from '@server/services/movies.service.interface';
 
 // TODO: add default redirect to the port 4100.
 export const API_URL = 'http://localhost:4100';

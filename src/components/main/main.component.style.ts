@@ -1,5 +1,5 @@
-import { createUseStyles } from 'react-jss';
 import { gray } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   core: {

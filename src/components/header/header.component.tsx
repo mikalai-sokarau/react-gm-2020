@@ -1,22 +1,22 @@
-import cN from 'classnames';
-import ROUTES from '@app/routes';
-import { useStoreon } from 'storeon/react';
+import Button from '@app/components/button/button.component';
+import { ButtonType } from '@app/components/button/button.interface';
+import useStyle from '@app/components/header/header.component.style';
 import Logo from '@app/components/logo/logo.component';
+import MovieDetails from '@app/components/movieDetails/movieDetails.component';
+import ROUTES from '@app/routes';
+import { ActionType, IState, StoreModule } from '@app/store/store.interface';
 import useCommonStyle from '@app/style/variables/sizes';
+import { ModalContext } from '@shared/interfaces/coreModal.context';
+import { ModalType } from '@shared/interfaces/coreModal.interface';
+import { Genres } from '@shared/interfaces/movies.model';
+import cN from 'classnames';
+import React, {
+  FC, useContext, useEffect, useState,
+} from 'react';
 import {
   Route, Switch, useHistory, useParams,
 } from 'react-router-dom';
-import { Genres } from '@shared/interfaces/movies.model';
-import Button from '@app/components/button/button.component';
-import { ModalType } from '@shared/interfaces/coreModal.interface';
-import React, {
-  useState, useContext, FC, useEffect,
-} from 'react';
-import { ModalContext } from '@shared/interfaces/coreModal.context';
-import useStyle from '@app/components/header/header.component.style';
-import { ButtonType } from '@app/components/button/button.interface';
-import { ActionType, IState, StoreModule } from '@app/store/store.interface';
-import MovieDetails from '@app/components/movieDetails/movieDetails.component';
+import { useStoreon } from 'storeon/react';
 
 const Header: FC = () => {
   const s = useStyle();

@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { gray, peachy, white } from '@app/style/variables/colors';
 import { deleteMovieCloseButtonStyles } from '@app/components/modals/coreModal/coreModal.component.style';
+import { gray, peachy, white } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const validationStatus = {
   '&.correct': {

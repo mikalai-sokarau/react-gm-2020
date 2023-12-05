@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { useStoreon } from 'storeon/react';
-import { IState, StoreModule } from '@app/store/store.interface';
 import MovieItem from '@app/components/movieItem/movieItem.component';
 import useStyle from '@app/components/moviesList/moviesList.component.style';
+import { IState, StoreModule } from '@app/store/store.interface';
+import React, { FC } from 'react';
+import { useStoreon } from 'storeon/react';
 
 const MoviesList: FC = () => {
   const s = useStyle();

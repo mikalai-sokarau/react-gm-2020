@@ -1,12 +1,11 @@
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent, waitFor } from '@testing-library/react';
 import MovieDetailsModal from '@app/components/modals/movieDetailsModal/movieDetailsModal.component';
-import { createStoreon } from 'storeon';
-import { StoreContext } from 'storeon/react';
+import { DEFAULT_STORE_STATE } from '@app/store/store.interface';
 import { IModal, ModalType } from '@shared/interfaces/coreModal.interface';
 import { Genres, IMovie } from '@shared/interfaces/movies.model';
-import { DEFAULT_STORE_STATE } from '@app/store/store.interface';
+import { fireEvent, render, waitFor } from '@testing-library/react';
+import React from 'react';
+import { createStoreon } from 'storeon';
+import { StoreContext } from 'storeon/react';
 
 const mockMovie = {
   title: 'alice in wonderland',
@@ -17,7 +16,8 @@ const mockMovie = {
   id: 123456789123,
   duration: 108,
   rating: 6.4,
-  description: 'Alice, now 19 years old, follows a rabbit in a blue coat to a magical wonderland...',
+  description:
+    'Alice, now 19 years old, follows a rabbit in a blue coat to a magical wonderland...',
 };
 
 const mockConfirmClickFn = jest.fn();
@@ -27,11 +27,13 @@ const movieDetailsModalProps: IModal = {
   modalDetails: { type: ModalType.Add },
 };
 
-/* eslint-disable react/jsx-props-no-spreading */
 const getMovieDetailsModal = (props: IModal) => (
-  <StoreContext.Provider value={createStoreon([(store) => {
-    store.on('@init', () => ({ ...DEFAULT_STORE_STATE, movies: [mockMovie] }));
-  }])}
+  <StoreContext.Provider
+    value={createStoreon([
+      (store) => {
+        store.on('@init', () => ({ ...DEFAULT_STORE_STATE, movies: [mockMovie] }));
+      },
+    ])}
   >
     <MovieDetailsModal {...props} />
   </StoreContext.Provider>
@@ -61,8 +63,9 @@ describe('MovieDetailsModal', () => {
     fireEvent.click(submitButtton);
 
     await waitFor(() => {
-      expect(mockConfirmClickFn).toBeCalledWith({
-        description: 'Alice, now 19 years old, follows a rabbit in a blue coat to a magical wonderland...',
+      expect(mockConfirmClickFn).toHaveBeenCalledWith({
+        description:
+          'Alice, now 19 years old, follows a rabbit in a blue coat to a magical wonderland...',
         duration: 108,
         genre: ['comedy'],
         id: undefined,
@@ -77,7 +80,7 @@ describe('MovieDetailsModal', () => {
 
   it('should reset form acter click on `reset` button', () => {
     const { getByDisplayValue, container } = render(
-      getMovieDetailsModal({ modalDetails: { type: ModalType.Add } }),
+      getMovieDetailsModal({ modalDetails: { type: ModalType.Add } })
     );
     const titleInput = container.querySelector('#title');
     const releaseDateInput = container.querySelector('#releaseDate');
@@ -87,7 +90,11 @@ describe('MovieDetailsModal', () => {
     const resetButtton = container.querySelector('[value=reset]');
 
     const allInputsTextContent = [
-      titleInput, releaseDateInput, urlInput, descriptionInput, durationInput,
+      titleInput,
+      releaseDateInput,
+      urlInput,
+      descriptionInput,
+      durationInput,
     ]
       .map((elem) => elem.textContent)
       .join('');
@@ -108,7 +115,11 @@ describe('MovieDetailsModal', () => {
     fireEvent.click(resetButtton);
 
     const allInputsTextContentAfterReset = [
-      titleInput, releaseDateInput, urlInput, descriptionInput, durationInput,
+      titleInput,
+      releaseDateInput,
+      urlInput,
+      descriptionInput,
+      durationInput,
     ]
       .map((elem) => elem.textContent)
       .join('');
@@ -119,15 +130,15 @@ describe('MovieDetailsModal', () => {
     const { container } = render(getMovieDetailsModal(movieDetailsModalProps));
     const closeButton = container.querySelector('[class^=closeButton]');
 
-    expect(movieDetailsModalProps.onCancelClick).toBeCalledTimes(0);
+    expect(movieDetailsModalProps.onCancelClick).toHaveBeenCalledTimes(0);
     fireEvent.click(closeButton);
-    expect(movieDetailsModalProps.onCancelClick).toBeCalledTimes(1);
+    expect(movieDetailsModalProps.onCancelClick).toHaveBeenCalledTimes(1);
   });
 
   it('should show validation errors on blur', async () => {
-    const {
-      getByLabelText, getByTestId, container,
-    } = render(getMovieDetailsModal(movieDetailsModalProps));
+    const { getByLabelText, getByTestId, container } = render(
+      getMovieDetailsModal(movieDetailsModalProps)
+    );
     const title = getByLabelText('title');
     const url = getByLabelText('movie url');
     const duration = getByLabelText('runtime');
@@ -165,7 +176,7 @@ describe('MovieDetailsModal', () => {
           type: ModalType.Edit,
           movie: { id: 123456789123 } as IMovie,
         },
-      }),
+      })
     );
 
     expect(getByDisplayValue(mockMovie.title)).toBeInTheDocument();

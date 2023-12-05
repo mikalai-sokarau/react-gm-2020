@@ -1,5 +1,3 @@
-import { StoreonModule } from 'storeon';
-import { IState, IEvents, ActionType } from '@app/store/store.interface';
 import {
   addMovie,
   deleteMovie,
@@ -10,6 +8,8 @@ import {
   resetState,
   saveMovie,
 } from '@app/store/modules/movies.events';
+import { ActionType, IEvents, IState } from '@app/store/store.interface';
+import { StoreonModule } from 'storeon';
 
 const moviesModule: StoreonModule<IState, IEvents> = (store) => {
   store.on(ActionType.addMovie, addMovie(store));

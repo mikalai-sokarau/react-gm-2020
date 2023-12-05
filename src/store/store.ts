@@ -1,6 +1,6 @@
-import { createStoreon } from 'storeon';
 import modules from '@app/store/modules';
-import { IState, IEvents } from '@app/store/store.interface';
+import { IEvents, IState } from '@app/store/store.interface';
+import { createStoreon } from 'storeon';
 
 const store = createStoreon<IState, IEvents>(modules);
 

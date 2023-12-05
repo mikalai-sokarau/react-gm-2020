@@ -3,11 +3,11 @@ import MovieService from '../services/movies.service';
 
 const router = new KoaRouter();
 
-router.get('/movies', ctx => {
+router.get('/movies', (ctx) => {
   ctx.body = { movies: MovieService.getMovies(ctx.query) };
 });
 
-router.get('/movie/:id', ctx => {
+router.get('/movie/:id', (ctx) => {
   try {
     const movie = MovieService.getMovieById(Number(ctx.params.id));
 
@@ -18,11 +18,11 @@ router.get('/movie/:id', ctx => {
       throw new Error('no movie found.');
     }
   } catch (e) {
-    ctx.throw(400, e.message)
+    ctx.throw(400, e.message);
   }
 });
 
-router.delete('/movies/delete/:id', ctx => {
+router.delete('/movies/delete/:id', (ctx) => {
   try {
     MovieService.deleteMovie(Number(ctx.params.id));
     ctx.status = 200;
@@ -31,7 +31,7 @@ router.delete('/movies/delete/:id', ctx => {
   }
 });
 
-router.post('/movies/add', ctx => {
+router.post('/movies/add', (ctx) => {
   try {
     ctx.body = MovieService.addMovie(ctx.request.body.movie);
     ctx.status = 200;
@@ -40,7 +40,7 @@ router.post('/movies/add', ctx => {
   }
 });
 
-router.put('/movies/edit', ctx => {
+router.put('/movies/edit', (ctx) => {
   try {
     MovieService.editMovie(ctx.request.body.movie);
     ctx.status = 200;

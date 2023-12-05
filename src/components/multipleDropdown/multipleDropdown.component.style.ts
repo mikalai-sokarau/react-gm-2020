@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { gray, white, peachy } from '@app/style/variables/colors';
 import { validationStatus } from '@app/components/modals/movieDetailsModal/movieDetailsModal.component.style';
+import { gray, peachy, white } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 const style = createUseStyles({
   checkmark: {

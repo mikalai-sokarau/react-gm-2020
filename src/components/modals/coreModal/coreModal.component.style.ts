@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
 import closeButtonStyles from '@app/style/icons/icons';
 import { darkGradient } from '@app/style/variables/colors';
+import { createUseStyles } from 'react-jss';
 
 export const deleteMovieCloseButtonStyles = {
   ...closeButtonStyles,

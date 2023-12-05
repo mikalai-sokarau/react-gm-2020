@@ -1,5 +1,5 @@
+import { gray, peachy, white } from '@app/style/variables/colors';
 import { createUseStyles } from 'react-jss';
-import { white, peachy, gray } from '@app/style/variables/colors';
 
 const style = createUseStyles({
   preferenceBarContainer: {

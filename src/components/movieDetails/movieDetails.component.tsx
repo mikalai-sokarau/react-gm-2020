@@ -1,15 +1,15 @@
-import ROUTES from '@app/routes';
-import { useStoreon } from 'storeon/react';
-import React, { FC, useEffect } from 'react';
 import Logo from '@app/components/logo/logo.component';
-import useCommonStyle from '@app/style/variables/sizes';
-import { useHistory, useParams } from 'react-router-dom';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
-import { ActionType, IState, StoreModule } from '@app/store/store.interface';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useGenreStyle from '@app/components/movieItem/movieItem.component.style';
 import useStyle from '@app/components/movieDetails/movieDetails.component.style';
+import useGenreStyle from '@app/components/movieItem/movieItem.component.style';
+import ROUTES from '@app/routes';
+import { ActionType, IState, StoreModule } from '@app/store/store.interface';
+import useCommonStyle from '@app/style/variables/sizes';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NO_IMAGE_PATH } from '@shared/interfaces/movies.model';
+import React, { FC, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { useStoreon } from 'storeon/react';
 
 const MovieDetails: FC = () => {
   const s = useStyle();
